@@ -4,7 +4,9 @@ An open-source, party-neutral kit that turns a candidate's raw inputs into a cam
 
 > **New here? Read [START-HERE.md](START-HERE.md) first.** It's one page.
 
-## What's in this release (Step 1 — Strategy)
+## What's in this release (Steps 1 and 2)
+
+### Step 1 — Strategy
 
 Strategy comes before any creative work. Every slogan, mailer and ad built in later steps traces back to what you produce here.
 
@@ -21,12 +23,31 @@ Strategy comes before any creative work. Every slogan, mailer and ad built in la
 | `strategy/calendar-guide.md` | Working backward from Election Day, with print lead times |
 | `strategy/budget-guide.md` | How to split money across field, mail, digital, signs and print |
 | `tools/targeting.py` | Command-line precinct targeting for people with larger data files |
-| `examples/` | A fully worked fictional campaign ("Dana Reyes, Rivertown District 4") |
+| `examples/` | A fully worked fictional campaign ("Chris Porter, Rivertown District 4") |
 | `STATE-LAW-FLAGS.md` | Index of every place where state law changes the answer |
 
-## Coming in later releases
 
-- **Step 2 — Creative:** brand system, slogans tied to the message box, print-ready yard signs/mailers/door hangers, a static website template, social and email templates, language versions.
+### Step 2 — Creative
+
+Every slogan, sign, mailer, ad and email is built from your Step 1 message box, aimed at your target precincts and dated from your calendar. One file (`creative/campaign.json`) feeds everything; one command builds it.
+
+| Folder / file | What it does |
+|---|---|
+| `creative/README.md` | Start here for Step 2: how it works and the traceability rule |
+| `creative/campaign.example.json` | The one input file: words, colors, dates, links (fictional example) |
+| `tools/build_creative.py` | Builds every piece below from `campaign.json` |
+| `creative/brand/` | 3 WCAG-checked palettes, 3 open-license type pairings, logo lockups |
+| `creative/slogans.md` | 5–10 slogans, each labeled by message-box quadrant |
+| `creative/print/` | Yard sign, door hanger, palm card, 2 mailers, flier — print-ready PDFs, legible at 35 mph, QR codes with UTM tags, disclaimer slots |
+| `creative/website/` | Static Eleventy site: bio, priorities, donate, volunteer, voter info; no JavaScript, accessible |
+| `creative/social/` | Social and ad templates for each platform, with political-ad verification notes |
+| `creative/email/` | Welcome, donate, volunteer and GOTV sequences for listmonk or Mautic, timed to your calendar |
+| `creative/language-versions.md` | When and how to make Spanish or other language versions |
+| `tools/contrast_check.py` | WCAG contrast checker for any palette |
+| `examples/rivertown-creative/` | Every Step 2 output for the fictional Rivertown campaign |
+
+## Coming next
+
 - **Step 3 — Validation:** message testing plan, compliance checklist, accessibility and deliverability checks, weekly dashboard against the win number.
 
 ## Using the tools
@@ -37,6 +58,13 @@ Strategy comes before any creative work. Every slogan, mailer and ad built in la
 
 ```bash
 python3 tools/targeting.py examples/rivertown-precincts.csv --out targeting.csv
+```
+
+**Creative (Step 2):** needs Python 3 plus two small packages, and optionally `rsvg-convert` for PDFs. See `creative/README.md`.
+
+```bash
+pip install segno fonttools
+python3 tools/build_creative.py creative/campaign.example.json
 ```
 
 ## Principles

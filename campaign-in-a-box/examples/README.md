@@ -18,4 +18,22 @@ The strategy workbook (`strategy/strategy-workbook.xlsx`) ships pre-filled with 
 - **Turn Out:** 412, 401, 409, 405. Supportive but lower turnout. Precinct 405 is flagged as a small sample.
 - **Base - Light Touch:** 402. Supportive and already voting.
 - **Skip:** 407, 408, 411.
-- **Field reality check:** 15 volunteers plus the candidate over 10 weeks reach about 2,250 conversations — roughly half of the gap at the workbook's default assumptions. Dana needs more volunteers, more weeks, or a mail program aimed at the top-ranked precincts. That's the kind of finding Step 1 is for.
+- **Field reality check:** 15 volunteers plus the candidate over 10 weeks reach about 2,250 conversations — roughly half of the gap at the workbook's default assumptions. Chris needs more volunteers, more weeks, or a mail program aimed at the top-ranked precincts. That's the kind of finding Step 1 is for.
+
+## Step 2 — Creative (`rivertown-creative/`)
+
+Everything `tools/build_creative.py` makes from `creative/campaign.example.json`. Open the PDFs and PNGs to see finished pieces; open the `.proof.svg` files to see bleed, safe zones, die lines and disclaimer slots.
+
+| Folder / file | What it shows |
+|---|---|
+| `brand/` | Logo lockups (color, reversed, one-color), brand sheet, contrast report |
+| `print/` | Yard sign, door hanger (EN + ES), palm card (EN + ES), intro mailer, contrast mailer, flier |
+| `social/`, `ads/` | Organic posts in 5 sizes and Google/Meta ad templates |
+| `email/` | All sequences rendered for listmonk and Mautic, plus `sequences.csv` with send dates |
+| `traceability.csv` | Each piece → quadrant, targets, due date, budget line |
+| `creative-calendar.csv` | Production start dates and in-home dates next to election milestones |
+| `utm-plan.csv`, `legibility.md`, `BUILD-NOTES.md` | QR destinations, 35-mph check, warnings |
+
+**What the build caught:** the example core message is actually **27 words**, over Step 1's 25-word limit. That's left in on purpose as a warning example. A tighter version: *"Chris Porter will finally fix east-side flooding. He's an engineer who already cleared Mill Creek — City Hall left it 'pending' six years."*
+
+The Spanish text is a **draft** and would need review by a fluent speaker from the district.

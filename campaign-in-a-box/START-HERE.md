@@ -16,9 +16,18 @@ You don't need campaign experience to use this kit. You need a few hours, a lapt
 7. **Research yourself.** Go through `strategy/vulnerability-checklist.md` before an opponent or reporter does. Fix what you can; prepare an honest answer for the rest.
 8. **Build your calendar and budget.** `Calendar` and `Budget` tabs. Enter Election Day and your budget range; the dates and dollar splits fill in.
 
+## Weeks 3–4: Make your materials (Step 2, about 6–10 hours)
+
+9. **Fill in one file.** Copy `creative/campaign.example.json` to `creative/campaign.json` and replace the fictional content with your own: core message, message box (with a source for every contrast point), three issues, dates, links and your "Paid for by" wording.
+10. **Write 5–10 slogans** using `creative/slogans.md`. Label each with its message-box quadrant.
+11. **Pick colors and fonts** from `creative/brand/` — or ask a volunteer to run the build for you. One command makes your yard sign, door hangers, palm cards, mailers, flier, social graphics, ads, emails and logo.
+12. **Put up your website** (`creative/website/`) and connect the volunteer form and donate button.
+13. **Start political-ad verification now** if you'll run Facebook or Google ads. It can take weeks.
+14. **Check before you print.** Real photo in, disclaimer confirmed ⚖️, dates confirmed ⚖️, QR codes scanned, translations reviewed. The full checklist is in `creative/print/README.md`.
+
 ## Then
 
-Take what you made here into **Step 2 (Creative)**. Every slogan, sign and mailer should trace back to your message box and your target precincts.
+Take everything into **Step 3 (Validation)**: test your slogans with real voters before you print in volume.
 
 ## Three rules that matter more than anything in this kit
 

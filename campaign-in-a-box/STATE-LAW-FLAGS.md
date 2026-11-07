@@ -44,12 +44,23 @@ This kit is not legal advice.
 | Reporting deadlines, in-kind rules | budget-guide.md, calendar-guide.md |
 | Personal use of campaign funds | budget-guide.md |
 
-## Materials (Step 2 will add more)
+## Materials (Step 2)
 
 | Topic | Where it appears |
 |---|---|
-| "Paid for by" disclaimer wording, size and placement | intake checklist |
-| Yard sign timing, placement, size, removal deadline | intake checklist, calendar-guide.md |
+| "Paid for by" disclaimer: wording, required name/address/treasurer, minimum type size, box/border, placement | `campaign.json → disclaimer`; every print, social, email and web template (magenta ⚖️ slot in proof files); creative/print/README.md |
+| Which items are exempt from disclaimers (small signs, buttons, pens, small digital ads) | creative/print/README.md, creative/social/README.md |
+| Disclaimer inside digital ad images vs. a click-through; reporting digital ad spending | creative/social/README.md |
+| Disclosure of AI-generated or altered images, audio or video in political ads | creative/social/README.md |
+| Yard sign timing (how early they may go up), placement (right-of-way, distance from polls), size limits, removal deadline | intake checklist, calendar-guide.md, creative/print/README.md, `election.offsets.sign_removal` |
+| Use of photos taken in public buildings or of public employees in uniform | creative/print/README.md |
+| Union "bug" requirements or claims | `disclaimer.union_bug`, creative/print/README.md |
+| Translated materials, including whether the disclaimer must be translated | creative/language-versions.md, `disclaimer.text_es` |
+| Uploading voter-file audiences to ad platforms (permitted uses of the voter file) | creative/social/README.md, precinct-targeting.md |
+| Disclaimers in campaign email; donor information you must collect (employer, occupation); contribution limits shown on the donate page | creative/email/README.md, creative/website/README.md, website `donate` page |
+| Voting dates and rules printed on palm cards, emails and the website vote page | `campaign.json → election` (all marked PLACEHOLDER), palm card back, website `/vote/`, GOTV emails |
+
+Not state law, but also varies and must be confirmed: **USPS mail rules** (postcard size and thickness, indicia, address area, barcode clear zone — ask your mail house) and **platform political-ad policies** (Meta, Google and others change them often, and Google's rules for local races differ by state).
 
 ---
 
