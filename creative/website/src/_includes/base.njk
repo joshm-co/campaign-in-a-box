@@ -1,0 +1,64 @@
+{%- set L = lang or "en" -%}
+{%- set u = ui[L] -%}
+{%- set tt = site.t[L] -%}
+{%- set c = site.cfg.candidate -%}
+{%- set pre = "/es" if L == "es" else "" -%}
+<!doctype html>
+<html lang="{{ L }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} · {% endif %}{{ c.full_name }} for {{ c.office }}</title>
+<meta name="description" content="{{ tt.core }}">
+<meta property="og:title" content="{{ c.full_name }} — {{ tt.office_line }}">
+<meta property="og:description" content="{{ tt.core }}">
+<meta property="og:image" content="{{ site.cfg.web.base_url }}/share.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="{{ site.palette.primary }}">
+<link rel="icon" href="/icon.png">
+{%- for f in site.fonts %}
+<link rel="preload" href="/fonts/{{ f.file }}" as="font" type="font/woff2" crossorigin>
+{%- endfor %}
+<link rel="stylesheet" href="/css/site.css">
+{%- if site.hasSpanish %}
+<link rel="alternate" hreflang="en" href="{{ site.cfg.web.base_url }}{{ altEn or '/' }}">
+<link rel="alternate" hreflang="es" href="{{ site.cfg.web.base_url }}{{ altEs or '/es/' }}">
+{%- endif %}
+{%- set an = site.cfg.web.analytics %}
+{%- if an.provider == "plausible" %}<script defer data-domain="{{ site.cfg.web.base_url | domain }}" src="https://plausible.io/js/script.js"></script>
+{%- elif an.provider == "umami" %}<script defer src="{{ an.script_url }}" data-website-id="{{ an.site_id }}"></script>
+{%- elif an.provider == "goatcounter" %}<script data-goatcounter="https://{{ an.site_id }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">{{ u.skip }}</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ pre }}/">
+      <span class="brand-first">{{ c.first_name | upper }}</span>
+      <span class="brand-last">{{ c.last_name | upper }}</span>
+      <span class="brand-office">{{ tt.office_line | upper }}</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="{{ pre }}/issues/"{% if page.url == pre + '/issues/' %} aria-current="page"{% endif %}>{{ u.nav_issues }}</a></li>
+        {%- if L == "en" %}<li><a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>{{ u.nav_about }}</a></li>{% endif %}
+        <li><a href="{{ pre }}/vote/"{% if page.url == pre + '/vote/' %} aria-current="page"{% endif %}>{{ u.nav_vote }}</a></li>
+        <li><a href="{{ pre }}/volunteer/"{% if page.url == pre + '/volunteer/' %} aria-current="page"{% endif %}>{{ u.nav_volunteer }}</a></li>
+        <li><a class="btn btn-small" href="/donate/">{{ u.nav_donate }}</a></li>
+        {%- if site.hasSpanish %}<li><a href="{{ altEs if L == 'en' else altEn }}" hreflang="{{ u.other_lang_code }}" lang="{{ u.other_lang_code }}">{{ u.other_lang }}</a></li>{% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclaimer">{{ tt.disclaimer }}</p>
+    <p>{{ site.cfg.disclaimer.address_line }} · <a href="mailto:{{ site.cfg.web.email }}">{{ site.cfg.web.email }}</a> · <a href="/privacy/">{{ u.privacy }}</a></p>
+  </div>
+</footer>
+</body>
+</html>

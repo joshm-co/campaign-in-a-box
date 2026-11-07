@@ -1,0 +1,71 @@
+{
+  "_about": "Brand system for Campaign-in-a-Box. Pick one palette and one type pairing in your campaign.json. Run tools/contrast_check.py after changing any color. All fonts are free under the SIL Open Font License (Google Fonts).",
+  "palettes": {
+    "river": {
+      "name": "River (teal and gold)",
+      "why": "Calm, civic, outdoorsy. Reads as competent and local. Not associated with either major US party.",
+      "primary": "#0B4F5C",
+      "secondary": "#F2B705",
+      "accent": "#B4441F",
+      "ink": "#13232B",
+      "paper": "#FFFFFF",
+      "tint": "#E3EFF1"
+    },
+    "forest": {
+      "name": "Forest (green and cream)",
+      "why": "Rooted, steady, neighborly. Good for parks, schools, land use and rural races.",
+      "primary": "#1F4D2B",
+      "secondary": "#F4E9D0",
+      "accent": "#A8432C",
+      "ink": "#1A1A1A",
+      "paper": "#FFFDF7",
+      "tint": "#E8EFE6"
+    },
+    "plum": {
+      "name": "Plum (plum and sun)",
+      "why": "Warm and distinctive. Stands out in a crowded field of red, white and blue signs.",
+      "primary": "#4A2C5E",
+      "secondary": "#FFC857",
+      "accent": "#1D7268",
+      "ink": "#1E1528",
+      "paper": "#FFFFFF",
+      "tint": "#EFE8F3"
+    }
+  },
+  "contrast_pairs": [
+    {"fg": "paper", "bg": "primary", "use": "Name and headlines on signs, mailer fronts, buttons", "min": 7.0},
+    {"fg": "secondary", "bg": "primary", "use": "Slogan or office line on signs", "min": 4.5},
+    {"fg": "ink", "bg": "secondary", "use": "Text on accent bands", "min": 7.0},
+    {"fg": "ink", "bg": "paper", "use": "Body text everywhere", "min": 7.0},
+    {"fg": "ink", "bg": "tint", "use": "Body text on tinted panels", "min": 7.0},
+    {"fg": "primary", "bg": "paper", "use": "Headings and links on white", "min": 4.5},
+    {"fg": "accent", "bg": "paper", "use": "Small labels and highlights", "min": 4.5},
+    {"fg": "paper", "bg": "accent", "use": "Buttons on the website and in email", "min": 4.5}
+  ],
+  "type_pairings": {
+    "civic": {
+      "name": "Civic — Public Sans + Source Serif 4",
+      "why": "Public Sans was designed for government websites: plain, trustworthy, very legible. Source Serif adds warmth for longer reading on mailers and the website.",
+      "head": {"family": "Public Sans", "weight": 900, "fallback": "Arial Black, Arial, sans-serif"},
+      "sub": {"family": "Public Sans", "weight": 700, "fallback": "Arial, sans-serif"},
+      "body": {"family": "Source Serif 4", "weight": 400, "fallback": "Georgia, serif"},
+      "google_fonts": ["Public Sans:wght@400;700;900", "Source Serif 4:wght@400;600"]
+    },
+    "hyperlegible": {
+      "name": "Hyperlegible — Atkinson Hyperlegible",
+      "why": "Designed by the Braille Institute for readers with low vision. The most accessible choice; a good default if your district skews older.",
+      "head": {"family": "Atkinson Hyperlegible", "weight": 700, "fallback": "Verdana, sans-serif"},
+      "sub": {"family": "Atkinson Hyperlegible", "weight": 700, "fallback": "Verdana, sans-serif"},
+      "body": {"family": "Atkinson Hyperlegible", "weight": 400, "fallback": "Verdana, sans-serif"},
+      "google_fonts": ["Atkinson Hyperlegible:wght@400;700"]
+    },
+    "condensed": {
+      "name": "Condensed — Barlow Condensed + Public Sans",
+      "why": "A condensed headline face fits long names on a yard sign at a bigger size. Public Sans keeps body text plain.",
+      "head": {"family": "Barlow Condensed", "weight": 800, "fallback": "Arial Narrow, sans-serif"},
+      "sub": {"family": "Barlow Condensed", "weight": 700, "fallback": "Arial Narrow, sans-serif"},
+      "body": {"family": "Public Sans", "weight": 400, "fallback": "Arial, sans-serif"},
+      "google_fonts": ["Barlow Condensed:wght@700;800", "Public Sans:wght@400;700"]
+    }
+  }
+}

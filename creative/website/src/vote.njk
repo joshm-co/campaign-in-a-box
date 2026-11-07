@@ -1,0 +1,26 @@
+---
+layout: base.njk
+lang: en
+title: Vote
+permalink: /vote/
+altEn: /vote/
+altEs: /es/vote/
+---
+{%- set L = lang or "en" -%}{%- set u = ui[L] -%}{%- set tt = site.t[L] -%}{%- set c = site.cfg.candidate -%}{%- set mb = site.cfg.message_box -%}{%- set pre = "/es" if L == "es" else "" -%}
+{%- set el = site.cfg.election -%}
+<section><div class="wrap">
+  <h1>{{ u.vote_title }}</h1>
+  <p>{{ u.vote_lede }}</p>
+  <table class="dates">
+    <caption class="kicker" style="text-align:left">{{ c.jurisdiction }}</caption>
+    <tr><th scope="row">{{ u.ballots_out }}</th><td>{{ site.dates.ballots_out | fmtDate(L) }}</td></tr>
+    <tr><th scope="row">{{ u.register_by }}</th><td>{{ site.dates.register_deadline | fmtDate(L) }}</td></tr>
+    <tr><th scope="row">{{ u.early }}</th><td>{{ site.dates.early_vote_starts | fmtDate(L) }}</td></tr>
+    <tr><th scope="row">{{ u.eday }}</th><td>{{ site.dates.election_day | fmtDate(L) }}</td></tr>
+    <tr><th scope="row">{{ u.polls_close }}</th><td>{{ el.polls_close }}</td></tr>
+  </table>
+  <p class="note">{{ u.placeholder }}</p>
+  <h2>{{ u.official }}</h2>
+  <p><a href="{{ el.voter_info_url }}">{{ el.voter_info_url | domain }}</a><br>{{ u.office }}: {{ el.election_office }}, <a href="tel:{{ el.election_office_phone }}">{{ el.election_office_phone }}</a></p>
+  <p>{{ u.ballot_line }} <strong>{{ c.full_name }}</strong> — {{ tt.office_line }}.</p>
+</div></section>

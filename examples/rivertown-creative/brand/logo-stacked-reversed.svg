@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1200" height="1200" viewBox="0 0 1200.00 1200.00">
+<title>Logo stacked reversed</title>
+<g transform="translate(0.00,0.00)">
+<g id="background" inkscape:groupmode="layer" inkscape:label="background">
+<rect x="0.00" y="0.00" width="1200.00" height="1200.00" fill="#0B4F5C"/>
+</g>
+<g id="art" inkscape:groupmode="layer" inkscape:label="art">
+<rect x="440.00" y="110.00" width="320.00" height="320.00" fill="#FFFFFF" rx="44.800000000000004"/>
+<rect x="504.00" y="359.60" width="192.00" height="19.20" fill="#F2B705" rx="9.6"/>
+</g>
+<g id="text" inkscape:groupmode="layer" inkscape:label="text">
+<text x="600.00" y="317.83" font-family="&#x27;Public Sans&#x27;, Arial Black, Arial, sans-serif" font-weight="900" font-size="167.71" fill="#0B4F5C" text-anchor="middle">CP</text>
+<text x="600.00" y="632.93" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="700" font-size="100.88" fill="#FFFFFF" text-anchor="middle" letter-spacing="8.07">CHRIS</text>
+<text x="600.00" y="836.59" font-family="&#x27;Public Sans&#x27;, Arial Black, Arial, sans-serif" font-weight="900" font-size="240.18" fill="#FFFFFF" text-anchor="middle">PORTER</text>
+<text x="600.00" y="946.59" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="700" font-size="60.00" fill="#F2B705" text-anchor="middle" letter-spacing="3.60">CITY COUNCIL · DISTRICT 4</text>
+</g>
+<g id="qr" inkscape:groupmode="layer" inkscape:label="qr">
+</g>
+<g id="disclaimer" inkscape:groupmode="layer" inkscape:label="disclaimer">
+</g>
+</g></svg>

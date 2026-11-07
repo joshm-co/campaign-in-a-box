@@ -1,0 +1,31 @@
+---
+layout: base.njk
+lang: es
+title: Ayude
+permalink: /es/volunteer/
+altEn: /volunteer/
+altEs: /es/volunteer/
+---
+{%- set L = lang or "en" -%}{%- set u = ui[L] -%}{%- set tt = site.t[L] -%}{%- set c = site.cfg.candidate -%}{%- set mb = site.cfg.message_box -%}{%- set pre = "/es" if L == "es" else "" -%}
+{%- set fm = site.cfg.web.forms -%}
+<section><div class="wrap">
+  <h1>{{ u.volunteer_title }}</h1>
+  <p>{{ u.volunteer_lede }}</p>
+  {#- listmonk public subscription form: each checkbox subscribes to one list, which starts that list's email sequence. -#}
+  <form method="post" action="{{ fm.listmonk_url }}/subscription/form">
+    <input type="hidden" name="nonce" class="hp">
+    <label for="name">{{ u.name }}</label>
+    <input type="text" id="name" name="name" autocomplete="name" required>
+    <label for="email">{{ u.email }}</label>
+    <input type="email" id="email" name="email" autocomplete="email" required>
+    <fieldset>
+      <legend>{{ u.interests }}</legend>
+      <label class="check"><input type="checkbox" name="l" value="{{ fm.lists.volunteer_doors }}"> {{ u.doors }}</label>
+      <label class="check"><input type="checkbox" name="l" value="{{ fm.lists.volunteer_phones }}"> {{ u.phones }}</label>
+      <label class="check"><input type="checkbox" name="l" value="{{ fm.lists.yard_sign }}"> {{ u.sign }}</label>
+      <label class="check"><input type="checkbox" name="l" value="{{ fm.lists.updates_es if (L == 'es' and fm.lists.updates_es) else fm.lists.updates }}" checked> {{ u.updates }}</label>
+    </fieldset>
+    <button class="btn" type="submit">{{ u.submit }}</button>
+    <p><small>{{ u.privacy_note }} <a href="/privacy/">{{ u.privacy }}</a></small></p>
+  </form>
+</div></section>

@@ -1,0 +1,35 @@
+date,what,budget_line
+2027-07-23,START production: door-hanger,Print
+2027-07-23,START production: door-hanger-es,Print
+2027-07-23,START production: palm-card,Print
+2027-07-23,START production: palm-card-es,Print
+2027-07-23,START production: flier,Print
+2027-08-10,IN HAND / IN HOMES: door-hanger,Print
+2027-08-10,IN HAND / IN HOMES: door-hanger-es,Print
+2027-08-10,IN HAND / IN HOMES: palm-card,Print
+2027-08-10,IN HAND / IN HOMES: palm-card-es,Print
+2027-08-10,IN HAND / IN HOMES: flier,Print
+2027-08-10,MILESTONE: persuasion starts,
+2027-08-22,START production: mailer-1-intro,Mail
+2027-08-29,START production: yard-sign,Signs
+2027-09-01,START production: mailer-2-contrast,Mail
+2027-09-05,"START political-ad verification (Meta, Google) — can take days or weeks",Digital
+2027-09-19,IN HAND / IN HOMES: yard-sign,Signs
+2027-09-26,IN HAND / IN HOMES: mailer-1-intro,Mail
+2027-10-03,SEND email: gotv-1-es — Su boleta ya viene en camino,Digital
+2027-10-03,SEND email: gotv-1 — Your ballot is on its way,Digital
+2027-10-03,MILESTONE: ballots out,
+2027-10-04,MILESTONE: register deadline,
+2027-10-06,IN HAND / IN HOMES: mailer-2-contrast,Mail
+2027-10-08,"SEND email: gotv-2 — Fill it out today, {{ .Subscriber.FirstName }}",Digital
+2027-10-16,SEND email: donate-1 — What $25 does in District 4,Digital
+2027-10-19,MILESTONE: early vote starts,
+2027-10-21,SEND email: donate-2 — Two days left before the report,Digital
+2027-10-23,SEND email: donate-3 — Tonight's the deadline,Digital
+2027-10-23,MILESTONE: finance report,
+2027-10-24,SEND email: volunteer-3 — The last four days decide it,Digital
+2027-10-29,SEND email: gotv-3 — Four days left,Digital
+2027-10-29,MILESTONE: gotv starts,
+2027-11-02,SEND email: gotv-4 — Today's the day,Digital
+2027-11-02,MILESTONE: election day,
+2027-11-09,MILESTONE: sign removal,

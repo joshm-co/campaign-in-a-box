@@ -1,0 +1,45 @@
+---
+layout: base.njk
+lang: es
+altEn: /
+altEs: /es/
+---
+{%- set L = lang or "en" -%}{%- set u = ui[L] -%}{%- set tt = site.t[L] -%}{%- set c = site.cfg.candidate -%}{%- set mb = site.cfg.message_box -%}{%- set pre = "/es" if L == "es" else "" -%}
+<div class="hero">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">{{ c.jurisdiction }} {{ tt.office_line }}</p>
+      <h1>{{ tt.slogan }}</h1>
+      <p class="core">{{ tt.core }}</p>
+      <div class="actions">
+        <a class="btn btn-alt" href="{{ pre }}/volunteer/">{{ u.nav_volunteer }}</a>
+        <a class="btn" href="/donate/">{{ u.nav_donate }}</a>
+      </div>
+    </div>
+    <div class="photo" role="img" aria-label="Foto de {{ c.full_name }}">Foto del candidato</div>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <p class="kicker">{{ u.meet }} {{ c.first_name }}</p>
+    <h2>{{ tt.bio_short }}</h2>
+    <ul>{% for b in tt.bio_points %}<li>{{ b }}</li>{% endfor %}</ul>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">{{ u.priorities }}</p>
+    <ul class="cards">
+      {%- for i in tt.issues %}
+      <li><h3>{{ i.title }}</h3><p>{{ i.short }}</p></li>
+      {%- endfor %}
+    </ul>
+    <p><a href="{{ pre }}/issues/">{{ u.read_plan }} →</a></p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2>{{ u.vote_title }}</h2>
+    <p>{{ u.eday }}: <strong>{{ site.dates.election_day | fmtDate(L) }}</strong>. <a href="{{ pre }}/vote/">{{ u.vote_lede }}</a></p>
+  </div>
+</section>

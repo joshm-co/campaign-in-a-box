@@ -1,0 +1,29 @@
+piece,format,lang,quadrants,targets,message_used,calendar_anchor,in_hand_or_in_home,start_production_by,budget_line,utm_campaign,spec
+yard-sign,yard_sign,en,Q1,Base - Light Touch; Turn Out,Fix the flooding. Finally.,ballots_out,2027-09-19,2027-08-29,Signs,,"24 × 18 in, 4 mm corrugated plastic, 1 color or full color, 2-sided, H-stakes. 0.125 in bleed."
+door-hanger,door_hanger,en,Q1 Q2,Persuade,He cleared Mill Creek. He'll clear the backlog.,persuasion_starts,2027-08-10,2027-07-23,Print,persuade,"4.25 × 11 in, 100 lb gloss cover or 14 pt, full color 2-sided, 1.25 in die-cut hole + slit. 0.125 in bleed."
+door-hanger-es,door_hanger,es,Q1 Q2,Persuade,Despejó Mill Creek. Despejará el rezago.,persuasion_starts,2027-08-10,2027-07-23,Print,persuade,"4.25 × 11 in, 100 lb gloss cover or 14 pt, full color 2-sided, 1.25 in die-cut hole + slit. 0.125 in bleed."
+palm-card,palm_card,en,Q1,Persuade; Turn Out,Fix the flooding. Finally.,persuasion_starts,2027-08-10,2027-07-23,Print,canvass,"4 × 9 in, 100 lb gloss cover, full color 2-sided. 0.125 in bleed."
+palm-card-es,palm_card,es,Q1,Persuade; Turn Out,Acabar con las inundaciones. Por fin.,persuasion_starts,2027-08-10,2027-07-23,Print,canvass,"4 × 9 in, 100 lb gloss cover, full color 2-sided. 0.125 in bleed."
+mailer-1-intro,mailer,en,Q1,Persuade; Turn Out,Fix the flooding. Finally.,ballots_out,2027-09-26,2027-08-22,Mail,intro,"6 × 11 in postcard, 100 lb gloss cover or 10 pt, full color 2-sided. 0.125 in bleed. Confirm size/thickness and mail class with your mail house."
+mailer-2-contrast,mailer,en,Q2 Q3,Persuade,Six years of 'pending' is long enough.,ballots_out,2027-10-06,2027-09-01,Mail,contrast,"6 × 11 in postcard, 100 lb gloss cover or 10 pt, full color 2-sided. 0.125 in bleed. Confirm size/thickness and mail class with your mail house."
+flier,flier,en,Q1,Persuade; Turn Out,Dry streets. Open shops. Safe walks.,persuasion_starts,2027-08-10,2027-07-23,Print,volunteer,"8.5 × 11 in, 80–100 lb text, full color 1-sided. Bleed included; trim 0.125 in if printed with bleed, or print at 100% on a home printer (edges may show white)."
+social-core,social (5 sizes),en,Q1 Q2,Geo-target Persuade + Turn Out precincts (ads),Fix the flooding. Finally.,persuasion_starts,2027-08-10,,Digital,social,See social/README.md
+social-contrast,social (5 sizes),en,Q2,Geo-target Persuade + Turn Out precincts (ads),Six years of 'pending' is long enough.,persuasion_starts,2027-08-10,,Digital,social,See social/README.md
+social-gotv,social (5 sizes),en,Q1,Geo-target Persuade + Turn Out precincts (ads),"Return your ballot. Vote by Tuesday, November 2.",ballots_out,2027-10-03,,Digital,social,See social/README.md
+display-ads,Google display + Facebook cover,en,Q1 Q2,Geo-target Persuade + Turn Out,Fix the flooding. Finally.,ballots_out,2027-09-26,2027-09-05,Digital,ads,See social/README.md — verification first
+email-donate-1,email (donate),en,Q1 Q2,All subscribers except recent donors (last 30 days),What $25 does in District 4,finance_report,2027-10-16,,Digital,email-donate,creative/email/README.md
+email-donate-2,email (donate),en,Q2,"Opened or clicked donate-1, has not given",Two days left before the report,finance_report,2027-10-21,,Digital,email-donate,creative/email/README.md
+email-donate-3,email (donate),en,Q1,Clicked but did not give,Tonight's the deadline,finance_report,2027-10-23,,Digital,email-donate,creative/email/README.md
+email-donate-thanks,email (donate),en,Q1,New donors,"Thank you, {{ .Subscriber.FirstName }}",signup,,,Digital,email-donate,creative/email/README.md
+email-gotv-1-es,email (gotv),es,Q1,Simpatizantes (español),Su boleta ya viene en camino,ballots_out,2027-10-03,,Digital,email-gotv,creative/email/README.md
+email-gotv-1,email (gotv),en,Q1,Supporters (IDs from doors + subscribers who have not opted out),Your ballot is on its way,ballots_out,2027-10-03,,Digital,email-gotv,creative/email/README.md
+email-gotv-2,email (gotv),en,Q1,Supporters who have not returned a ballot (update from the county's returned-ballot list if your state publishes one),"Fill it out today, {{ .Subscriber.FirstName }}",ballots_out,2027-10-08,,Digital,email-gotv,creative/email/README.md
+email-gotv-3,email (gotv),en,Q1,Supporters who have not voted,Four days left,gotv_starts,2027-10-29,,Digital,email-gotv,creative/email/README.md
+email-gotv-4,email (gotv),en,Q1,Supporters who have not voted,Today's the day,election_day,2027-11-02,,Digital,email-gotv,creative/email/README.md
+email-volunteer-1,email (volunteer),en,Q1,New volunteers,You're in — here's your first shift,signup,,,Digital,email-volunteer,creative/email/README.md
+email-volunteer-2,email (volunteer),en,Q1 Q3,New volunteers,What to say at the door (it's short),signup,,,Digital,email-volunteer,creative/email/README.md
+email-volunteer-3,email (volunteer),en,Q1,All volunteers,The last four days decide it,gotv_starts,2027-10-24,,Digital,email-volunteer,creative/email/README.md
+email-welcome-1-es,email (welcome),es,Q1,Nuevos suscriptores (español),"Gracias por unirse, {{ .Subscriber.FirstName }}",signup,,,Digital,email-welcome,creative/email/README.md
+email-welcome-1,email (welcome),en,Q1,New subscribers,"Thanks for joining, {{ .Subscriber.FirstName }}",signup,,,Digital,email-welcome,creative/email/README.md
+email-welcome-2,email (welcome),en,Q1,New subscribers,The story behind the campaign,signup,,,Digital,email-welcome,creative/email/README.md
+email-welcome-3,email (welcome),en,Q1,New subscribers who have not volunteered or donated,The one thing that helps most,signup,,,Digital,email-welcome,creative/email/README.md

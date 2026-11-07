@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="24.2500in" height="18.2500in" viewBox="0 0 1746.00 1314.00">
+<title>Yard sign — Chris Porter</title>
+<g transform="translate(9.00,9.00)">
+<g id="background" inkscape:groupmode="layer" inkscape:label="background">
+<rect x="-9.00" y="-9.00" width="1746.00" height="1314.00" fill="#0B4F5C"/>
+</g>
+<g id="art" inkscape:groupmode="layer" inkscape:label="art">
+<rect x="-9.00" y="656.35" width="1746.00" height="150.00" fill="#F2B705"/>
+</g>
+<g id="text" inkscape:groupmode="layer" inkscape:label="text">
+<text x="864.00" y="192.59" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="700" font-size="175.09" fill="#FFFFFF" text-anchor="middle" letter-spacing="10.51">CHRIS</text>
+<text x="864.00" y="507.91" font-family="&#x27;Public Sans&#x27;, Arial Black, Arial, sans-serif" font-weight="900" font-size="389.10" fill="#FFFFFF" text-anchor="middle">PORTER</text>
+<text x="864.00" y="771.84" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="700" font-size="112.00" fill="#13232B" text-anchor="middle" letter-spacing="4.48">CITY COUNCIL · DISTRICT 4</text>
+<text x="864.00" y="1041.56" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="700" font-size="120.00" fill="#FFFFFF" text-anchor="middle">Fix the flooding. Finally.</text>
+<text x="54.00" y="1226.00" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="700" font-size="40.00" fill="#F2B705" text-anchor="start">chrisporter.example</text>
+</g>
+<g id="qr" inkscape:groupmode="layer" inkscape:label="qr">
+</g>
+<g id="disclaimer" inkscape:groupmode="layer" inkscape:label="disclaimer">
+<rect x="1238.38" y="1196.00" width="435.62" height="38.50" fill="none" stroke="#FFFFFF" stroke-width="0.75"/>
+<text x="1242.38" y="1217.42" font-family="&#x27;Source Serif 4&#x27;, Georgia, serif" font-weight="400" font-size="26.00" fill="#FFFFFF" text-anchor="start">Paid for by Friends of Chris Porter</text>
+</g>
+<g id="proof-only" inkscape:groupmode="layer" inkscape:label="proof-only">
+<rect x="1237.38" y="1195.00" width="437.62" height="40.50" fill="none" stroke="#EC008C" stroke-width="0.5" stroke-dasharray="2 1"/>
+<text x="1238.38" y="1194.00" font-family="&#x27;Source Serif 4&#x27;, Georgia, serif" font-weight="400" font-size="5.00" fill="#EC008C" text-anchor="start">⚖️ DISCLAIMER SLOT — confirm wording, size and placement for your state</text>
+</g>
+<g id="guides" inkscape:groupmode="layer" inkscape:label="guides">
+<rect x="-9.00" y="-9.00" width="1746.00" height="1314.00" fill="none" stroke="#999999" stroke-width="0.5" stroke-dasharray="2 2"/>
+<rect x="0.00" y="0.00" width="1728.00" height="1296.00" fill="none" stroke="#00AEEF" stroke-width="0.75"/>
+<rect x="54.00" y="54.00" width="1620.00" height="1188.00" fill="none" stroke="#EC008C" stroke-width="0.75" stroke-dasharray="6 3"/>
+<text x="56.00" y="62.00" font-family="&#x27;Public Sans&#x27;, Arial, sans-serif" font-weight="400" font-size="6.00" fill="#EC008C" text-anchor="start">SAFE ZONE (magenta) · TRIM (cyan) · BLEED (gray)</text>
+</g>
+</g></svg>

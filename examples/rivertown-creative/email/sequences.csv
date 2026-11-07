@@ -1,0 +1,17 @@
+file,sequence,step,lang,trigger,anchor,offset_days,send_date,segment,quadrants,subject
+donate-1,donate,1,en,Scheduled — 7 days before the last pre-election finance report,finance_report,-7,2027-10-16,All subscribers except recent donors (last 30 days),Q1 Q2,What $25 does in District 4
+donate-2,donate,2,en,Scheduled — 2 days before the finance report deadline,finance_report,-2,2027-10-21,"Opened or clicked donate-1, has not given",Q2,Two days left before the report
+donate-3,donate,3,en,Scheduled — deadline day,finance_report,0,2027-10-23,Clicked but did not give,Q1,Tonight's the deadline
+donate-thanks,donate,thanks,en,Donation received (from your donation processor's webhook or a daily import),signup,0,,New donors,Q1,"Thank you, {{ .Subscriber.FirstName }}"
+gotv-1-es,gotv,1,es,Programado — se envían las boletas,ballots_out,0,2027-10-03,Simpatizantes (español),Q1,Su boleta ya viene en camino
+gotv-1,gotv,1,en,Scheduled — ballots go out,ballots_out,0,2027-10-03,Supporters (IDs from doors + subscribers who have not opted out),Q1,Your ballot is on its way
+gotv-2,gotv,2,en,Scheduled — ballots in homes,ballots_out,5,2027-10-08,Supporters who have not returned a ballot (update from the county's returned-ballot list if your state publishes one),Q1,"Fill it out today, {{ .Subscriber.FirstName }}"
+gotv-3,gotv,3,en,Scheduled — final GOTV push begins,gotv_starts,0,2027-10-29,Supporters who have not voted,Q1,Four days left
+gotv-4,gotv,4,en,Scheduled — Election Day morning,election_day,0,2027-11-02,Supporters who have not voted,Q1,Today's the day
+volunteer-1,volunteer,1,en,"Joins any ""volunteer"" list",signup,0,,New volunteers,Q1,You're in — here's your first shift
+volunteer-2,volunteer,2,en,2 days after volunteer-1,signup,2,,New volunteers,Q1 Q3,What to say at the door (it's short)
+volunteer-3,volunteer,3,en,Scheduled — 5 days before GOTV starts,gotv_starts,-5,2027-10-24,All volunteers,Q1,The last four days decide it
+welcome-1-es,welcome,1,es,Se inscribe en la lista en español,signup,0,,Nuevos suscriptores (español),Q1,"Gracias por unirse, {{ .Subscriber.FirstName }}"
+welcome-1,welcome,1,en,"Joins the ""updates"" list (website signup, event sign-in, door-knock)",signup,0,,New subscribers,Q1,"Thanks for joining, {{ .Subscriber.FirstName }}"
+welcome-2,welcome,2,en,3 days after welcome-1,signup,3,,New subscribers,Q1,The story behind the campaign
+welcome-3,welcome,3,en,7 days after welcome-1,signup,7,,New subscribers who have not volunteered or donated,Q1,The one thing that helps most

@@ -1,0 +1,20 @@
+---
+layout: base.njk
+lang: en
+title: Donate
+permalink: /donate/
+altEn: /donate/
+altEs: /es/
+---
+{%- set L = lang or "en" -%}{%- set u = ui[L] -%}{%- set tt = site.t[L] -%}{%- set c = site.cfg.candidate -%}{%- set mb = site.cfg.message_box -%}{%- set pre = "/es" if L == "es" else "" -%}
+<section><div class="wrap">
+  <h1>{{ u.donate_title }}</h1>
+  <p class="core">{{ u.donate_lede }}</p>
+  <ul>
+    <li><strong>$25</strong> prints about 100 door hangers</li>
+    <li><strong>$50</strong> mails to about 70 households</li>
+    <li><strong>$100</strong> pays for about 10 yard signs</li>
+  </ul>
+  <p><a class="btn" href="{{ site.cfg.web.donate_processor_url | utm('website', 'donate') }}">{{ u.donate_button }}</a></p>
+  <p class="note">{{ u.donate_law }}</p>
+</div></section>

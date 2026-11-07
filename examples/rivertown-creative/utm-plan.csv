@@ -1,0 +1,13 @@
+piece,qr_url,utm_source,utm_medium,utm_campaign,chars
+door-hanger,https://chrisporter.example/issues/?utm_source=doorhanger&utm_medium=print&utm_campaign=persuade,doorhanger,print,persuade,96
+door-hanger-es,https://chrisporter.example/es/?utm_source=doorhanger-es&utm_medium=print&utm_campaign=persuade,doorhanger-es,print,persuade,95
+palm-card,https://chrisporter.example/vote/?utm_source=palmcard&utm_medium=print&utm_campaign=canvass,palmcard,print,canvass,91
+palm-card-es,https://chrisporter.example/es/vote/?utm_source=palmcard-es&utm_medium=print&utm_campaign=canvass,palmcard-es,print,canvass,97
+mailer-1-intro,https://chrisporter.example/about/?utm_source=mailer1&utm_medium=mail&utm_campaign=intro,mailer1,mail,intro,88
+mailer-2-contrast,https://chrisporter.example/issues/?utm_source=mailer2&utm_medium=mail&utm_campaign=contrast,mailer2,mail,contrast,92
+flier,https://chrisporter.example/volunteer/?utm_source=flier&utm_medium=print&utm_campaign=volunteer,flier,print,volunteer,95
+social-core,https://chrisporter.example/?utm_source=social&utm_medium=organic&utm_campaign=social,social,organic,social,
+social-contrast,https://chrisporter.example/?utm_source=social&utm_medium=organic&utm_campaign=social,social,organic,social,
+social-gotv,https://chrisporter.example/?utm_source=social&utm_medium=organic&utm_campaign=social,social,organic,social,
+ads-facebook,https://chrisporter.example/?utm_source=facebook&utm_medium=paid&utm_campaign=ads,facebook,paid,ads,
+ads-google,https://chrisporter.example/?utm_source=google&utm_medium=paid&utm_campaign=ads,google,paid,ads,

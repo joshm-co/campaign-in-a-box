@@ -1,0 +1,179 @@
+{
+  "_about": "One file feeds every piece in Step 2: print, website, social, ads and email. Copy this to campaign.json, replace the FICTIONAL Rivertown content with your own Step 1 outputs, then run: python3 tools/build_creative.py creative/campaign.json. Every field marked LAW is set by your state or city (see STATE-LAW-FLAGS.md).",
+  "slug": "rivertown-d4",
+
+  "candidate": {
+    "first_name": "Chris",
+    "last_name": "Porter",
+    "full_name": "Chris Porter",
+    "initials": "CP",
+    "pronoun_subject": "he",
+    "pronoun_possessive": "his",
+    "office": "City Council",
+    "district": "District 4",
+    "jurisdiction": "Rivertown",
+    "bio_short": "Civil engineer. 15 years in District 4. Led the neighborhood push that got the Mill Creek culvert cleared after the 2023 flood.",
+    "bio_points": [
+      "Civil engineer who has delivered public projects on time and on budget for 15 years",
+      "Led the neighbors who got the Mill Creek culvert cleared after the 2023 flood",
+      "Parent of two kids at Lincoln Elementary; District 4 resident since 2011"
+    ],
+    "photo_note": "Use a real, recent, well-lit photo of the candidate. Templates show a placeholder box."
+  },
+
+  "message_box": {
+    "core_message": "Chris Porter will finally fix east-side flooding, because he's an engineer who already got Mill Creek cleared — while City Hall has left it \"pending\" for six years.",
+    "q1": [
+      "Civil engineer, 15 years in District 4",
+      "Got the Mill Creek culvert cleared after the 2023 flood",
+      "Fixes things, then explains how"
+    ],
+    "q2": [
+      {"text": "The east-side drainage study has been \"pending\" for six years.", "source": "Rivertown City Council minutes, 2021–2027"},
+      {"text": "The incumbent voted twice to delay the permit-streamlining pilot.", "source": "Council votes, March 2024 and June 2025"}
+    ],
+    "q3_responses": [
+      {"attack": "No government experience", "response": "15 years building public projects on time and on budget — the experience the drainage project needs."},
+      {"attack": "Will raise fees", "response": "Grants first. No new fee without a public council vote and a cost breakdown residents can read."}
+    ],
+    "issues": [
+      {"title": "Fix east-side flooding", "short": "Finish the drainage study and go after state and federal flood grants first.", "detail": "Six years is long enough. Chris will push the stalled east-side drainage study to a council vote in his first 90 days, apply for every state and federal flood-mitigation grant the city has left on the table, and publish a plain-language project tracker so residents can see progress street by street."},
+      {"title": "Faster permits for small businesses", "short": "Restart the permit-streamlining pilot so owners get answers in weeks, not months.", "detail": "Small businesses in District 4 wait months for simple permits. Chris will bring back the permit-streamlining pilot that council delayed twice, with a public dashboard of wait times."},
+      {"title": "A safe walk to Lincoln Elementary", "short": "Sidewalks, crossings and lighting on the route kids actually walk.", "detail": "Parents have asked for years. Chris will work with the school and neighbors to map the route kids use, then prioritize the missing sidewalk on Alder Street, two marked crossings and better lighting."}
+    ]
+  },
+
+  "slogans": [
+    {"text": "Fix the flooding. Finally.", "quadrants": ["Q1", "Q2"], "role": "primary", "note": "Yard sign and mailer 1. Q1 (he will fix it) + Q2 ('finally' implies six years of delay)."},
+    {"text": "An engineer for District 4.", "quadrants": ["Q1"], "role": "secondary", "note": "Credential in five words. Also answers Q3 'no experience'."},
+    {"text": "He cleared Mill Creek. He'll clear the backlog.", "quadrants": ["Q1", "Q2"], "role": "secondary", "note": "Proof point + contrast. Good for door hangers and social."},
+    {"text": "Done, not pending.", "quadrants": ["Q1", "Q2"], "role": "secondary", "note": "Turns the incumbent's own word against him. Pair with the council-minutes source."},
+    {"text": "Six years of 'pending' is long enough.", "quadrants": ["Q2"], "role": "contrast", "note": "Contrast mailer headline. Must cite council minutes."},
+    {"text": "Built on time. On budget.", "quadrants": ["Q1", "Q3"], "role": "inoculation", "note": "Pre-empts 'no government experience'."},
+    {"text": "Grants first. Fees last.", "quadrants": ["Q3"], "role": "inoculation", "note": "Pre-empts 'will raise fees'. Use only where the attack is live."},
+    {"text": "Dry streets. Open shops. Safe walks.", "quadrants": ["Q1"], "role": "secondary", "note": "All three local issues in six words. Good for fliers and the website."}
+  ],
+
+  "brand": {
+    "palette": "river",
+    "type_pairing": "civic"
+  },
+
+  "election": {
+    "election_day": "2027-11-02",
+    "offsets": {
+      "_note": "Copied from the Step 1 workbook Calendar tab (days relative to Election Day). LAW: replace placeholders with your real local dates.",
+      "persuasion_starts": -84,
+      "register_deadline": -29,
+      "ballots_out": -30,
+      "early_vote_starts": -14,
+      "finance_report": -10,
+      "gotv_starts": -4,
+      "sign_removal": 7
+    },
+    "polls_close": "8:00 p.m.",
+    "voter_info_url": "https://vote.example.gov",
+    "election_office": "Rivertown County Elections Office",
+    "election_office_phone": "(555) 555-0100",
+    "law_status": "PLACEHOLDER — every date and rule here must be confirmed with your election office."
+  },
+
+  "web": {
+    "base_url": "https://chrisporter.example",
+    "donate_url": "https://chrisporter.example/donate/",
+    "donate_processor_url": "https://donate.example/chrisporter",
+    "volunteer_url": "https://chrisporter.example/volunteer/",
+    "email": "hello@chrisporter.example",
+    "phone": "(555) 555-0142",
+    "mailing_address": "PO Box 404, Rivertown, ST 00000",
+    "social": {"facebook": "https://facebook.com/", "instagram": "https://instagram.com/"},
+    "forms": {
+      "provider": "listmonk",
+      "listmonk_url": "https://lists.chrisporter.example",
+      "lists": {
+        "updates": "00000000-0000-0000-0000-000000000001",
+        "volunteer_doors": "00000000-0000-0000-0000-000000000002",
+        "volunteer_phones": "00000000-0000-0000-0000-000000000003",
+        "yard_sign": "00000000-0000-0000-0000-000000000004",
+        "updates_es": "00000000-0000-0000-0000-000000000005"
+      }
+    },
+    "analytics": {"provider": "none", "_options": "none | plausible | umami | goatcounter", "site_id": ""}
+  },
+
+  "disclaimer": {
+    "text": "Paid for by Friends of Chris Porter",
+    "text_es": "Pagado por Friends of Chris Porter",
+    "address_line": "PO Box 404, Rivertown, ST 00000",
+    "union_bug": false,
+    "_law": "LAW: wording, minimum type size, border, placement and which items are exempt vary by state. Confirm before printing."
+  },
+
+  "language": {
+    "secondary": "es",
+    "secondary_name": "Español",
+    "acs_share_limited_english": 0.08,
+    "acs_note": "FICTIONAL: Rivertown D4 is assumed to have 8% of adults who speak Spanish at home and English less than 'very well' (ACS table C16001 or S1601). Step 1 trigger is 5%.",
+    "review_status": "DRAFT — must be reviewed by a fluent Spanish speaker from the district before use.",
+    "es": {
+      "office_line": "Concejo Municipal · Distrito 4",
+      "core_message": "Chris Porter va a resolver por fin las inundaciones del lado este, porque es ingeniero y ya logró despejar Mill Creek, mientras el Ayuntamiento lo ha dejado \"pendiente\" por seis años.",
+      "slogan": "Acabar con las inundaciones. Por fin.",
+      "bio_short": "Ingeniero civil. 15 años en el Distrito 4. Encabezó el esfuerzo vecinal que logró despejar el desagüe de Mill Creek después de la inundación de 2023.",
+      "bio_points": [
+        "Ingeniero civil con 15 años entregando obras públicas a tiempo y dentro del presupuesto",
+        "Encabezó a los vecinos que lograron despejar el desagüe de Mill Creek tras la inundación de 2023",
+        "Padre de dos niños en la Escuela Primaria Lincoln; vive en el Distrito 4 desde 2011"
+      ],
+      "issues": [
+        {"title": "Resolver las inundaciones del lado este", "short": "Terminar el estudio de drenaje y buscar primero fondos estatales y federales.", "detail": "Seis años es suficiente. Chris llevará el estudio de drenaje del lado este a votación en el Concejo en sus primeros 90 días, solicitará todos los fondos estatales y federales para prevenir inundaciones que la ciudad ha dejado pasar, y publicará un informe claro del avance, calle por calle."},
+        {"title": "Permisos más rápidos para pequeños negocios", "short": "Reactivar el programa piloto de permisos para que los dueños reciban respuesta en semanas, no meses.", "detail": "Los pequeños negocios del Distrito 4 esperan meses por permisos sencillos. Chris reactivará el programa piloto que el Concejo aplazó dos veces, con un tablero público de tiempos de espera."},
+        {"title": "Un camino seguro a la Escuela Lincoln", "short": "Banquetas, cruces peatonales e iluminación en la ruta que de verdad usan los niños.", "detail": "Los padres lo han pedido por años. Chris trabajará con la escuela y los vecinos para trazar la ruta que usan los niños y dar prioridad a la banqueta que falta en Alder Street, dos cruces marcados y mejor iluminación."}
+      ]
+    }
+  },
+
+  "pieces": [
+    {"id": "yard-sign", "type": "yard_sign", "lang": "en", "quadrants": ["Q1"], "targets": ["Base - Light Touch", "Turn Out"], "anchor": "ballots_out", "in_hand_offset": -14, "lead_days": 21, "budget": "Signs", "qty_note": "Supporters' yards and high-traffic corners in target precincts",
+     "content": {"slogan": "Fix the flooding. Finally."}},
+
+    {"id": "door-hanger", "type": "door_hanger", "lang": "en", "quadrants": ["Q1", "Q2"], "targets": ["Persuade"], "anchor": "persuasion_starts", "in_hand_offset": 0, "lead_days": 18, "budget": "Print",
+     "utm": {"source": "doorhanger", "medium": "print", "campaign": "persuade"}, "qr_path": "/issues/",
+     "content": {"headline": "He cleared Mill Creek. He'll clear the backlog.", "qr_label": "Scan to see Chris's plan", "missed_you": "Sorry we missed you!"}},
+
+    {"id": "door-hanger-es", "type": "door_hanger", "lang": "es", "quadrants": ["Q1", "Q2"], "targets": ["Persuade"], "anchor": "persuasion_starts", "in_hand_offset": 0, "lead_days": 18, "budget": "Print",
+     "utm": {"source": "doorhanger-es", "medium": "print", "campaign": "persuade"}, "qr_path": "/es/",
+     "content": {"headline": "Despejó Mill Creek. Despejará el rezago.", "qr_label": "Escanee para ver el plan de Chris", "missed_you": "¡Perdón, no lo encontramos!"}},
+
+    {"id": "palm-card", "type": "palm_card", "lang": "en", "quadrants": ["Q1"], "targets": ["Persuade", "Turn Out"], "anchor": "persuasion_starts", "in_hand_offset": 0, "lead_days": 18, "budget": "Print",
+     "utm": {"source": "palmcard", "medium": "print", "campaign": "canvass"}, "qr_path": "/vote/",
+     "content": {"slogan": "Fix the flooding. Finally.", "qr_label": "Your voting info"}},
+
+    {"id": "palm-card-es", "type": "palm_card", "lang": "es", "quadrants": ["Q1"], "targets": ["Persuade", "Turn Out"], "anchor": "persuasion_starts", "in_hand_offset": 0, "lead_days": 18, "budget": "Print",
+     "utm": {"source": "palmcard-es", "medium": "print", "campaign": "canvass"}, "qr_path": "/es/vote/",
+     "content": {"slogan": "Acabar con las inundaciones. Por fin.", "qr_label": "Su información para votar"}},
+
+    {"id": "mailer-1-intro", "type": "mailer", "lang": "en", "quadrants": ["Q1"], "targets": ["Persuade", "Turn Out"], "anchor": "ballots_out", "in_hand_offset": -7, "lead_days": 35, "budget": "Mail",
+     "utm": {"source": "mailer1", "medium": "mail", "campaign": "intro"}, "qr_path": "/about/",
+     "content": {"front_kicker": "Meet your neighbor", "front_headline": "Fix the flooding. Finally.", "front_sub": "An engineer who already got Mill Creek cleared.",
+                 "back_headline": "Chris Porter gets things done.", "back_mode": "bio_issues", "qr_label": "Meet Chris"}},
+
+    {"id": "mailer-2-contrast", "type": "mailer", "lang": "en", "quadrants": ["Q2", "Q3"], "targets": ["Persuade"], "anchor": "ballots_out", "in_hand_offset": 3, "lead_days": 35, "budget": "Mail",
+     "utm": {"source": "mailer2", "medium": "mail", "campaign": "contrast"}, "qr_path": "/issues/",
+     "content": {"front_kicker": "Your ballot is here", "front_headline": "Six years of 'pending' is long enough.", "front_sub": "The east-side drainage study is still waiting. Chris Porter won't wait.",
+                 "back_headline": "Done, not pending.", "back_mode": "contrast", "qr_label": "Read the record"}},
+
+    {"id": "flier", "type": "flier", "lang": "en", "quadrants": ["Q1"], "targets": ["Persuade", "Turn Out"], "anchor": "persuasion_starts", "in_hand_offset": 0, "lead_days": 18, "budget": "Print",
+     "utm": {"source": "flier", "medium": "print", "campaign": "volunteer"}, "qr_path": "/volunteer/",
+     "content": {"headline": "Dry streets. Open shops. Safe walks.", "cta_title": "Help Chris win District 4", "cta_text": "Knock doors, make calls, or host a yard sign. One Saturday makes a difference.", "qr_label": "Sign up to help"}}
+  ],
+
+  "social": {
+    "cards": [
+      {"id": "core", "slogan_index": 0, "quadrants": ["Q1", "Q2"], "kicker": "District 4"},
+      {"id": "contrast", "slogan_index": 4, "quadrants": ["Q2"], "kicker": "The record", "source_from_q2": 0},
+      {"id": "gotv", "quadrants": ["Q1"], "kicker": "Ballots are out", "gotv": true}
+    ],
+    "utm_campaign": "social"
+  }
+}

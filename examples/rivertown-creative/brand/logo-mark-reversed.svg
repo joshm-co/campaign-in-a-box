@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1200" height="1200" viewBox="0 0 1200.00 1200.00">
+<title>Logo mark reversed</title>
+<g transform="translate(0.00,0.00)">
+<g id="background" inkscape:groupmode="layer" inkscape:label="background">
+<rect x="0.00" y="0.00" width="1200.00" height="1200.00" fill="#0B4F5C"/>
+</g>
+<g id="art" inkscape:groupmode="layer" inkscape:label="art">
+<rect x="150.00" y="150.00" width="900.00" height="900.00" fill="#FFFFFF" rx="126.00000000000001"/>
+<rect x="330.00" y="852.00" width="540.00" height="54.00" fill="#F2B705" rx="27.0"/>
+</g>
+<g id="text" inkscape:groupmode="layer" inkscape:label="text">
+<text x="600.00" y="734.51" font-family="&#x27;Public Sans&#x27;, Arial Black, Arial, sans-serif" font-weight="900" font-size="471.67" fill="#0B4F5C" text-anchor="middle">CP</text>
+</g>
+<g id="qr" inkscape:groupmode="layer" inkscape:label="qr">
+</g>
+<g id="disclaimer" inkscape:groupmode="layer" inkscape:label="disclaimer">
+</g>
+</g></svg>

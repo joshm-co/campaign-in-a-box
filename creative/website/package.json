@@ -1,0 +1,19 @@
+{
+  "name": "campaign-in-a-box-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static campaign website template (Eleventy). Content comes from creative/campaign.json.",
+  "license": "MIT",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "build:example": "CAMPAIGN_JSON=../campaign.example.json eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.0",
+    "@fontsource/atkinson-hyperlegible": "^5.2.0",
+    "@fontsource/barlow-condensed": "^5.2.0",
+    "@fontsource/public-sans": "^5.2.0",
+    "@fontsource/source-serif-4": "^5.2.0"
+  }
+}

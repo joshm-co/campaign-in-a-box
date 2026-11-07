@@ -1,0 +1,28 @@
+---
+layout: base.njk
+lang: en
+title: Priorities
+permalink: /issues/
+altEn: /issues/
+altEs: /es/issues/
+---
+{%- set L = lang or "en" -%}{%- set u = ui[L] -%}{%- set tt = site.t[L] -%}{%- set c = site.cfg.candidate -%}{%- set mb = site.cfg.message_box -%}{%- set pre = "/es" if L == "es" else "" -%}
+<section><div class="wrap">
+  <h1>{{ u.priorities }}</h1>
+  <p class="core">{{ tt.core }}</p>
+  {%- for i in tt.issues %}
+  <h2 id="issue-{{ loop.index }}">{{ i.title }}</h2>
+  <p>{{ i.detail }}</p>
+  {%- endfor %}
+  {%- if L == "en" and mb.q2 %}
+  <h2>{{ u.record }}</h2>
+  <ul>{% for q in mb.q2 %}<li>{{ q.text }} <br><small>{{ u.source }}: {{ q.source }}</small></li>{% endfor %}</ul>
+  {%- endif %}
+  {%- if L == "en" and mb.q3_responses %}
+  <h2>{{ u.you_may_hear }}…</h2>
+  {%- for q in mb.q3_responses %}
+  <h3>“{{ q.attack }}”</h3><p>{{ q.response }}</p>
+  {%- endfor %}
+  {%- endif %}
+  <p><a class="btn" href="{{ pre }}/volunteer/">{{ u.get_involved }}</a></p>
+</div></section>

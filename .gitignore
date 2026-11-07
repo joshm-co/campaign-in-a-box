@@ -1,0 +1,6 @@
+# Campaign-in-a-Box
+campaign-in-a-box/creative/build/
+campaign-in-a-box/creative/website/node_modules/
+campaign-in-a-box/creative/website/_site/
+__pycache__/
+.DS_Store

@@ -1,0 +1,21 @@
+---
+layout: base.njk
+lang: en
+title: Privacy
+permalink: /privacy/
+altEn: /privacy/
+altEs: /privacy/
+---
+{%- set c = site.cfg.candidate -%}
+<section><div class="wrap">
+  <h1>Privacy</h1>
+  <p>This site is run by {{ site.cfg.disclaimer.text | replace("Paid for by ", "") }}.</p>
+  <ul>
+    <li><strong>What we collect:</strong> the name, email address and interests you give us in a form, and donation details collected by our payment processor.</li>
+    <li><strong>Why:</strong> to send campaign updates, organize volunteers, and meet campaign finance reporting rules.</li>
+    <li><strong>What we don't do:</strong> sell your information.</li>
+    <li><strong>Analytics:</strong> {% if site.cfg.web.analytics.provider == "none" %}none.{% else %}privacy-friendly, cookie-free page counts ({{ site.cfg.web.analytics.provider }}).{% endif %}</li>
+    <li><strong>Unsubscribe or delete:</strong> use the link in any email, or write to <a href="mailto:{{ site.cfg.web.email }}">{{ site.cfg.web.email }}</a>.</li>
+  </ul>
+  <p class="note">Campaigns: have this reviewed. Donor information may be public under campaign finance law, and some states have privacy laws that apply.</p>
+</div></section>
