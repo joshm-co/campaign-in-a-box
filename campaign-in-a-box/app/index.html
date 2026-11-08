@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campaign-in-a-Box</title>
+<meta name="description" content="Free, open-source campaign kit. Answer plain questions and get a win number, a message, and print-ready campaign materials. Runs on your device; nothing you type is sent anywhere.">
+<meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com https://api.github.com; frame-src 'self' blob: data:; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="app">
+  <header class="bar" id="bar"></header>
+  <main id="main" tabindex="-1">
+    <noscript><div class="screen"><h1>Campaign-in-a-Box needs JavaScript</h1><p>Everything runs on your device, so the app needs JavaScript turned on in your browser.</p></div></noscript>
+    <div class="screen loading" aria-busy="true"><p>Loading…</p></div>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/vendor/qrcode.js"></script>
+<script src="js/content.js"></script>
+<script src="js/fonts-data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/render.js"></script>
+<script src="js/outputs.js"></script>
+<script src="js/places.js"></script>
+<script src="js/oe-counts.js"></script>
+<script src="js/openelections.js"></script>
+<script src="js/utahresults.js"></script>
+<script src="js/xlsx.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+{
+ "_note": "Trimmed sample in the shape of Utah's results data (electionresults.utah.gov), using Smithfield City Council 2025 precincts 1-3. For tests only.",
+ "electionDate": "2025-11-04",
+ "electionName": "2025 Utah Municipal General Election",
+ "createdAt": "2026-06-20T00:50:35Z",
+ "results": {
+  "id": "Utah",
+  "name": "Utah",
+  "ballotItems": [],
+  "reportingStatuses": []
+ },
+ "localResults": [
+  {
+   "id": "03",
+   "name": "Cache County",
+   "reportingStatuses": [],
+   "ballotItems": [
+    {
+     "type": "Local",
+     "id": "23",
+     "name": "Smithfield City Council",
+     "voteFor": 2,
+     "ballotOrder": 23,
+     "precinctsParticipating": 3,
+     "precinctsReporting": 3,
+     "contestType": "Candidate",
+     "ballotOptions": [
+      {
+       "id": "1",
+       "name": "CHRIS OLSEN",
+       "ballotOrder": 1,
+       "voteCount": 791,
+       "politicalParty": "NONPARTISAN",
+       "groupResults": null,
+       "precinctResults": [
+        {
+         "id": "3SMI1:I",
+         "name": "3SMI1:I",
+         "isVirtual": false,
+         "voteCount": 286,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI2:I",
+         "name": "3SMI2:I",
+         "isVirtual": false,
+         "voteCount": 284,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI3:I",
+         "name": "3SMI3:I",
+         "isVirtual": false,
+         "voteCount": 221,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        }
+       ]
+      },
+      {
+       "id": "2",
+       "name": "LIZETTE VILLEGAS",
+       "ballotOrder": 2,
+       "voteCount": 388,
+       "politicalParty": "NONPARTISAN",
+       "groupResults": null,
+       "precinctResults": [
+        {
+         "id": "3SMI1:I",
+         "name": "3SMI1:I",
+         "isVirtual": false,
+         "voteCount": 140,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI2:I",
+         "name": "3SMI2:I",
+         "isVirtual": false,
+         "voteCount": 156,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI3:I",
+         "name": "3SMI3:I",
+         "isVirtual": false,
+         "voteCount": 92,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        }
+       ]
+      },
+      {
+       "id": "3",
+       "name": "SUE HYER",
+       "ballotOrder": 3,
+       "voteCount": 792,
+       "politicalParty": "NONPARTISAN",
+       "groupResults": null,
+       "precinctResults": [
+        {
+         "id": "3SMI1:I",
+         "name": "3SMI1:I",
+         "isVirtual": false,
+         "voteCount": 269,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI2:I",
+         "name": "3SMI2:I",
+         "isVirtual": false,
+         "voteCount": 309,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI3:I",
+         "name": "3SMI3:I",
+         "isVirtual": false,
+         "voteCount": 214,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        }
+       ]
+      },
+      {
+       "id": "4",
+       "name": "JAY D. DOWNS",
+       "ballotOrder": 4,
+       "voteCount": 799,
+       "politicalParty": "NONPARTISAN",
+       "groupResults": null,
+       "precinctResults": [
+        {
+         "id": "3SMI1:I",
+         "name": "3SMI1:I",
+         "isVirtual": false,
+         "voteCount": 240,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI2:I",
+         "name": "3SMI2:I",
+         "isVirtual": false,
+         "voteCount": 299,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        },
+        {
+         "id": "3SMI3:I",
+         "name": "3SMI3:I",
+         "isVirtual": false,
+         "voteCount": 260,
+         "reportingStatus": "Fully Reported",
+         "groupResults": null
+        }
+       ]
+      },
+      {
+       "id": "9",
+       "name": "Under Votes",
+       "ballotOrder": 9,
+       "voteCount": 5,
+       "politicalParty": "",
+       "precinctResults": [
+        {
+         "id": "x",
+         "name": "3SMI1:I",
+         "isVirtual": false,
+         "voteCount": 5
+        }
+       ]
+      }
+     ],
+     "rankedChoiceResults": null
+    }
+   ]
+  }
+ ]
+}

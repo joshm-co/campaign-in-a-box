@@ -1,0 +1,51 @@
+{
+ "collected": "2026-11-07",
+ "source": "Utah election results (electionresults.utah.gov), Lieutenant Governor's Office",
+ "_note": "Seeded by hand with one county; the scheduled 'Collect Utah results' GitHub Action fills in every county and election.",
+ "counties": {},
+ "elections": [
+  {
+   "id": "general11042025",
+   "name": "2025 Utah Municipal General Election",
+   "date": "2025-11-04",
+   "asOf": "2026-06-20T00:50:35.6621791Z",
+   "source": "export",
+   "counties": {
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "Clarkston Mayor",
+      "Clarkston City Council  - 4 Year",
+      "Clarkston City Council - 2 Year",
+      "Hyde Park City Council",
+      "Hyrum Mayor",
+      "Hyrum City Council",
+      "Lewiston Mayor",
+      "Lewiston City Council",
+      "Logan Mayor",
+      "Logan City Council",
+      "Millville Mayor",
+      "Millville City Council",
+      "Newton Mayor",
+      "Newton Town Council",
+      "Nibley City Council",
+      "North Logan Mayor",
+      "North Logan City Council",
+      "Providence City Council",
+      "Richmond Mayor",
+      "Richmond City Council - 4 Year",
+      "Richmond City Council - 2 Year",
+      "Smithfield Mayor",
+      "Smithfield City Council",
+      "Trenton Mayor",
+      "Trenton City Council - 4 Year",
+      "Trenton City Council - 2 Year",
+      "Wellsville Mayor"
+     ],
+     "precincts": 85,
+     "hasRegistered": true
+    }
+   }
+  }
+ ]
+}

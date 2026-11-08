@@ -4,6 +4,12 @@ An open-source, party-neutral kit that turns a candidate's raw inputs into a cam
 
 > **New here? Read [START-HERE.md](START-HERE.md) first.** It's one page.
 
+## The easiest way: the app
+
+**[Open Campaign-in-a-Box](https://joshm-co.github.io/campaign-in-a-box/)** — works on a phone, iPad or laptop. Nothing to install, no account, and nothing you type leaves your device. Answer plain questions one screen at a time and get your win number, your message, and print-ready materials. Try the built-in fictional example (Chris Porter, Rivertown) first.
+
+How it works and how to publish it: [`app/README.md`](app/README.md). The spreadsheet and command-line tools below do the same math for people who prefer them.
+
 ## What's in this release (Steps 1 and 2)
 
 ### Step 1 — Strategy

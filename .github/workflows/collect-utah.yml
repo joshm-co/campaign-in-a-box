@@ -1,0 +1,43 @@
+# Collects Utah's official precinct results into campaign-in-a-box/app/data/utah/
+# so the app can load them from its own address (browsers can't read the state site directly).
+# Runs twice a month and on demand. Only new or changed elections are fetched.
+name: Collect Utah results
+
+on:
+  schedule:
+    - cron: "17 10 3,18 * *"   # 3rd and 18th of each month, early morning Utah time
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Re-collect every election, even unchanged ones"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-utah
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the parsers
+        working-directory: campaign-in-a-box
+        run: python3 tools/collect_utah_results.py --self-test
+      - name: Collect
+        working-directory: campaign-in-a-box
+        run: python3 tools/collect_utah_results.py ${{ inputs.all && '--all' || '' }}
+      - name: Commit if anything changed
+        run: |
+          git config user.name "campaign-kit-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add campaign-in-a-box/app/data/utah
+          if git diff --cached --quiet; then echo "No changes."; else git commit -m "Update Utah precinct results" && git push; fi

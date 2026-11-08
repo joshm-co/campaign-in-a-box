@@ -1,0 +1,365 @@
+{
+ "_note": "Trimmed sample in the shape of Utah's results data (electionresults.utah.gov), using Smithfield City Council 2025 precincts 1-3. For tests only.",
+ "ballotItemWithBreakdown": {
+  "name": [
+   {
+    "languageId": "en",
+    "text": "Smithfield City Council"
+   }
+  ],
+  "voteFor": [
+   {
+    "languageId": "en",
+    "text": "Vote for 2"
+   }
+  ],
+  "summaryResults": {
+   "ballotOptions": [
+    {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "CHRIS OLSEN"
+      }
+     ],
+     "voteCount": 791,
+     "party": {
+      "abbreviation": "NON",
+      "name": [
+       {
+        "languageId": "en",
+        "text": "NONPARTISAN"
+       }
+      ]
+     }
+    },
+    {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "LIZETTE VILLEGAS"
+      }
+     ],
+     "voteCount": 388,
+     "party": {
+      "abbreviation": "NON",
+      "name": [
+       {
+        "languageId": "en",
+        "text": "NONPARTISAN"
+       }
+      ]
+     }
+    },
+    {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "SUE HYER"
+      }
+     ],
+     "voteCount": 792,
+     "party": {
+      "abbreviation": "NON",
+      "name": [
+       {
+        "languageId": "en",
+        "text": "NONPARTISAN"
+       }
+      ]
+     }
+    },
+    {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "JAY D. DOWNS"
+      }
+     ],
+     "voteCount": 799,
+     "party": {
+      "abbreviation": "NON",
+      "name": [
+       {
+        "languageId": "en",
+        "text": "NONPARTISAN"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "breakdownResults": [
+   {
+    "precinct": {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "3SMI1:I"
+      }
+     ],
+     "isVirtual": false
+    },
+    "voteTotal": 935,
+    "ballotOptions": [
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "CHRIS OLSEN"
+       }
+      ],
+      "voteCount": 286,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "LIZETTE VILLEGAS"
+       }
+      ],
+      "voteCount": 140,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "SUE HYER"
+       }
+      ],
+      "voteCount": 269,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "JAY D. DOWNS"
+       }
+      ],
+      "voteCount": 240,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     }
+    ]
+   },
+   {
+    "precinct": {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "3SMI2:I"
+      }
+     ],
+     "isVirtual": false
+    },
+    "voteTotal": 1048,
+    "ballotOptions": [
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "CHRIS OLSEN"
+       }
+      ],
+      "voteCount": 284,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "LIZETTE VILLEGAS"
+       }
+      ],
+      "voteCount": 156,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "SUE HYER"
+       }
+      ],
+      "voteCount": 309,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "JAY D. DOWNS"
+       }
+      ],
+      "voteCount": 299,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     }
+    ]
+   },
+   {
+    "precinct": {
+     "name": [
+      {
+       "languageId": "en",
+       "text": "3SMI3:I"
+      }
+     ],
+     "isVirtual": false
+    },
+    "voteTotal": 787,
+    "ballotOptions": [
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "CHRIS OLSEN"
+       }
+      ],
+      "voteCount": 221,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "LIZETTE VILLEGAS"
+       }
+      ],
+      "voteCount": 92,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "SUE HYER"
+       }
+      ],
+      "voteCount": 214,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     },
+     {
+      "name": [
+       {
+        "languageId": "en",
+        "text": "JAY D. DOWNS"
+       }
+      ],
+      "voteCount": 260,
+      "party": {
+       "abbreviation": "NON",
+       "name": [
+        {
+         "languageId": "en",
+         "text": "NONPARTISAN"
+        }
+       ]
+      },
+      "isWriteIn": false
+     }
+    ]
+   }
+  ]
+ }
+}

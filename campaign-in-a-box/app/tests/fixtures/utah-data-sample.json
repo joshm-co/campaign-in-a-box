@@ -1,0 +1,81 @@
+{
+ "_note": "Trimmed sample in the shape of Utah's results data (electionresults.utah.gov), using Smithfield City Council 2025 precincts 1-3. For tests only.",
+ "election": {
+  "asOf": "2025-11-20T17:42:25Z",
+  "isOfficialResults": false
+ },
+ "ballotItems": [
+  {
+   "id": "item-23",
+   "name": [
+    {
+     "languageId": "en",
+     "text": "Smithfield City Council"
+    }
+   ],
+   "voteFor": [
+    {
+     "languageId": "en",
+     "text": "Vote for 2"
+    }
+   ],
+   "contestType": "Candidate",
+   "hasBreakdownResults": null
+  }
+ ],
+ "precincts": [
+  {
+   "id": "3SMI1:I",
+   "name": [
+    {
+     "languageId": "en",
+     "text": "3SMI1:I"
+    }
+   ],
+   "isVirtual": false
+  },
+  {
+   "id": "3SMI2:I",
+   "name": [
+    {
+     "languageId": "en",
+     "text": "3SMI2:I"
+    }
+   ],
+   "isVirtual": false
+  },
+  {
+   "id": "3SMI3:I",
+   "name": [
+    {
+     "languageId": "en",
+     "text": "3SMI3:I"
+    }
+   ],
+   "isVirtual": false
+  }
+ ],
+ "voterTurnout": [
+  {
+   "id": "3SMI1:I",
+   "precinctName": "3SMI1:I",
+   "ballotsCast": 506,
+   "voterTurnout": 506,
+   "voterRegistration": 1086
+  },
+  {
+   "id": "3SMI2:I",
+   "precinctName": "3SMI2:I",
+   "ballotsCast": 571,
+   "voterTurnout": 571,
+   "voterRegistration": 1288
+  },
+  {
+   "id": "3SMI3:I",
+   "precinctName": "3SMI3:I",
+   "ballotsCast": 429,
+   "voterTurnout": 429,
+   "voterRegistration": 917
+  }
+ ]
+}

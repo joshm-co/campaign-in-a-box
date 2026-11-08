@@ -1,6 +1,8 @@
 # Start Here — A First-Time Candidate's One Page
 
-You don't need campaign experience to use this kit. You need a few hours, a laptop, and the willingness to look at numbers honestly. Do these in order.
+You don't need campaign experience to use this kit. You need a few hours, a phone or laptop, and the willingness to look at numbers honestly. Do these in order.
+
+> **Easiest:** open the app at **https://joshm-co.github.io/campaign-in-a-box/** and follow it — it walks you through every step below, one question per screen, and makes your materials. Your answers stay on your device. The files listed below are the same method, for people who prefer a spreadsheet.
 
 ## Week 1: Gather (about 4–6 hours)
 
