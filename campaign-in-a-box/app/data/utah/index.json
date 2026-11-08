@@ -1,9 +1,387 @@
 {
- "collected": "2026-11-07",
+ "collected": "2026-11-08",
  "source": "Utah election results (electionresults.utah.gov), Lieutenant Governor's Office",
- "_note": "Seeded by hand with one county; the scheduled 'Collect Utah results' GitHub Action fills in every county and election.",
- "counties": {},
+ "counties": {
+  "beaver-county-ut": "Beaver County",
+  "box-elder-county-ut": "Box Elder County",
+  "cache-county-ut": "Cache County",
+  "carbon-county-ut": "Carbon County",
+  "daggett-county-ut": "Daggett County",
+  "davis-county-ut": "Davis County",
+  "duchesne-county-ut": "Duchesne County",
+  "emery-county-ut": "Emery County",
+  "garfield-county-ut": "Garfield County",
+  "grand-county-ut": "Grand County",
+  "iron-county-ut": "Iron County",
+  "juab-county-ut": "Juab County",
+  "kane-county-ut": "Kane County",
+  "millard-county-ut": "Millard County",
+  "morgan-county-ut": "Morgan County",
+  "piute-county-ut": "Piute County",
+  "rich-county-ut": "Rich County",
+  "salt-lake-county-ut": "Salt Lake County",
+  "san-juan-county-ut": "San Juan County",
+  "sanpete-county-ut": "Sanpete County",
+  "sevier-county-ut": "Sevier County",
+  "summit-county-ut": "Summit County",
+  "tooele-county-ut": "Tooele County",
+  "uintah-county-ut": "Uintah County",
+  "utah-county-ut": "Utah County",
+  "wasatch-county-ut": "Wasatch County",
+  "washington-county-ut": "Washington County",
+  "wayne-county-ut": "Wayne County",
+  "weber-county-ut": "Weber County"
+ },
  "elections": [
+  {
+   "id": "Primary06232026",
+   "name": "2026 Utah Primary Election",
+   "date": "2026-06-23",
+   "asOf": "2026-10-30T16:11:01.3682556Z",
+   "source": "export",
+   "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State Board of Education District 14",
+      "Republican for Commissioner A",
+      "Republican for Sheriff"
+     ],
+     "precincts": 10,
+     "hasRegistered": true
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "REP U.S. House District 2",
+      "Republican for Box Elder County Commissioner Seat A",
+      "Republican for Box Elder County Commissioner Seat B",
+      "Republican for Box Elder County Sheriff",
+      "Box Elder County School Board District 3",
+      "Box Elder County School Board District 4",
+      "Box Elder County School Board District 7"
+     ],
+     "precincts": 53,
+     "hasRegistered": true
+    },
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "REP U.S. House District 2",
+      "Republican for County Attorney"
+     ],
+     "precincts": 126,
+     "hasRegistered": true
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 67",
+      "REP State Board of Education District 14",
+      "Republican for Commissioner",
+      "Republican for Commissioner/Surveyor",
+      "Republican for Sheriff"
+     ],
+     "precincts": 21,
+     "hasRegistered": true
+    },
+    "daggett-county-ut": {
+     "name": "Daggett County",
+     "races": [
+      "REP U.S. House District 3",
+      "Republican for Commissioner B"
+     ],
+     "precincts": 4,
+     "hasRegistered": true
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "REP U.S. House District 2",
+      "REP State Senate District 6",
+      "REP State Senate District 7",
+      "REP State House District 14",
+      "REP State House District 16",
+      "REP State House District 17",
+      "REP County Commissioner Seat A",
+      "REP County Commissioner Seat B",
+      "REP County Clerk",
+      "REP County Sheriff",
+      "DEM State Senate District 5"
+     ],
+     "precincts": 441,
+     "hasRegistered": true
+    },
+    "duchesne-county-ut": {
+     "name": "Duchesne County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 67",
+      "Republican for County Sheriff"
+     ],
+     "precincts": 81,
+     "hasRegistered": true
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 69",
+      "REP State House District 67",
+      "REP State Board of Education District 14",
+      "Republican for Commissioner B",
+      "Republican for Clerk/Auditor",
+      "Republican for Recorder"
+     ],
+     "precincts": 13,
+     "hasRegistered": true
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 69",
+      "Republican for Garfield County Commission Seat A"
+     ],
+     "precincts": 12,
+     "hasRegistered": true
+    },
+    "grand-county-ut": {
+     "name": "Grand County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 69",
+      "REP State Board of Education District 14"
+     ],
+     "precincts": 23,
+     "hasRegistered": true
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State Board of Education District 14",
+      "Republican for County Commissioner A"
+     ],
+     "precincts": 50,
+     "hasRegistered": true
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "REP State House District 29",
+      "REP State Board of Education District 14",
+      "Republican for County Commissioner Seat A",
+      "Republican for County Commissioner Seat B",
+      "Republican for County Sheriff"
+     ],
+     "precincts": 30,
+     "hasRegistered": true
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 69",
+      "Republican for Kane County Commissioner Seat B",
+      "Republican for Kane County Clerk/Auditor"
+     ],
+     "precincts": 12,
+     "hasRegistered": true
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "REP State House District 29",
+      "REP State Board of Education District 14",
+      "Republican for Commission Seat A",
+      "Republican for Commission Seat B",
+      "Republican for County Sheriff"
+     ],
+     "precincts": 17,
+     "hasRegistered": true
+    },
+    "morgan-county-ut": {
+     "name": "Morgan County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State Senate District 7",
+      "Republican for Morgan County Commission at Large A",
+      "Republican for Morgan County Commission at Large B",
+      "DEM State Senate District 5"
+     ],
+     "precincts": 25,
+     "hasRegistered": true
+    },
+    "piute-county-ut": {
+     "name": "Piute County",
+     "races": [
+      "REP U.S. House District 3"
+     ],
+     "precincts": 6,
+     "hasRegistered": true
+    },
+    "rich-county-ut": {
+     "name": "Rich County",
+     "races": [
+      "REP U.S. House District 2",
+      "Republican for Rich County Commissioner Seat A"
+     ],
+     "precincts": 12,
+     "hasRegistered": true
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "DEM U.S. House District 1",
+      "STATE SENATE DISTRICT 13 (DEM)",
+      "STATE SENATE DISTRICT 14 (DEM)",
+      "REP State Senate District 18",
+      "STATE HOUSE DISTRICT 21 (DEM)",
+      "STATE HOUSE DISTRICT 34 (DEM)",
+      "STATE HOUSE DISTRICT 38 (REP)",
+      "STATE HOUSE DISTRICT 40 (DEM)",
+      "STATE HOUSE DISTRICT 41 (REP)",
+      "STATE HOUSE DISTRICT 44 (REP)",
+      "STATE HOUSE DISTRICT 48 (REP)",
+      "STATE SCHOOL BOARD DISTRICT 8 (REP)",
+      "REP State Board of Education District 11",
+      "COUNTY COUNCIL DISTRICT 5 (REP)",
+      "COUNTY DISTRICT ATTORNEY (DEM)",
+      "GRANITE SCHOOL BOARD DISTRICT 6"
+     ],
+     "precincts": 1007,
+     "hasRegistered": true
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 69",
+      "Republican for County Commissioner District 3",
+      "Republican for County Sheriff"
+     ],
+     "precincts": 25,
+     "hasRegistered": true
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "REP State Board of Education District 14",
+      "Republican for County Commissioner Seat A"
+     ],
+     "precincts": 28,
+     "hasRegistered": true
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "REP State Board of Education District 14",
+      "County Commission Seat A"
+     ],
+     "precincts": 23,
+     "hasRegistered": true
+    },
+    "summit-county-ut": {
+     "name": "Summit County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 59",
+      "Democratic Candidate for Summit County Council District 4",
+      "Democratic Candidate for Summit County Council District 5"
+     ],
+     "precincts": 64,
+     "hasRegistered": true
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "REP State House District 29",
+      "Republican for County Council - District 5",
+      "Local School Board District - District 5",
+      "Local School Board District - District 6",
+      "Local School Board District - District 7"
+     ],
+     "precincts": 52,
+     "hasRegistered": true
+    },
+    "uintah-county-ut": {
+     "name": "Uintah County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP Uintah County Commission Seat A",
+      "REP Uintah County Commission Seat B",
+      "REP Uintah County Clerk-Auditor"
+     ],
+     "precincts": 30,
+     "hasRegistered": true
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State Senate District 18",
+      "REP Republican for Senate District 21",
+      "REP State Board of Education District 11",
+      "REP State Board of Education District 14",
+      "REP Republican for Utah County Commission Seat A",
+      "REP Republican for Utah County Commission Seat B",
+      "REP Republican for Utah County Clerk",
+      "Nebo School District 4 Nebo"
+     ],
+     "precincts": 534,
+     "hasRegistered": true
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 59",
+      "Republican for County Council Seat A - At Large",
+      "Republican for County Clerk/Auditor",
+      "Republican for County Sheriff"
+     ],
+     "precincts": 54,
+     "hasRegistered": true
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "REP U.S. House District 3",
+      "Republican for County Commission Seat A",
+      "Republican for County Commission Seat B"
+     ],
+     "precincts": 143,
+     "hasRegistered": true
+    },
+    "wayne-county-ut": {
+     "name": "Wayne County",
+     "races": [
+      "REP U.S. House District 3",
+      "REP State House District 69",
+      "Republican for County Commissioner Seat B",
+      "Republican for County Sheriff"
+     ],
+     "precincts": 8,
+     "hasRegistered": true
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "DEM State Senate District 5",
+      "REP U.S. House District 2",
+      "REP U.S. House District 3",
+      "REP COUNTY COMMISSIONER SEAT A",
+      "REP COUNTY COMMISSIONER SEAT B"
+     ],
+     "precincts": 198,
+     "hasRegistered": true
+    }
+   },
+   "complete": true
+  },
   {
    "id": "general11042025",
    "name": "2025 Utah Municipal General Election",
@@ -11,6 +389,48 @@
    "asOf": "2026-06-20T00:50:35.6621791Z",
    "source": "export",
    "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "Beaver Mayor",
+      "Beaver City Council",
+      "Milford Mayor",
+      "Milford City Council"
+     ],
+     "precincts": 5,
+     "hasRegistered": true
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "Brigham City Mayor",
+      "Brigham City Council",
+      "Deweyville Town Mayor",
+      "Deweyville Town Council",
+      "Elwood Town Mayor",
+      "Elwood Town Council",
+      "Garland City Mayor",
+      "Garland City Council",
+      "Honeyville City Mayor",
+      "Honeyville City Council",
+      "Honeyville City Council (Two Year Term)",
+      "Howell Town Mayor",
+      "Howell Town Council",
+      "Mantua Town Mayor",
+      "Mantua Town Council",
+      "Perry City Mayor",
+      "Perry City Council",
+      "Plymouth Town Mayor",
+      "Plymouth Town Council",
+      "Tremonton City Mayor",
+      "Tremonton City Council",
+      "Tremonton City Council (Two Year Term)",
+      "Willard City Mayor",
+      "Willard City Council"
+     ],
+     "precincts": 37,
+     "hasRegistered": true
+    },
     "cache-county-ut": {
      "name": "Cache County",
      "races": [
@@ -44,8 +464,3295 @@
      ],
      "precincts": 85,
      "hasRegistered": true
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "Scofield Town Mayor",
+      "Scofield Town Council",
+      "Wellington City Mayor",
+      "Wellington City Council - Four Year",
+      "Wellington City Council - Two Year",
+      "Price City Mayor",
+      "Price City Council",
+      "Helper City Mayor",
+      "Helper City Council - Four Year",
+      "Helper City Council - Two Year",
+      "East Carbon City Mayor",
+      "East Carbon City Council - Four Year",
+      "East Carbon City Council - Two Year",
+      "Price River Water Improvement District"
+     ],
+     "precincts": 19,
+     "hasRegistered": true
+    },
+    "daggett-county-ut": {
+     "name": "Daggett County",
+     "races": [
+      "Manila Town Council Member 4-Year Term"
+     ],
+     "precincts": 1,
+     "hasRegistered": false
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "Bountiful City Mayor",
+      "Bountiful City Council Bountiful City",
+      "Centerville City Mayor",
+      "Centerville City Council",
+      "Clearfield City Mayor",
+      "Clearfield City Council",
+      "Clinton City Mayor",
+      "Clinton City Council",
+      "Farmington City Mayor",
+      "Farmington City Council",
+      "Fruit Heights City Mayor",
+      "Fruit Heights City Council",
+      "Kaysville City Mayor",
+      "Kaysville City Council Kaysville City",
+      "Layton City Mayor",
+      "Layton City Council",
+      "North Salt Lake Mayor North Salt Lake City",
+      "North Salt Lake City Council North Salt Lake City",
+      "Sunset City Mayor",
+      "Sunset City Council",
+      "Syracuse City Mayor",
+      "Syracuse City Council",
+      "West Bountiful City Mayor",
+      "West Bountiful City Council",
+      "West Point City Mayor",
+      "West Point City Council",
+      "Woods Cross City Mayor",
+      "Woods Cross City Council 2 Year Term",
+      "Woods Cross City Council 4 Year Term",
+      "Benchland Water District Four Year Board Member",
+      "South Davis Sewer District Trustee",
+      "South Weber Water Improvement District Board Member",
+      "Centerville City RAP Tax Proposition #4",
+      "Layton City RAMP Tax Proposition #2",
+      "West Bountiful City RAP Tax Proposition #3",
+      "Woods Cross City RAP Tax Proposition #1"
+     ],
+     "precincts": 392,
+     "hasRegistered": true
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "Emery Town Mayor",
+      "Emery Town Council - 4 Year",
+      "Emery Town Council - 2 Year",
+      "Orangeville Mayor",
+      "Orangeville City Council - 4 Year",
+      "Orangeville City Council - 2 Year",
+      "Castle Dale City Mayor",
+      "Castle Dale City Council - 4 Year",
+      "Green River City Mayor",
+      "Green River City Council - 4 Year",
+      "PROPOSITION NO. 9"
+     ],
+     "precincts": 5,
+     "hasRegistered": true
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "Boulder Town Mayor",
+      "Boulder Town Council",
+      "Cannonville Town Mayor",
+      "Cannonville Town Council",
+      "Henrieville Town Mayor",
+      "Henrieville Town Council",
+      "Panguitch City Mayor",
+      "Panguitch City Council 4 Year",
+      "Panguitch City Council 2 Year",
+      "Tropic Town Mayor",
+      "Tropic Town Council 4 Year",
+      "Tropic Town Council 2 Year"
+     ],
+     "precincts": 6,
+     "hasRegistered": true
+    },
+    "grand-county-ut": {
+     "name": "Grand County",
+     "races": [
+      "Moab Mayor",
+      "Moab City Council - At Large",
+      "Proposition #13"
+     ],
+     "precincts": 22,
+     "hasRegistered": true
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "Brian Head Town Mayor",
+      "Brian Head Town Council",
+      "Cedar City Mayor",
+      "Cedar City Council",
+      "Enoch City Mayor",
+      "Enoch City Council",
+      "Kanarraville Town Mayor",
+      "Kanarraville Town Council",
+      "Parowan City Mayor",
+      "Parowan City Council",
+      "Paragonah Town Mayor",
+      "Paragonah Town Council"
+     ],
+     "precincts": 41,
+     "hasRegistered": true
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "Levan Town Mayor",
+      "Levan Town Council",
+      "Mona City Mayor",
+      "Mona City Council",
+      "Nephi City Mayor",
+      "Nephi City Council",
+      "Rocky Ridge Mayor",
+      "Rocky Ridge Council",
+      "Eureka City Mayor",
+      "Eureka City Council"
+     ],
+     "precincts": 13,
+     "hasRegistered": true
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "Big Water Town Mayor",
+      "Big Water Town Council",
+      "Big Water Town Council 2 Year Term",
+      "Kanab City Mayor",
+      "Kanab City Council",
+      "Glendale Town Mayor",
+      "Glendale Town Council",
+      "Orderville Town Mayor",
+      "Orderville Town Council 4 Year Term",
+      "Orderville Town Council 2 Year Term"
+     ],
+     "precincts": 7,
+     "hasRegistered": true
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "Delta City Mayor",
+      "Delta City Council 4-Year",
+      "Hinckley Town Mayor",
+      "Hinckley Town Council 4-Year",
+      "Hinckley Town Council 2-Year",
+      "Kanosh Town Mayor",
+      "Kanosh Town Council 4-Year",
+      "Fillmore City Mayor"
+     ],
+     "precincts": 6,
+     "hasRegistered": true
+    },
+    "piute-county-ut": {
+     "name": "Piute County",
+     "races": [
+      "Marysvale Mayor",
+      "Marysvale Town Council",
+      "Junction Mayor",
+      "Junction Town Council",
+      "Circleville Mayor",
+      "Circleville Town Council"
+     ],
+     "precincts": 3,
+     "hasRegistered": true
+    },
+    "rich-county-ut": {
+     "name": "Rich County",
+     "races": [
+      "Randolph Mayor (4 -Year Term)",
+      "Randolph Town Council (4 -Year Term)",
+      "Woodruff Mayor (4 -Year Term)",
+      "Woodruff Town Council (4 -Year Term)",
+      "Laketown Mayor (4 -Year Term)",
+      "Laketown Town Council (2 -Year Term)",
+      "Laketown Town Council (4 -Year Term)",
+      "Garden City Mayor (4 -Year Term)"
+     ],
+     "precincts": 6,
+     "hasRegistered": true
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "ASPEN PEAKS SCHOOL BOARD 4 (5 YEAR TERM)",
+      "BLUFFDALE CITY MAYOR",
+      "BLUFFDALE CITY COUNCIL AT-LARGE",
+      "TOWN OF BRIGHTON MAYOR",
+      "TOWN OF BRIGHTON COUNCIL AT-LARGE",
+      "COTTONWOOD HEIGHTS CITY MAYOR",
+      "COTTONWOOD HEIGHTS CITY COUNCIL DISTRICT 3",
+      "COTTONWOOD HEIGHTS CITY COUNCIL DISTRICT 4",
+      "Draper City Mayor",
+      "Draper City Council At-Large (2 Year Term)",
+      "CITY OF EMIGRATION CANYON COUNCIL AT-LARGE",
+      "HERRIMAN CITY MAYOR",
+      "HERRIMAN CITY COUNCIL DISTRICT 2",
+      "HERRIMAN CITY COUNCIL DISTRICT 3",
+      "HERRIMAN CITY COUNCIL DISTRICT 4 (2 YEAR TERM)",
+      "HOLLADAY CITY MAYOR",
+      "HOLLADAY CITY COUNCIL DISTRICT 1",
+      "HOLLADAY CITY COUNCIL DISTRICT 3",
+      "CITY OF KEARNS MAYOR",
+      "CITY OF KEARNS COUNCIL DISTRICT 2",
+      "CITY OF KEARNS COUNCIL DISTRICT 4",
+      "MAGNA CITY MAYOR",
+      "MAGNA CITY COUNCIL DISTRICT 2",
+      "MAGNA CITY COUNCIL DISTRICT 4",
+      "MIDVALE CITY MAYOR",
+      "MIDVALE CITY COUNCIL DISTRICT 4",
+      "MIDVALE CITY COUNCIL DISTRICT 5",
+      "MILLCREEK CITY COUNCIL DISTRICT 2",
+      "MILLCREEK CITY COUNCIL DISTRICT 4",
+      "MURRAY CITY MAYOR",
+      "MURRAY CITY COUNCIL DISTRICT 2",
+      "MURRAY CITY COUNCIL DISTRICT 3 (2 YEAR TERM)",
+      "MURRAY CITY COUNCIL DISTRICT 4",
+      "RIVERTON CITY MAYOR",
+      "RIVERTON CITY COUNCIL DISTRICT 3",
+      "RIVERTON CITY COUNCIL DISTRICT 4",
+      "SALT LAKE CITY COUNCIL DISTRICT 1",
+      "SALT LAKE CITY COUNCIL DISTRICT 5",
+      "SALT LAKE CITY COUNCIL DISTRICT 7",
+      "SANDY CITY MAYOR",
+      "SANDY CITY COUNCIL AT-LARGE",
+      "SANDY CITY COUNCIL DISTRICT 1",
+      "SANDY CITY COUNCIL DISTRICT 3",
+      "SOUTH JORDAN CITY MAYOR",
+      "SOUTH JORDAN CITY COUNCIL DISTRICT 3",
+      "SOUTH JORDAN CITY COUNCIL DISTRICT 5",
+      "SOUTH SALT LAKE CITY MAYOR",
+      "SOUTH SALT LAKE CITY COUNCIL AT-LARGE",
+      "SOUTH SALT LAKE CITY COUNCIL AT-LARGE (2 YEAR TERM)",
+      "SOUTH SALT LAKE CITY COUNCIL DISTRICT 2",
+      "SOUTH SALT LAKE CITY COUNCIL DISTRICT 3",
+      "TAYLORSVILLE CITY MAYOR",
+      "TAYLORSVILLE CITY COUNCIL DISTRICT 4",
+      "TAYLORSVILLE CITY COUNCIL DISTRICT 5",
+      "WEST JORDAN CITY COUNCIL AT-LARGE",
+      "WEST VALLEY CITY MAYOR",
+      "WEST VALLEY CITY COUNCIL AT-LARGE",
+      "WEST VALLEY CITY COUNCIL DISTRICT 2",
+      "WEST VALLEY CITY COUNCIL DISTRICT 4",
+      "WHITE CITY MAYOR",
+      "WHITE CITY COUNCIL AT-LARGE B",
+      "WHITE CITY COUNCIL AT-LARGE C",
+      "COTTONWOOD IMPROVEMENT DISTRICT TRUSTEE AT-LARGE",
+      "COTTONWOOD HEIGHTS PARKS AND RECREATION TRUSTEE DISTRICT 1",
+      "GRANGER HUNTER IMPROVEMENT DISTRICT TRUSTEE AT-LARGE",
+      "KEARNS IMPROVEMENT DISTRICT TRUSTEE AT-LARGE",
+      "MT. OLYMPUS IMPROVEMENT DISTRICT TRUSTEE AT-LARGE",
+      "OQUIRRH RECREATION AND PARKS DISTRICT TRUSTEE AT-LARGE",
+      "SANDY SUBURBAN IMPROVEMENT DISTRICT TRUSTEE AT-LARGE",
+      "TAYLORSVILLE BENNION IMPROVEMENT DISTRICT TRUSTEE DISTRICT 3"
+     ],
+     "precincts": 893,
+     "hasRegistered": true
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "Monticello Mayor",
+      "Monticello City Council",
+      "Blanding City Mayor",
+      "Blanding City Council"
+     ],
+     "precincts": 7,
+     "hasRegistered": true
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "Proposition #10 RAP Tax Centerfield City",
+      "Ephraim Mayor",
+      "Ephraim City Council",
+      "Fairview Mayor",
+      "Fairview City Council",
+      "Fountain Green Mayor",
+      "Fountain Green City Council",
+      "Gunnison Mayor",
+      "Gunnison City Council",
+      "Proposition #10 RAP Tax Gunnison City",
+      "Manti Mayor",
+      "Manti City Council",
+      "Mayfield Mayor",
+      "Mayfield Town Council",
+      "Proposition #10 RAP Tax Mayfield Town",
+      "Moroni Mayor",
+      "Moroni City Council",
+      "Moroni City Council 2 Year",
+      "Mt. Pleasant Mayor",
+      "Mt. Pleasant City Council",
+      "Spring City Mayor",
+      "Spring City Council",
+      "Spring City Council 2 Year",
+      "Sterling Mayor",
+      "Sterling Town Council",
+      "Sterling Town Council 2 Year"
+     ],
+     "precincts": 17,
+     "hasRegistered": true
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "Annabella Town Mayor",
+      "Annabella Councilmember",
+      "Aurora City Mayor",
+      "Aurora Councilmember, 4 Yr",
+      "Aurora Councilmember, 2 Yr",
+      "PROPOSITION 12 Aurora",
+      "Central Valley Town Mayor",
+      "Central Valley Councilmember",
+      "Elsinore Town Mayor",
+      "Elsinore Councilmember",
+      "Koosharem Town Mayor",
+      "Koosharem Councilmember",
+      "Monroe City Mayor",
+      "Monroe Councilmember",
+      "PROPOSITION 7 Monroe",
+      "Redmond Town Mayor",
+      "Redmond Councilmember",
+      "PROPOSITION 12 Redmond",
+      "Richfield City Mayor",
+      "Richfield Councilmember",
+      "Salina City Mayor",
+      "Salina Councilmember",
+      "PROPOSITION 12 Salina",
+      "Sigurd Town Mayor",
+      "Sigurd Councilmember"
+     ],
+     "precincts": 10,
+     "hasRegistered": true
+    },
+    "summit-county-ut": {
+     "name": "Summit County",
+     "races": [
+      "Coalville City Mayor",
+      "Coalville City Council",
+      "Francis City Mayor",
+      "Francis City Council",
+      "Henefer Town Mayor",
+      "Kamas City Council",
+      "Oakley City Mayor",
+      "Oakley City Council",
+      "Park City Mayor",
+      "Park City Council",
+      "Summit County Service Area #3 Upper Board of Trustees",
+      "Summit County Service Area #3 Lower Board of Trustees",
+      "NORTH SUMMIT SCHOOL DISTRICT BOND ELECTION"
+     ],
+     "precincts": 36,
+     "hasRegistered": true
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "Tooele City Mayor",
+      "Tooele City Council",
+      "Grantsville City Mayor",
+      "Grantsville City Council",
+      "Rush Valley Town Council",
+      "Erda City Council - District 2",
+      "Erda City Council - District 4",
+      "Lake Point City Council",
+      "Stansbury Recreation Service Area Trustee",
+      "Stansbury Park Improvement District Board Member"
+     ],
+     "precincts": 58,
+     "hasRegistered": true
+    },
+    "uintah-county-ut": {
+     "name": "Uintah County",
+     "races": [
+      "Naples City Mayor",
+      "Naples City Council",
+      "Vernal City Mayor",
+      "Vernal City Council",
+      "Ashley Valley Water and Sewer Improvement District Board Member",
+      "Jensen Water Improvement District Board Member",
+      "Tridell-Lapoint Water Improvement District Board Member"
+     ],
+     "precincts": 22,
+     "hasRegistered": true
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "School Board Aspen Peaks 1",
+      "School Board Aspen Peaks 2",
+      "School Board Aspen Peaks 3",
+      "ASPEN PEAKS SCHOOL BOARD 4 (5 YEAR TERM)",
+      "School Board Aspen Peaks 5",
+      "School Board Aspen Peaks 6",
+      "School Board Aspen Peaks 7",
+      "School Board Lake Mountain 1",
+      "School Board Lake Mountain 2",
+      "School Board Lake Mountain 3",
+      "School Board Lake Mountain 4",
+      "School Board Lake Mountain 5",
+      "School Board Lake Mountain 6",
+      "School Board Lake Mountain 7",
+      "School Board Timpanogos 1",
+      "School Board Timpanogos 2",
+      "School Board Timpanogos 3",
+      "School Board Timpanogos 4",
+      "School Board Timpanogos 5",
+      "School Board Timpanogos 6",
+      "School Board Timpanogos 7",
+      "Alpine Mayor",
+      "Alpine City Council",
+      "American Fork Mayor",
+      "American Fork City Council",
+      "Cedar Fort Mayor",
+      "Cedar Fort Town Council Seat A",
+      "Cedar Fort Town Council Seat B",
+      "Eagle Mountain Mayor",
+      "Eagle Mountain City Council",
+      "Proposition #8 Eagle Mountain",
+      "Elk Ridge Mayor",
+      "Elk Ridge City Council",
+      "Genola Mayor",
+      "Genola Town Council (4 Year)",
+      "Genola Town Council (2 Year)",
+      "Goshen Mayor",
+      "Goshen Town Council",
+      "Highland City Mayor",
+      "Highland City Council",
+      "Lehi Mayor",
+      "Lehi City Council",
+      "Lindon Mayor",
+      "Lindon City Council",
+      "Mapleton Mayor",
+      "Mapleton City Council",
+      "Orem Mayor",
+      "Orem City Council",
+      "Payson Mayor",
+      "Payson City Council",
+      "Pleasant Grove Mayor",
+      "Pleasant Grove City Council",
+      "Provo City Mayor",
+      "Provo City Council City Wide I",
+      "Provo City Council District 2",
+      "Provo City Council District 5",
+      "Proposition #5 Provo",
+      "Salem Mayor",
+      "Salem City Council",
+      "Saratoga Springs Mayor",
+      "Saratoga Springs City Council",
+      "Spanish Fork Mayor",
+      "Spanish Fork City Council",
+      "Spring Lake Mayor",
+      "Spring Lake Town Council (4 Year)",
+      "Spring Lake Town Council (2 Year)",
+      "Springville Mayor",
+      "Springville City Council",
+      "Vineyard Mayor",
+      "Vineyard City Council",
+      "Woodland Hills Mayor",
+      "Woodland Hills City Council"
+     ],
+     "precincts": 490,
+     "hasRegistered": true
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "Heber City Mayor",
+      "Heber City Council",
+      "Midway City Mayor",
+      "Midway City Council",
+      "Interlaken Town Mayor",
+      "Interlaken Town Council",
+      "Hideout Town Mayor",
+      "Hideout Town Council",
+      "Charleston Town Mayor",
+      "Charleston Town Council"
+     ],
+     "precincts": 33,
+     "hasRegistered": true
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "Town of Apple Valley Mayor",
+      "Town of Apple Valley Council",
+      "Town of Apple Valley Council Special 2 Yr Seat",
+      "City of Enterprise Mayor",
+      "City of Enterprise Council",
+      "City of Hildale Mayor",
+      "City of Hildale Council",
+      "Hurricane City Mayor",
+      "Hurricane City Council",
+      "Ivins City Mayor",
+      "Ivins City Council",
+      "Proposition # 14",
+      "La Verkin City Mayor",
+      "La Verkin City Council",
+      "Town of Leeds Mayor",
+      "Town of Leeds Council",
+      "Town of Leeds Council Special 2 Yr Seat",
+      "Town of Rockville Mayor",
+      "Town of Rockville Council",
+      "Santa Clara City Mayor",
+      "Santa Clara City Council",
+      "Town of Springdale Mayor",
+      "Town of Springdale Council",
+      "St George Mayor",
+      "St George City Council",
+      "Toquerville City Mayor",
+      "Toquerville City Council",
+      "Toquerville City Council Special 2 Yr Seat",
+      "Virgin Town Mayor",
+      "Virgin Town Council",
+      "Virgin Town Council Special 2 Yr Seat",
+      "Washington City Mayor",
+      "Washington City Council"
+     ],
+     "precincts": 127,
+     "hasRegistered": true
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "FARR WEST CITY MAYOR",
+      "FARR WEST CITY COUNCIL AT-LARGE",
+      "HARRISVILLE CITY MAYOR",
+      "HARRISVILLE CITY COUNCIL AT-LARGE",
+      "HOOPER CITY COUNCIL SEAT 1",
+      "HOOPER CITY COUNCIL SEAT 2",
+      "HOOPER CITY COUNCIL SEAT 3",
+      "HUNTSVILLE TOWN COUNCIL AT-LARGE HUNTSVILLE TOWN COUNCIL AT-LARGE",
+      "MARRIOTT-SLATERVILLE CITY MAYOR",
+      "NORTH OGDEN CITY MAYOR",
+      "NORTH OGDEN CITY COUNCIL AT-LARGE",
+      "OGDEN VALLEY CITY MAYOR OGDEN VALLEY CITY MAYOR",
+      "OGDEN VALLEY CITY COUNCIL SEAT 1",
+      "OGDEN VALLEY CITY COUNCIL SEAT 2",
+      "OGDEN VALLEY CITY COUNCIL SEAT 3",
+      "OGDEN VALLEY CITY COUNCIL SEAT 4",
+      "OGDEN VALLEY CITY COUNCIL SEAT 5",
+      "OGDEN CITY COUNCIL AT-LARGE SEAT A",
+      "OGDEN CITY COUNCIL AT-LARGE SEAT B",
+      "OGDEN CITY COUNCIL SEAT 1",
+      "OGDEN CITY COUNCIL SEAT 3",
+      "PLAIN CITY MAYOR",
+      "PLAIN CITY COUNCIL AT-LARGE",
+      "PLEASANT VIEW CITY MAYOR",
+      "PLEASANT VIEW CITY COUNCIL AT-LARGE",
+      "RIVERDALE CITY MAYOR",
+      "RIVERDALE CITY COUNCIL AT-LARGE",
+      "RIVERDALE CITY COUNCIL AT-LARGE",
+      "ROY CITY MAYOR",
+      "ROY CITY COUNCIL AT-LARGE",
+      "ROY CITY COUNCIL AT-LARGE ROY CITY COUNCIL AT-LARGE 2 YR",
+      "UINTAH CITY MAYOR",
+      "UINTAH CITY COUNCIL AT-LARGE",
+      "WEST HAVEN CITY MAYOR",
+      "WEST HAVEN CITY COUNCIL AT-LARGE",
+      "NORTH VIEW FIRE DISTRICT BOARD MEMBER AT-LARGE NORTH VIEW FIRE DISTRICT BOARD MEMBER AT-LARGE",
+      "NORTH VIEW FIRE DISTRICT BOARD MEMBER DISTRICT 1 NORTH VIEW FIRE DISTRICT BOARD MEMBER SEAT 1",
+      "NORTH VIEW FIRE DISTRICT BOARD MEMBER DISTRICT 2 NORTH VIEW FIRE DISTRICT BOARD MEMBER SEAT 2",
+      "NORTH VIEW FIRE DISTRICT BOARD MEMBER DISTRICT 3 NORTH VIEW FIRE DISTRICT BOARD MEMBER SEAT 3",
+      "WEBER FIRE DISTRICT BOARD OF TRUSTEE AT-LARGE",
+      "TAYLOR WEST WEBER IMPROVEMENT DISTRICT TRUSTEE AT-LARGE"
+     ],
+     "precincts": 175,
+     "hasRegistered": true
     }
-   }
+   },
+   "complete": false
+  },
+  {
+   "id": "primary08122025",
+   "name": "2025 Utah Municipal Primary",
+   "date": "2025-08-12",
+   "asOf": "2025-11-06T14:14:40.1412494Z",
+   "source": "export",
+   "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "Beaver City Council",
+      "Milford City Council"
+     ],
+     "precincts": 5,
+     "hasRegistered": true
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "Brigham City Council",
+      "Deweyville Town Mayor",
+      "Howell Town Mayor",
+      "Mantua Town Council",
+      "Tremonton City Mayor",
+      "Tremonton City Council",
+      "Tremonton City Council (Two Year Term)"
+     ],
+     "precincts": 24,
+     "hasRegistered": true
+    },
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "Hyrum Mayor",
+      "Hyrum City Council",
+      "Logan Mayor",
+      "Logan City Council",
+      "North Logan City Council",
+      "Richmond City Council - 2yr",
+      "Smithfield City Council",
+      "Wellsville Mayor"
+     ],
+     "precincts": 72,
+     "hasRegistered": true
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "Price City Council",
+      "Helper City Mayor",
+      "East Carbon City Mayor",
+      "East Carbon City Council - Two Year"
+     ],
+     "precincts": 10,
+     "hasRegistered": true
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "Clearfield City Council",
+      "Clinton City Council",
+      "Layton City Mayor",
+      "Layton City Council",
+      "North Salt Lake City Council",
+      "Sunset City Council",
+      "West Bountiful City Council",
+      "West Point City Mayor"
+     ],
+     "precincts": 264,
+     "hasRegistered": true
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "Green River City Mayor",
+      "Green River City Council - 4yr"
+     ],
+     "precincts": 1,
+     "hasRegistered": true
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "Boulder Town Mayor",
+      "Boulder Town Council",
+      "Cannonville Town Council",
+      "Henrieville Town Council",
+      "Panguitch City Council"
+     ],
+     "precincts": 5,
+     "hasRegistered": true
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "Cedar City Mayor",
+      "Cedar City Council",
+      "Enoch City Mayor"
+     ],
+     "precincts": 35,
+     "hasRegistered": true
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "Nephi City Council",
+      "Eureka City Mayor",
+      "Mona City Mayor",
+      "Mona City Council"
+     ],
+     "precincts": 12,
+     "hasRegistered": true
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "Orderville Town Mayor"
+     ],
+     "precincts": 1,
+     "hasRegistered": true
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "Hinckley Town Mayor",
+      "Kanosh Town Mayor"
+     ],
+     "precincts": 2,
+     "hasRegistered": true
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "BLUFFDALE CITY COUNCIL AT-LARGE",
+      "DRAPER CITY COUNCIL AT-LARGE (2 YEAR TERM)",
+      "CITY OF EMIGRATION CANYON COUNCIL AT-LARGE",
+      "HERRIMAN CITY COUNCIL DISTRICT 3",
+      "HOLLADAY CITY MAYOR",
+      "CITY OF KEARNS MAYOR",
+      "CITY OF KEARNS COUNCIL DISTRICT 2",
+      "MAGNA CITY MAYOR",
+      "MAGNA CITY COUNCIL DISTRICT 2",
+      "MAGNA CITY COUNCIL DISTRICT 4",
+      "MURRAY CITY MAYOR",
+      "MURRAY CITY COUNCIL DISTRICT 2",
+      "MURRAY CITY COUNCIL DISTRICT 3 (2 YEAR TERM)",
+      "RIVERTON CITY MAYOR",
+      "SANDY CITY MAYOR",
+      "SANDY CITY COUNCIL DISTRICT 3",
+      "WEST JORDAN CITY COUNCIL AT-LARGE",
+      "WEST VALLEY CITY COUNCIL AT-LARGE",
+      "WEST VALLEY CITY COUNCIL DISTRICT 2",
+      "WEST VALLEY CITY COUNCIL DISTRICT 4"
+     ],
+     "precincts": 482,
+     "hasRegistered": true
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "Blanding City Council"
+     ],
+     "precincts": 6,
+     "hasRegistered": true
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "Ephraim Mayor",
+      "Ephraim City Council",
+      "Fairview City Council",
+      "Manti City Council",
+      "Spring City Council",
+      "Wales Mayor"
+     ],
+     "precincts": 9,
+     "hasRegistered": true
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "Annabella Town Mayor",
+      "Redmond Town Councilmember",
+      "Sigurd Town Councilmember"
+     ],
+     "precincts": 3,
+     "hasRegistered": true
+    },
+    "summit-county-ut": {
+     "name": "Summit County",
+     "races": [
+      "Coalville City Mayor",
+      "Coalville City Council",
+      "Henefer Town Mayor",
+      "Francis City Council",
+      "Park City Council"
+     ],
+     "precincts": 18,
+     "hasRegistered": true
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "Erda City Council - District 4",
+      "Grantsville City Mayor",
+      "Granstville City Council",
+      "Tooele City Mayor",
+      "Tooele City Council"
+     ],
+     "precincts": 39,
+     "hasRegistered": true
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "School Board Aspen Peaks 1",
+      "School Board Aspen Peaks 2",
+      "School Board Aspen Peaks 3",
+      "School Board Aspen Peaks 4",
+      "School Board Aspen Peaks 5",
+      "School Board Aspen Peaks 6",
+      "School Board Aspen Peaks 7",
+      "School Board Lake Mountain 1",
+      "School Board Lake Mountain 3",
+      "School Board Lake Mountain 4",
+      "School Board Lake Mountain 5",
+      "School Board Timpanogos 1",
+      "School Board Timpanogos 2",
+      "School Board Timpanogos 3",
+      "School Board Timpanogos 4",
+      "School Board Timpanogos 5",
+      "School Board Timpanogos 6",
+      "Alpine City Council",
+      "Eagle Mountain Mayor",
+      "Eagle Mountain City Council",
+      "Highland City Council",
+      "Lehi Mayor",
+      "Lehi City Council",
+      "Mapleton Mayor",
+      "Mapleton City Council",
+      "Orem City Council",
+      "Payson City Council",
+      "Provo City Mayor",
+      "Provo City Council City Wide I",
+      "Provo City Council District 2",
+      "Provo City Council District 5",
+      "Saratoga Springs City Council",
+      "Spanish Fork Mayor",
+      "Spanish Fork City Council",
+      "Spring Lake Town Council (4 year)",
+      "Spring Lake Town Council (2 Year)",
+      "Vineyard City Council"
+     ],
+     "precincts": 453,
+     "hasRegistered": true
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "Heber City Mayor",
+      "Heber City Council",
+      "Midway City Council",
+      "Charleston Town Mayor",
+      "Charleston Town Council"
+     ],
+     "precincts": 30,
+     "hasRegistered": true
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "City of Enterprise Council",
+      "Hurricane City Mayor",
+      "Hurricane City Council",
+      "Ivins City Council",
+      "La Verkin City Council",
+      "Town of Leeds Council",
+      "Town of Leeds Council Special 2 Year Seat",
+      "Town of Springdale Mayor",
+      "Town of Springdale Council",
+      "St George City Mayor",
+      "St George City Council"
+     ],
+     "precincts": 88,
+     "hasRegistered": true
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "HARRISVILLE CITY COUNCIL AT-LARGE",
+      "HOOPER CITY COUNCIL SEAT 3",
+      "MARRIOTT-SLATERVILLE CITY MAYOR",
+      "NORTH OGDEN CITY MAYOR",
+      "NORTH OGDEN CITY COUNCIL AT-LARGE",
+      "OGDEN VALLEY CITY MAYOR",
+      "OGDEN VALLEY CITY COUNCIL SEAT 1",
+      "OGDEN VALLEY CITY COUNCIL SEAT 2",
+      "OGDEN VALLEY CITY COUNCIL SEAT 3",
+      "OGDEN VALLEY CITY COUNCIL SEAT 4",
+      "OGDEN VALLEY CITY COUNCIL SEAT 5",
+      "OGDEN CITY COUNCIL AT-LARGE SEAT A",
+      "OGDEN CITY COUNCIL AT-LARGE SEAT B",
+      "PLAIN CITY MAYOR",
+      "PLAIN CITY COUNCIL AT-LARGE",
+      "PLEASANT VIEW CITY COUNCIL AT-LARGE",
+      "RIVERDALE CITY COUNCIL AT-LARGE",
+      "ROY CITY COUNCIL AT-LARGE",
+      "ROY CITY COUNCIL AT-LARGE"
+     ],
+     "precincts": 122,
+     "hasRegistered": true
+    }
+   },
+   "complete": false
+  },
+  {
+   "id": "general11052024",
+   "name": "2024 General Election",
+   "date": "2024-11-05",
+   "asOf": "2025-11-04T18:27:17.647083Z",
+   "source": "export",
+   "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 70 (Multi-County)",
+      "COUNTY COMMISSIONER C",
+      "COUNTY ASSESSOR",
+      "COUNTY RECORDER",
+      "COUNTY TREASURER",
+      "SCHOOL BOARD DISTRICT 1",
+      "SCHOOL BOARD DISTRICT 2",
+      "SCHOOL BOARD DISTRICT 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall KEITH C. BARNES be retained in the office of Judge of the District Court of the Fifth Judicial District?",
+      "Shall MICHAEL FLEMMING LEAVITT be retained in the office of Judge of the Juvenile Court of the Fifth Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 9,
+     "hasRegistered": false
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 1 (Multi-County)",
+      "State House 6 (Multi-County)",
+      "Box Elder County Commissioner Seat C",
+      "Box Elder County Assessor",
+      "Box Elder County Recorder",
+      "Box Elder County Treasurer",
+      "Box Elder School Board District 1",
+      "Box Elder School Board District 2",
+      "Box Elder School Board District 5",
+      "Box Elder School Board District 6",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall SPENCER D. WALSH be retained in the office of Judge of the District Court of the First Judicial District?",
+      "Shall BRANDON J. MAYNARD be retained in the office of Judge of the District Court of the First Judicial District?",
+      "Shall BRYAN P GALLOWAY be retained in the office of Judge of the Juvenile Court of the First Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "LOCAL SPECIAL BOND ELECTION"
+     ],
+     "precincts": 53,
+     "hasRegistered": false
+    },
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 2 (Multi-County)",
+      "State House 1 (Multi-County)",
+      "State House 2",
+      "State House 3",
+      "State House 5",
+      "County Council Logan 1",
+      "County Council Logan 2",
+      "County Council North 4",
+      "County Council South 6",
+      "County Assessor",
+      "County Attorney (2 Year)",
+      "County Auditor (2 Year)",
+      "County Clerk (2 Year)",
+      "County Recorder",
+      "County Treasurer",
+      "Cache County School Board 1",
+      "Cache County School Board 3",
+      "Cache County School Board 5",
+      "Cache County School Board 6",
+      "Logan City School Board 1",
+      "Logan City School Board 2",
+      "Logan City School Board 4",
+      "Cache Water District At-Large",
+      "Cache Water District Logan 1",
+      "Cache Water District Logan 2",
+      "Cache Water District North 4",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall SPENCER D. WALSH be retained in the office of Judge of the District Court of the First Judicial District?",
+      "Shall BRANDON J. MAYNARD be retained in the office of Judge of the District Court of the First Judicial District?",
+      "Shall BRYAN P GALLOWAY be retained in the office of Judge of the Juvenile Court of the First Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 167,
+     "hasRegistered": false
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State House 67 (Multi-County)",
+      "County Commissioner",
+      "County Assessor",
+      "County Recorder",
+      "County Treasurer",
+      "Carbon County School Board District 1",
+      "Carbon County School Board District 2",
+      "Carbon County School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall JEREMIAH C. HUMES be retained in the office of Judge of the District Court of the Seventh Judicial District?",
+      "JON RANDALL CARPENTER Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "Proposition #1",
+      "Proposition #7"
+     ],
+     "precincts": 21,
+     "hasRegistered": false
+    },
+    "daggett-county-ut": {
+     "name": "Daggett County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 68 (Multi-County)",
+      "State School Board 12 (Multi-County)",
+      "County Commissioner C",
+      "County Assessor",
+      "County Attorney",
+      "County Clerk",
+      "County Recorder / Treasurer",
+      "School Board District 4",
+      "School Board District 5",
+      "Flaming Gorge Fire and EMS District Board Member At Large #1",
+      "Flaming Gorge Fire and EMS District Board Member Town of Manila",
+      "Flaming Gorge Fire and EMS District Board Member West Side",
+      "Flaming Gorge Fire and EMS District Board Member East Side",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall GREG LAMB be retained in the office of Judge of the District Court of the Eighth Judicial District?",
+      "Shall JEFFRY K. ROSS be retained in the office of Judge of the Juvenile Court of the Eighth Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "Proposition #17"
+     ],
+     "precincts": 4,
+     "hasRegistered": false
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 4 (Multi-County)",
+      "State Senate 8 (Multi-County)",
+      "State House 11 (Multi-County)",
+      "State House 12 (Multi-County)",
+      "State House 13",
+      "State House 14",
+      "State House 15",
+      "State House 16",
+      "State House 17",
+      "State House 18",
+      "State House 19",
+      "State House 20",
+      "State School Board 3 (Multi-County)",
+      "COUNTY COMMISSIONER",
+      "COUNTY ASSESSOR",
+      "COUNTY RECORDER",
+      "COUNTY SURVEYOR",
+      "COUNTY TREASURER",
+      "DAVIS SCHOOL BOARD DISTRICT 1",
+      "DAVIS SCHOOL BOARD DISTRICT 2",
+      "DAVIS SCHOOL BOARD DISTRICT 4",
+      "DAVIS SCHOOL BOARD DISTRICT 5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall JOSEPH M. BEAN be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall RONALD G. RUSSELL be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall CRISTINA PATRICIA ORTEGA be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall CRAIG HALL be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall MICHAEL DARIO DIREDA be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall TASHA WILLIAMS  be retained in the office of Judge of the Juvenile District Court of the Second Judicial District?",
+      "CLEARAFIELD JUSTICE COURT BRIAN E. BROWER",
+      "CLINTON JUSTICE COURT CATHERINE J. HOSKINS",
+      "SYRACUSE JUSTICE COURT CATHERINE JEANE HOSKINS",
+      "PROPOSITION #3 BOUNTIFUL CITY RAP TAX",
+      "PROPOSITION #4 FARMINGTON CITY RAP TAX",
+      "PROPOSITION #6 CLEARFIELD CITY PARAT TAX",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 438,
+     "hasRegistered": false
+    },
+    "duchesne-county-ut": {
+     "name": "Duchesne County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 67 (Multi-County)",
+      "State House 68 (Multi-County)",
+      "State School Board 12 (Multi-County)",
+      "County Commission Seat C",
+      "County Assessor",
+      "County Recorder",
+      "County Surveyor",
+      "County Treasurer",
+      "School Board District #4",
+      "School Board District #5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall GREG LAMB be retained in the office of Judge of the District Court of the Eighth Judicial District?",
+      "Shall JEFFRY K. ROSS be retained in the office of Judge of the Juvenile Court of the Eighth Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 81,
+     "hasRegistered": false
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State House 67 (Multi-County)",
+      "State House 69 (Multi-County)",
+      "County Commissioner",
+      "County Assessor",
+      "County Treasurer/Recorder",
+      "Local School Board District 1",
+      "Local School Board District 2",
+      "Local School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall JEREMIAH C. HUMES be retained in the office of Judge of the District Court of the Seventh Judicial District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 13,
+     "hasRegistered": false
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State Senate 27 (Multi-County)",
+      "State House 69 (Multi-County)",
+      "State School Board 15 (Multi-County)",
+      "Garfield County Commission Seat C",
+      "Garfield County Assessor",
+      "Garfield County Recorder",
+      "Garfield County Treasurer",
+      "Garfield County School Board District #1",
+      "Garfield County School Board District #2",
+      "Garfield County School Board District #3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "TIMOTHY BYRNE SMITH Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 12,
+     "hasRegistered": false
+    },
+    "grand-county-ut": {
+     "name": "Grand County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State House 69 (Multi-County)",
+      "County Commission At-Large",
+      "County Commission District 1",
+      "County Commission District 2",
+      "County Commission District 3",
+      "County Assessor",
+      "County Recorder",
+      "County Surveyor",
+      "County Treasurer",
+      "Grand County School District 2",
+      "Grand County School District 3",
+      "Grand County School District 4",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall JEREMIAH C. HUMES be retained in the office of Judge of the District Court of the Seventh Judicial District?",
+      "DANALEE ALYN WELCH-O'DONNAL Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 24,
+     "hasRegistered": false
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 70 (Multi-County)",
+      "State House 71",
+      "State School Board 15 (Multi-County)",
+      "County Commission \"C\"",
+      "County Assessor",
+      "County Auditor (2yr term)",
+      "County Recorder/Surveyor",
+      "County Treasurer",
+      "Iron School Board District 1",
+      "Iron School Board District 2",
+      "Iron School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall KEITH C. BARNES be retained in the office of Judge of the District Court of the Fifth Judicial District?",
+      "Shall MICHAEL FLEMMING LEAVITT be retained in the office of Judge of the Juvenile Court of the Fifth Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "Iron County School Board Bond"
+     ],
+     "precincts": 50,
+     "hasRegistered": false
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "U.S. House 4",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 27 (Multi-County)",
+      "State House 29 (Multi-County)",
+      "State House 66 (Multi-County)",
+      "County Commission Seat C",
+      "County Assessor",
+      "County Recorder/Surveyor",
+      "County Treasurer",
+      "Juab County School Board District 1",
+      "Juab County School Board District 2",
+      "Juab County School Board District 3",
+      "Tintic School Board District 1",
+      "Tintic School Board District 2",
+      "Tintic School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall CHRISTINE S. JOHNSON be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall JENNIFER A. MABEY be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall ROGER WADSWORTH GRIFFIN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall SEAN M. PETERSEN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DEREK P. PULLAN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DENISE M. PORTER be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall BRENT H. BARTHOLOMEW  be retained in the office of Judge of the Juvenile Court of the Fourth Juvenile Court District?",
+      "BARBARA A FINLINSON Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 31,
+     "hasRegistered": false
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State Senate 27 (Multi-County)",
+      "State House 69 (Multi-County)",
+      "State School Board 15 (Multi-County)",
+      "Kane County Commissioner Seat C",
+      "Kane County Assessor",
+      "Kane County Recorder",
+      "Kane County Treasurer",
+      "Kane County School Board District 1",
+      "Kane County School Board District 2",
+      "Kane County School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "RONALD L. READ Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 11,
+     "hasRegistered": false
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 27 (Multi-County)",
+      "State House 29 (Multi-County)",
+      "County Commission Seat C",
+      "Millard County Assessor",
+      "Millard County Recorder",
+      "Millard County Treasurer",
+      "Millard School Board District 1",
+      "Millard School Board District 2",
+      "Millard School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall CHRISTINE S. JOHNSON be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall JENNIFER A. MABEY be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall ROGER WADSWORTH GRIFFIN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall SEAN M. PETERSEN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DEREK P. PULLAN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DENISE M. PORTER be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall BRENT H. BARTHOLOMEW  be retained in the office of Judge of the Juvenile Court of the Fourth Juvenile Court District?",
+      "CYNDEE C. PROBERT Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 18,
+     "hasRegistered": false
+    },
+    "morgan-county-ut": {
+     "name": "Morgan County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 3 (Multi-County)",
+      "State House 4 (Multi-County)",
+      "State House 8 (Multi-County)",
+      "County Commission District #1",
+      "County Commission District #2",
+      "County Commission District #3",
+      "Morgan County Assessor",
+      "Morgan County Recorder",
+      "Morgan County Treasurer",
+      "Morgan School Board District #1",
+      "Morgan School Board District #3",
+      "Morgan School Board District #5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall CRAIG HALL be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall CRISTINA PATRICIA ORTEGA be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall JOSEPH M. BEAN be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall MICHAEL DARIO DIREDA be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall RONALD G. RUSSELL be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall TASHA WILLIAMS  be retained in the office of Judge of the Juvenile District Court of the Second Judicial District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 25,
+     "hasRegistered": false
+    },
+    "piute-county-ut": {
+     "name": "Piute County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 27 (Multi-County)",
+      "State House 70 (Multi-County)",
+      "State School Board 15 (Multi-County)",
+      "County Commissioner",
+      "Assessor",
+      "Recorder/Treasurer",
+      "Piute County School Board District 4",
+      "Piute County School Board District 5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "MARK MCIFF Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "LOCAL SPECIAL BOND ELECTION"
+     ],
+     "precincts": 6,
+     "hasRegistered": false
+    },
+    "rich-county-ut": {
+     "name": "Rich County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 2 (Multi-County)",
+      "State House 4 (Multi-County)",
+      "County Commissioner C",
+      "Assessor",
+      "Recorder",
+      "Treasurer",
+      "Local School Board District 1",
+      "Local School Board District 2",
+      "Local School Board District 5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall SPENCER D. WALSH be retained in the office of Judge of the District Court of the First Judicial District?",
+      "Shall BRANDON J. MAYNARD be retained in the office of Judge of the District Court of the First Judicial District?",
+      "Shall BRYAN P GALLOWAY be retained in the office of Judge of the Juvenile Court of the First Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 12,
+     "hasRegistered": false
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "U.S. House 2",
+      "U.S. House 3",
+      "U.S. House 4",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 8 (Multi-County)",
+      "State Senate 10",
+      "State Senate 12 (2 year term)",
+      "State Senate 15",
+      "State Senate 16",
+      "State Senate 17",
+      "State Senate 22 (Multi-County)",
+      "State House 21",
+      "State House 22",
+      "State House 23 (Multi-County)",
+      "State House 24",
+      "State House 25",
+      "State House 26",
+      "State House 27",
+      "State House 30",
+      "State House 31",
+      "State House 32",
+      "State House 33",
+      "State House 34",
+      "State House 35",
+      "State House 36",
+      "State House 37",
+      "State House 38",
+      "State House 39",
+      "State House 40",
+      "State House 41",
+      "State House 42",
+      "State House 43",
+      "State House 44",
+      "State House 45",
+      "State House 46",
+      "State House 47",
+      "State House 48",
+      "State House 49",
+      "State School Board 6 (Multi-County)",
+      "State School Board 7",
+      "State School Board 9",
+      "State School Board 10 (Multi-County)",
+      "COUNTY MAYOR",
+      "COUNTY COUNCIL AT-LARGE C",
+      "COUNTY COUNCIL DISTRICT 2",
+      "COUNTY COUNCIL DISTRICT 4",
+      "COUNTY COUNCIL DISTRICT 6",
+      "COUNTY ASSESSOR",
+      "COUNTY RECORDER",
+      "COUNTY SURVEYOR",
+      "COUNTY TREASURER",
+      "CANYONS SCHOOL BOARD DISTRICT 1",
+      "CANYONS SCHOOL BOARD DISTRICT 3",
+      "CANYONS SCHOOL BOARD DISTRICT 7",
+      "GRANITE SCHOOL BOARD DISTRICT 1",
+      "GRANITE SCHOOL BOARD DISTRICT 2",
+      "GRANITE SCHOOL BOARD DISTRICT 4",
+      "JORDAN SCHOOL BOARD DISTRICT 1",
+      "JORDAN SCHOOL BOARD DISTRICT 4",
+      "JORDAN SCHOOL BOARD DISTRICT 5",
+      "JORDAN SCHOOL BOARD DISTRICT 6",
+      "MURRAY SCHOOL BOARD DISTRICT 1",
+      "MURRAY SCHOOL BOARD DISTRICT 5",
+      "SALT LAKE CITY SCHOOL BOARD DISTRICT 1",
+      "SALT LAKE CITY SCHOOL BOARD DISTRICT 2",
+      "SALT LAKE CITY SCHOOL BOARD DISTRICT 5",
+      "SALT LAKE CITY SCHOOL BOARD DISTRICT 7",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall HEATHER ANNETTE BRERETON be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall TERESA LYNN WELCH be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall KRISTINE EDDE JOHNSON be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall WILLIAM K. KENDALL  be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall LAURA S. SCOTT be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall JAMES D. GARDNER be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall KARA LEA PETTIT be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall LELAND DOUGLAS HOGAN be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall TUPAKK AMARU GUSTAVO RENTERIA be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall ANNETTE T. JAN be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall ELIZABETH MARIE KNIGHT be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall MONICA DIAZ be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "CHRISTOPHER G. BOWN",
+      "ZAP PROPOSITION 8",
+      "SALT LAKE COUNTY JAIL BOND",
+      "MURRAY CITY SCHOOL BOND",
+      "COTTONWOOD HEIGHTS CITY BOND",
+      "SALT LAKE CITY SCHOOL BOND",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 984,
+     "hasRegistered": false
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State House 69 (Multi-County)",
+      "State School Board 15 (Multi-County)",
+      "Commission District 1",
+      "County Assessor",
+      "County Recorder",
+      "County Surveyor",
+      "County Treasurer",
+      "San Juan Local School Board District 1",
+      "San Juan Local School Board District 2",
+      "San Juan Local School Board District 4",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall JEREMIAH C. HUMES be retained in the office of Judge of the District Court of the Seventh Judicial District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 25,
+     "hasRegistered": false
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 4",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 27 (Multi-County)",
+      "State House 66 (Multi-County)",
+      "County Commissioner Seat C",
+      "County Assessor",
+      "County Recorder",
+      "County Treasurer",
+      "North Sanpete School District 1",
+      "North Sanpete School District 2",
+      "North Sanpete School District 3",
+      "South Sanpete School District 2",
+      "South Sanpete School District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 29,
+     "hasRegistered": false
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 27 (Multi-County)",
+      "State House 70 (Multi-County)",
+      "County Commissioner",
+      "County Assessor",
+      "County Recorder",
+      "County Treasurer",
+      "Local School Board District #4",
+      "Local School Board District #5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "MARK MCIFF Judicial Retention",
+      "CYNDEE C. PROBERT Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 24,
+     "hasRegistered": false
+    },
+    "summit-county-ut": {
+     "name": "Summit County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 3 (Multi-County)",
+      "State House 4 (Multi-County)",
+      "State House 23 (Multi-County)",
+      "State House 59  (Multi-County)",
+      "State House 68 (Multi-County)",
+      "State School Board 6 (Multi-County)",
+      "Summit County Council Seat A",
+      "Summit County Council Seat B",
+      "Summit County Council Seat C",
+      "Summit County Assessor",
+      "Summit County Recorder",
+      "Summit County Sheriff",
+      "Summit County Treasurer",
+      "North Summit School Board Seat 1",
+      "North Summit School Board Seat 2",
+      "North Summit School Board Seat 3",
+      "South Summit School Board Seat 1",
+      "South Summit School Board Seat 2",
+      "South Summit School Board Seat 3",
+      "South Summit School Board Seat 5",
+      "Park City School Board Seat 1",
+      "Park City School Board Seat 2",
+      "Park City School Board Seat 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall HEATHER ANNETTE BRERETON be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall JAMES D. GARDNER be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall LELAND DOUGLAS HOGAN be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall KRISTINE EDDE JOHNSON be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall WILLIAM K. KENDALL  be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall KARA LEA PETTIT be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall LAURA S. SCOTT be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall TERESA LYNN WELCH be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall MONICA DIAZ be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall ANNETTE T. JAN be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall ELIZABETH MARIE KNIGHT be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall TUPAKK AMARU GUSTAVO RENTERIA be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "PROPOSITION \"18\" - EMERGENCY SERVICES",
+      "NORTH SUMMIT SCHOOL BOND ELECTION"
+     ],
+     "precincts": 79,
+     "hasRegistered": false
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 28",
+      "State House 29 (Multi-County)",
+      "State School Board 10 (Multi-County)",
+      "County Council - District 1",
+      "County Council - District 3",
+      "County Council - District 4",
+      "County Assessor",
+      "County Recorder/Surveyor",
+      "County Treasurer",
+      "Local School Board District 1",
+      "Local School Board District 2",
+      "Local School Board District 3",
+      "Local School Board District 4",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall HEATHER ANNETTE BRERETON be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall TERESA LYNN WELCH be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall KRISTINE EDDE JOHNSON be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall WILLIAM K. KENDALL  be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall LAURA S. SCOTT be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall JAMES D. GARDNER be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall KARA LEA PETTIT be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall LELAND DOUGLAS HOGAN be retained in the office of Judge of the District Court of the Third Judicial District?",
+      "Shall TUPAKK AMARU GUSTAVO RENTERIA be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall ANNETTE T. JAN be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall ELIZABETH MARIE KNIGHT be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Shall MONICA DIAZ be retained in the office of Judge of the Juvenile Court of the Third Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C"
+     ],
+     "precincts": 84,
+     "hasRegistered": false
+    },
+    "uintah-county-ut": {
+     "name": "Uintah County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State House 68 (Multi-County)",
+      "State School Board 12 (Multi-County)",
+      "Uintah County Commissioner",
+      "Uintah County Assessor",
+      "Uintah County Recorder",
+      "Uintah County Surveyor",
+      "Uintah County Treasurer",
+      "Uintah County School Board District #4",
+      "Uintah County School Board District #5",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall GREG LAMB be retained in the office of Judge of the District Court of the Eighth Judicial District?",
+      "Shall JEFFRY K. ROSS be retained in the office of Judge of the Juvenile Court of the Eighth Juvenile Court District?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "Proposition 12"
+     ],
+     "precincts": 30,
+     "hasRegistered": false
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "U.S. House 4",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 22 (Multi-County)",
+      "State Senate 24 (Multi-County)",
+      "State Senate 26 (Multi-County)",
+      "State Senate 27 (Multi-County)",
+      "State Senate 25",
+      "State House 66 (Multi-County)",
+      "State House 50",
+      "State House 51",
+      "State House 52",
+      "State House 53",
+      "State House 54",
+      "State House 55",
+      "State House 56",
+      "State House 57",
+      "State House 58",
+      "State House 60",
+      "State House 61",
+      "State House 62",
+      "State House 63",
+      "State House 64",
+      "State House 65",
+      "State School Board 10 (Multi-County)",
+      "State School Board 12 (Multi-County)",
+      "State School Board 13",
+      "County Commissioner Seat C",
+      "County Assessor",
+      "County Recorder",
+      "County Surveyor",
+      "County Treasurer",
+      "School Board Alpine 3",
+      "School Board Alpine 5",
+      "School Board Alpine 6",
+      "School Board Nebo 1",
+      "School Board Nebo 3",
+      "School Board Nebo 6",
+      "School Board Nebo 7",
+      "School Board Provo 5",
+      "School Board Provo 6",
+      "School Board Provo 7",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall CHRISTINE S. JOHNSON be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall JENNIFER A. MABEY be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall ROGER WADSWORTH GRIFFIN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall SEAN M. PETERSEN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DEREK P. PULLAN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DENISE M. PORTER be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall BRENT H. BARTHOLOMEW  be retained in the office of Judge of the Juvenile Court of the Fourth Juvenile Court District?",
+      "ANN P. BOYLE Retention",
+      "ERIC STEPHEN JEWELL Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "PROPOSITION #5",
+      "PROPOSITION #9",
+      "PROPOSITION #10",
+      "PROPOSITION #11",
+      "PROPOSITION #13",
+      "PROPOSITION #14"
+     ],
+     "precincts": 498,
+     "hasRegistered": false
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 3",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 24 (Multi-County)",
+      "State Senate 26 (Multi-County)",
+      "State House 59  (Multi-County)",
+      "State School Board 12 (Multi-County)",
+      "County Council Seat B",
+      "County Council Seat D",
+      "County Council Seat E",
+      "County Council Seat G",
+      "County Assessor",
+      "County Recorder",
+      "County Surveyor",
+      "County Treasurer",
+      "Local School Board District Seat F",
+      "Local School Board District Seat G",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall CHRISTINE S. JOHNSON be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall JENNIFER A. MABEY be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall ROGER WADSWORTH GRIFFIN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall SEAN M. PETERSEN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DEREK P. PULLAN be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall DENISE M. PORTER be retained in the office of Judge of the District Court of the Fourth Judicial District?",
+      "Shall BRENT H. BARTHOLOMEW  be retained in the office of Judge of the Juvenile Court of the Fourth Juvenile Court District?",
+      "BROOK JASON SESSIONS Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "Midway Open Space Bond"
+     ],
+     "precincts": 54,
+     "hasRegistered": false
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 27 (Multi-County)",
+      "State Senate 29",
+      "State House 72",
+      "State House 73",
+      "State House 74",
+      "State House 75",
+      "State School Board 15 (Multi-County)",
+      "County Commission Seat C",
+      "County Assessor",
+      "County Clerk/Auditor Special 2yr seat",
+      "County Recorder",
+      "County Treasurer",
+      "Local School Board District 1",
+      "Local School Board District 2",
+      "Local School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall KEITH C. BARNES be retained in the office of Judge of the District Court of the Fifth Judicial District?",
+      "Shall MICHAEL FLEMMING LEAVITT be retained in the office of Judge of the Juvenile Court of the Fifth Juvenile Court District?",
+      "RONALD L. READ Judicial Retention",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "RAP Tax"
+     ],
+     "precincts": 136,
+     "hasRegistered": false
+    },
+    "wayne-county-ut": {
+     "name": "Wayne County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 2",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 26 (Multi-County)",
+      "State Senate 27 (Multi-County)",
+      "State House 69 (Multi-County)",
+      "State School Board 15 (Multi-County)",
+      "Commissioner C",
+      "Assessor",
+      "Treasurer/Recorder",
+      "Local School Board District 1",
+      "Local School Board District 2",
+      "Local School Board District 3",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "Bond Issue Rural County Health Care Tax"
+     ],
+     "precincts": 8,
+     "hasRegistered": false
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "U.S. President",
+      "U.S. Senate",
+      "U.S. House 1",
+      "Governor",
+      "Attorney General",
+      "State Auditor",
+      "State Treasurer",
+      "State Senate 3 (Multi-County)",
+      "State Senate 4 (Multi-County)",
+      "State House 6 (Multi-County)",
+      "State House 7",
+      "State House 8 (Multi-County)",
+      "State House 9",
+      "State House 10",
+      "State House 11 (Multi-County)",
+      "State House 12 (Multi-County)",
+      "State School Board 3 (Multi-County)",
+      "COUNTY COMMISSION SEAT C",
+      "COUNTY ASSESSOR",
+      "COUNTY RECORDER / SURVEYOR",
+      "COUNTY TREASURER",
+      "OGDEN SCHOOL BOARD DISTRICT 1",
+      "OGDEN SCHOOL BOARD DISTRICT 3",
+      "OGDEN SCHOOL BOARD DISTRICT 5",
+      "OGDEN SCHOOL BOARD DISTRICT 6",
+      "WEBER SCHOOL BOARD DISTRICT 4",
+      "WEBER SCHOOL BOARD DISTRICT 5",
+      "WEBER SCHOOL BOARD DISTRICT 7",
+      "Shall MATTHEW B. DURRANT be retained in the office of Justice of the Supreme Court of Utah?",
+      "Shall RYAN D. TENNEY be retained in the office of Judge of the Court of Appeals of Utah?",
+      "Shall JOSEPH M. BEAN be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall RONALD G. RUSSELL be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall CRISTINA PATRICIA ORTEGA be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall CRAIG HALL be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall MICHAEL DARIO DIREDA be retained in the office of Judge of the District Court of the Second Judicial District?",
+      "Shall TASHA WILLIAMS  be retained in the office of Judge of the Juvenile District Court of the Second Judicial District?",
+      "PAUL H OLDS",
+      "TRENT D. NELSON",
+      "Constitutional Amendment B",
+      "Constitutional Amendment C",
+      "BALLOT PROPOSITION 19",
+      "OGDEN VALLEY CITY",
+      "FORM OF GOVERNMENT OGDEN VALLEY CITY",
+      "CITY COUNCIL QUESTION"
+     ],
+     "precincts": 180,
+     "hasRegistered": false
+    }
+   },
+   "complete": true
+  },
+  {
+   "id": "primary06252024",
+   "name": "2024 Primary Election",
+   "date": "2024-06-25",
+   "asOf": "2025-01-02T19:02:29.2177458Z",
+   "source": "api",
+   "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "COUNTY COMMISSIONER"
+     ],
+     "precincts": 9,
+     "hasRegistered": false
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican for Box Elder County Commissioner Seat C"
+     ],
+     "precincts": 53,
+     "hasRegistered": false
+    },
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 2",
+      "REP County Council North Seat #4",
+      "REP County Council South Seat #6"
+     ],
+     "precincts": 167,
+     "hasRegistered": false
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 67",
+      "Republican for County Commissioner",
+      "Republican for County Assessor"
+     ],
+     "precincts": 21,
+     "hasRegistered": false
+    },
+    "daggett-county-ut": {
+     "name": "Daggett County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican for County Commissioner C"
+     ],
+     "precincts": 4,
+     "hasRegistered": false
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State Senate 8",
+      "Republican For State House 16",
+      "Republican For State House 17",
+      "Republican For State House 19",
+      "Republican For State School Board 3",
+      "REP TREASURER",
+      "DAVIS SCHOOL BOARD DISTRICT 1"
+     ],
+     "precincts": 438,
+     "hasRegistered": false
+    },
+    "duchesne-county-ut": {
+     "name": "Duchesne County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 67",
+      "Republican for County Commission Seat C"
+     ],
+     "precincts": 81,
+     "hasRegistered": false
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 67",
+      "Republican For State House 69",
+      "Republican for County Commissioner",
+      "Local School Board District 1"
+     ],
+     "precincts": 13,
+     "hasRegistered": false
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 69",
+      "Republican For State School Board 15"
+     ],
+     "precincts": 12,
+     "hasRegistered": false
+    },
+    "grand-county-ut": {
+     "name": "Grand County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 69"
+     ],
+     "precincts": 24,
+     "hasRegistered": false
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State School Board 15",
+      "Republican for County Commission \"C\""
+     ],
+     "precincts": 50,
+     "hasRegistered": false
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 66",
+      "Republican for County Recorder/Surveyor"
+     ],
+     "precincts": 30,
+     "hasRegistered": false
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 69",
+      "Republican For State School Board 15",
+      "Republican for Kane County Commissioner Seat C",
+      "Kane County School Board District 1"
+     ],
+     "precincts": 12,
+     "hasRegistered": false
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "REP County Commission Seat C",
+      "REP Millard County Treasurer",
+      "Millard School Board District 3"
+     ],
+     "precincts": 18,
+     "hasRegistered": false
+    },
+    "morgan-county-ut": {
+     "name": "Morgan County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican for County Commission #1",
+      "Republican for County Commission #3"
+     ],
+     "precincts": 25,
+     "hasRegistered": false
+    },
+    "piute-county-ut": {
+     "name": "Piute County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State School Board 15"
+     ],
+     "precincts": 6,
+     "hasRegistered": false
+    },
+    "rich-county-ut": {
+     "name": "Rich County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican for County Commissioner C",
+      "Republican for Recorder"
+     ],
+     "precincts": 12,
+     "hasRegistered": false
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For US House 2",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State Senate 8",
+      "Republican For State Senate 15",
+      "Republican For State Senate 16",
+      "Republican For State Senate 22",
+      "Republican For State House 21",
+      "Democratic For State House 23",
+      "Democratic For State House 24",
+      "Republican For State House 30",
+      "Republican For State House 39",
+      "Republican For State House 42",
+      "Republican For State House 45",
+      "Republican For State House 46",
+      "Republican For State School Board 7",
+      "Republican For State School Board 10",
+      "COUNTY COUNCIL AT LARGE C (DEM)",
+      "COUNTY COUNCIL AT LARGE C (REP)",
+      "COUNTY COUNCIL 2 (REP)",
+      "COUNTY SURVEYOR (REP)",
+      "JORDAN SCHOOL BOARD 5",
+      "SALT LAKE CITY SCHOOL BOARD 2",
+      "SALT LAKE CITY SCHOOL BOARD 7"
+     ],
+     "precincts": 983,
+     "hasRegistered": false
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 69",
+      "Republican For State School Board 15",
+      "Republican for Commission District 1",
+      "Republican for County Treasurer",
+      "Republican for County Assessor"
+     ],
+     "precincts": 25,
+     "hasRegistered": false
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 66"
+     ],
+     "precincts": 29,
+     "hasRegistered": false
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "REP County Commission Seat C"
+     ],
+     "precincts": 24,
+     "hasRegistered": false
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State School Board 10",
+      "Local School Board - District 2",
+      "Local School Board - District 4"
+     ],
+     "precincts": 84,
+     "hasRegistered": false
+    },
+    "uintah-county-ut": {
+     "name": "Uintah County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "REP COUNTY COMMISSIONER"
+     ],
+     "precincts": 30,
+     "hasRegistered": false
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State Senate 22",
+      "Republican For State House 66",
+      "Republican For State House 61",
+      "Republican For State House 58",
+      "Republican For State School Board 10",
+      "Republican For State School Board  13",
+      "School Board Nebo 7",
+      "School Board Alpine 5"
+     ],
+     "precincts": 495,
+     "hasRegistered": false
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 3",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican for County Council Seat B",
+      "Republican for County Assessor"
+     ],
+     "precincts": 54,
+     "hasRegistered": false
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State Senate 29",
+      "Republican For State School Board 15"
+     ],
+     "precincts": 136,
+     "hasRegistered": false
+    },
+    "wayne-county-ut": {
+     "name": "Wayne County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 2",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State House 69",
+      "Republican For State School Board 15",
+      "Local School Board District 2",
+      "Local School Board District 3"
+     ],
+     "precincts": 7,
+     "hasRegistered": false
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "Republican For US Senate",
+      "Republican For US House 1",
+      "Republican For Governor",
+      "Republican For Attorney General",
+      "Republican For State Auditor",
+      "Republican For State School Board 3"
+     ],
+     "precincts": 175,
+     "hasRegistered": false
+    }
+   },
+   "complete": false
+  },
+  {
+   "id": "primary03052024",
+   "name": "2024 Presidential Preference Primary",
+   "date": "2024-03-05",
+   "asOf": "2025-01-02T19:02:18.0307585Z",
+   "source": "api",
+   "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "PRESIDENT OF THE UNITED STATES"
+     ],
+     "precincts": 9,
+     "hasRegistered": false
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 51,
+     "hasRegistered": false
+    },
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 166,
+     "hasRegistered": false
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 20,
+     "hasRegistered": false
+    },
+    "daggett-county-ut": {
+     "name": "Daggett County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 3,
+     "hasRegistered": false
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "U.S. President - Democratic"
+     ],
+     "precincts": 438,
+     "hasRegistered": false
+    },
+    "duchesne-county-ut": {
+     "name": "Duchesne County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 80,
+     "hasRegistered": false
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 12,
+     "hasRegistered": false
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 11,
+     "hasRegistered": false
+    },
+    "grand-county-ut": {
+     "name": "Grand County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 23,
+     "hasRegistered": false
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 49,
+     "hasRegistered": false
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 18,
+     "hasRegistered": false
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 11,
+     "hasRegistered": false
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 17,
+     "hasRegistered": false
+    },
+    "morgan-county-ut": {
+     "name": "Morgan County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 24,
+     "hasRegistered": false
+    },
+    "piute-county-ut": {
+     "name": "Piute County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 5,
+     "hasRegistered": false
+    },
+    "rich-county-ut": {
+     "name": "Rich County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 11,
+     "hasRegistered": false
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "President of the United States"
+     ],
+     "precincts": 981,
+     "hasRegistered": false
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 25,
+     "hasRegistered": false
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 28,
+     "hasRegistered": false
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "DEM U.S. President"
+     ],
+     "precincts": 23,
+     "hasRegistered": false
+    },
+    "summit-county-ut": {
+     "name": "Summit County",
+     "races": [
+      "Democratic Candidate for President of the United States"
+     ],
+     "precincts": 65,
+     "hasRegistered": false
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 83,
+     "hasRegistered": false
+    },
+    "uintah-county-ut": {
+     "name": "Uintah County",
+     "races": [
+      "DEMOCRATIC FOR U.S. PRESIDENT"
+     ],
+     "precincts": 29,
+     "hasRegistered": false
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "DEM Democratic for U.S. President"
+     ],
+     "precincts": 492,
+     "hasRegistered": false
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 53,
+     "hasRegistered": false
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 135,
+     "hasRegistered": false
+    },
+    "wayne-county-ut": {
+     "name": "Wayne County",
+     "races": [
+      "Democratic for U.S. President"
+     ],
+     "precincts": 7,
+     "hasRegistered": false
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "DEM Democratic Presidential Primary"
+     ],
+     "precincts": 199,
+     "hasRegistered": false
+    }
+   },
+   "complete": false
+  },
+  {
+   "id": "2023-Nov-General",
+   "name": "2023 General Election",
+   "date": "2023-11-21",
+   "asOf": "2025-01-02T19:01:57.5956187Z",
+   "source": "api",
+   "counties": {
+    "beaver-county-ut": {
+     "name": "Beaver County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "CITY COUNCIL",
+      "TOWN COUNCIL"
+     ],
+     "precincts": 10,
+     "hasRegistered": false
+    },
+    "box-elder-county-ut": {
+     "name": "Box Elder County",
+     "races": [
+      "Tremonton City Council",
+      "Deweyville Town Council",
+      "Garland City Council",
+      "Howell Town Council",
+      "Perry City Council",
+      "Fielding Town Council",
+      "Fielding Town Council Two Yr Term",
+      "Honeyville City Mayor",
+      "Honeyville City Council",
+      "Honeyville City Council",
+      "Bear River City Council",
+      "Brigham City Council",
+      "Mantua Town Council",
+      "Willard City Council",
+      "Garland City Council",
+      "Proposition 1",
+      "Proposition 1",
+      "Proposition 1",
+      "Proposition 3"
+     ],
+     "precincts": 36,
+     "hasRegistered": false
+    },
+    "cache-county-ut": {
+     "name": "Cache County",
+     "races": [
+      "Hyde Park City Council",
+      "Trenton Town Council",
+      "Hyrum City Council",
+      "Nibley City Council",
+      "Trenton Town Council 2yr",
+      "North Logan City Council",
+      "Wellsville City Council",
+      "Logan City Council",
+      "Nibley City Council 2yr",
+      "Providence City Council",
+      "Amalga Town Council 4yr",
+      "Amalga Town Council 2yr",
+      "Mendon City Council",
+      "Smithfield City Council",
+      "Paradise City Council",
+      "Cache School District Bond Proposition"
+     ],
+     "precincts": 161,
+     "hasRegistered": false
+    },
+    "carbon-county-ut": {
+     "name": "Carbon County",
+     "races": [
+      "EAST CARBON CITY COUNCIL",
+      "EAST CARBON CITY COUNCIL",
+      "PRICE CITY COUNCIL"
+     ],
+     "precincts": 8,
+     "hasRegistered": false
+    },
+    "daggett-county-ut": {
+     "name": "Daggett County",
+     "races": [
+      "Dutch John Mayor",
+      "Manila Mayor",
+      "Dutch John Councilmember"
+     ],
+     "precincts": 2,
+     "hasRegistered": false
+    },
+    "davis-county-ut": {
+     "name": "Davis County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Bountiful City Council",
+      "Clearfield City Council",
+      "Clinton City Council",
+      "Farmington City Council",
+      "Fruit Heights City Council",
+      "Kaysville City Council",
+      "Layton City Council",
+      "North Salt Lake City Council",
+      "Syracuse City Council",
+      "West Bountiful City Council",
+      "West Point City Council",
+      "Woods Cross City Council",
+      "Benchland Water District Trustee",
+      "Central Davis Sewer District Trustee",
+      "Mutton Hollow Improvement District Trustee",
+      "South Davis Water District Trustee",
+      "Clinton City RAP Tax OFFICIAL BALLOT PROPOSITION FOR CLINTON CITY, UTAH"
+     ],
+     "precincts": 392,
+     "hasRegistered": false
+    },
+    "duchesne-county-ut": {
+     "name": "Duchesne County",
+     "races": [
+      "Roosevelt City Council",
+      "Tabiona Town Council",
+      "Duchesne City Council"
+     ],
+     "precincts": 10,
+     "hasRegistered": false
+    },
+    "emery-county-ut": {
+     "name": "Emery County",
+     "races": [
+      "Ferron City Council",
+      "Emery Town Council"
+     ],
+     "precincts": 3,
+     "hasRegistered": false
+    },
+    "garfield-county-ut": {
+     "name": "Garfield County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Cannonville Town Mayor",
+      "Tropic Town Council",
+      "Boulder Town Council",
+      "Panguitch Town Council",
+      "Boulder Town Council",
+      "Cannonville Town Council"
+     ],
+     "precincts": 16,
+     "hasRegistered": false
+    },
+    "grand-county-ut": {
+     "name": "Grand County",
+     "races": [
+      "Moab City Council"
+     ],
+     "precincts": 11,
+     "hasRegistered": false
+    },
+    "iron-county-ut": {
+     "name": "Iron County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Parowan City Council",
+      "Cedar City Council",
+      "Enoch City Council",
+      "Brian Head Town Council",
+      "Brian Head Town Council",
+      "Iron County School Board Bond",
+      "Iron County Special Bond",
+      "OFFICIAL BALLOT PROPOSITION FOR THE TOWN OF BRIAN HEAD TOWN, SPECIAL BOND ELECTION",
+      "Proposition #11",
+      "Proposition #5",
+      "Proposition #7"
+     ],
+     "precincts": 61,
+     "hasRegistered": false
+    },
+    "juab-county-ut": {
+     "name": "Juab County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Mona City Council",
+      "Rocky Ridge Town Council",
+      "Levan Town Council",
+      "Levan Town Council",
+      "Nephi City Council"
+     ],
+     "precincts": 18,
+     "hasRegistered": false
+    },
+    "kane-county-ut": {
+     "name": "Kane County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Glendale Town Council",
+      "Big Water Town Council",
+      "Orderville Town Council",
+      "Big Water Town Council"
+     ],
+     "precincts": 11,
+     "hasRegistered": false
+    },
+    "millard-county-ut": {
+     "name": "Millard County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Delta City Council",
+      "Kanosh Town Council",
+      "Leamington Town Council",
+      "Hinckley Town Council",
+      "Hinckley Town Council",
+      "Holden Town Council",
+      "Millard County School District Special Bond"
+     ],
+     "precincts": 17,
+     "hasRegistered": false
+    },
+    "morgan-county-ut": {
+     "name": "Morgan County",
+     "races": [
+      "Morgan City Council"
+     ],
+     "precincts": 6,
+     "hasRegistered": false
+    },
+    "piute-county-ut": {
+     "name": "Piute County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Marysvale Town Council Board Member",
+      "LOCAL SPECIAL BOND ELECTION"
+     ],
+     "precincts": 5,
+     "hasRegistered": false
+    },
+    "rich-county-ut": {
+     "name": "Rich County",
+     "races": [
+      "Randolph Town Council At-Large",
+      "Laketown Town Council At-Large"
+     ],
+     "precincts": 3,
+     "hasRegistered": false
+    },
+    "salt-lake-county-ut": {
+     "name": "Salt Lake County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "TOWN OF ALTA COUNCIL AT-LARGE",
+      "BLUFFDALE COUNCIL AT-LARGE",
+      "TOWN OF BRIGHTON COUNCIL AT-LARGE",
+      "COPPERTON METRO TOWNSHIP COUNCIL AT-LARGE A",
+      "COPPERTON METRO TOWNSHIP COUNCIL AT-LARGE B",
+      "COPPERTON METRO TOWNSHIP COUNCIL AT-LARGE C",
+      "COTTONWOOD HEIGHTS COUNCIL DISTRICT 1",
+      "COTTONWOOD HEIGHTS COUNCIL DISTRICT 2",
+      "DRAPER CITY COUNCIL AT-LARGE",
+      "EMIGRATION CANYON METRO TOWNSHIP COUNCIL AT-LARGE",
+      "HERRIMAN CITY COUNCIL DISTRICT 1",
+      "HERRIMAN CITY COUNCIL DISTRICT 4",
+      "CITY OF HOLLADAY COUNCIL DISTRICT 4",
+      "KEARNS METRO TOWNSHIP COUNCIL DISTRICT 1",
+      "KEARNS METRO TOWNSHIP COUNCIL DISTRICT 3",
+      "KEARNS METRO TOWNSHIP COUNCIL DISTRICT 5",
+      "MIDVALE CITY COUNCIL DISTRICT 1",
+      "MIDVALE CITY COUNCIL DISTRICT 2",
+      "MIDVALE CITY COUNCIL DISTRICT 3",
+      "MILLCREEK COUNCIL DISTRICT 3",
+      "MURRAY CITY COUNCIL DISTRICT 1",
+      "MURRAY CITY COUNCIL DISTRICT 3",
+      "MURRAY CITY COUNCIL DISTRICT 5",
+      "RIVERTON CITY COUNCIL DISTRICT 1",
+      "RIVERTON CITY COUNCIL DISTRICT 2",
+      "RIVERTON CITY COUNCIL DISTRICT 5",
+      "SALT LAKE CITY MAYOR",
+      "SALT LAKE CITY COUNCIL DISTRICT 2",
+      "SALT LAKE CITY COUNCIL DISTRICT 4",
+      "SALT LAKE CITY COUNCIL DISTRICT 6",
+      "SALT LAKE CITY COUNCIL DISTRICT 7",
+      "SANDY CITY COUNCIL AT-LARGE",
+      "SANDY CITY COUNCIL DISTRICT 2",
+      "SANDY CITY COUNCIL DISTRICT 4",
+      "CITY OF SOUTH JORDAN COUNCIL DISTRICT 1",
+      "CITY OF SOUTH JORDAN COUNCIL DISTRICT 2",
+      "CITY OF SOUTH JORDAN COUNCIL DISTRICT 4",
+      "CITY OF SOUTH SALT LAKE COUNCIL AT-LARGE",
+      "CITY OF SOUTH SALT LAKE COUNCIL DISTRICT 1",
+      "CITY OF SOUTH SALT LAKE COUNCIL DISTRICT 4",
+      "CITY OF SOUTH SALT LAKE COUNCIL DISTRICT 5",
+      "CITY OF TAYLORSVILLE COUNCIL DISTRICT 1",
+      "CITY OF TAYLORSVILLE COUNCIL DISTRICT 2",
+      "CITY OF TAYLORSVILLE COUNCIL DISTRICT 3",
+      "CITY OF WEST JORDAN MAYOR",
+      "CITY OF WEST JORDAN COUNCIL DISTRICT 1",
+      "CITY OF WEST JORDAN COUNCIL DISTRICT 2",
+      "CITY OF WEST JORDAN COUNCIL DISTRICT 3",
+      "CITY OF WEST JORDAN COUNCIL DISTRICT 4",
+      "WEST VALLEY CITY COUNCIL AT-LARGE",
+      "WEST VALLEY CITY COUNCIL DISTRICT 1",
+      "WEST VALLEY CITY COUNCIL DISTRICT 3",
+      "WHITE CITY METRO TOWNSHIP COUNCIL AT-LARGE",
+      "COPPERTON IMPROVEMENT DISTRICT BOARD OF TRUSTEES AT-LARGE",
+      "COTTONWOOD IMPROVEMENT DISTRICT BOARD OF TRUSTEES AT-LARGE",
+      "KEARNS IMPROVEMENT DISTRICT BOARD OF TRUSTEES AT-LARGE",
+      "MAGNA WATER DISTRICT BOARD OF TRUSTEES AT-LARGE",
+      "MIDVALLEY IMPROVEMENT DISTRICT BOARD OF TRUSTEES AT-LARGE",
+      "MT. OLYMPUS IMPROVEMENT DISTRICT BOARD OF TRUSTEES AT-LARGE",
+      "TAYLORSVILLE-BENNION IMPROVEMENT DISTRICT BOARD OF TRUSTEES DIVISION 2",
+      "OFFICIAL BALLOT FOR THE TOWN OF BRIGHTON, UTAH INITIATIVE ELECTION",
+      "OFFICIAL BALLOT FOR BLUFFDALE CITY, UTAH REFERENDUM ELECTION",
+      "OFFICIAL BALLOT PROPOSITION FOR THE SANDY CITY, UTAH SPECIAL BOND ELECTION",
+      "OFFICIAL BALLOT PROPOSITION FOR THE MIDVALE CITY, UTAH SPECIAL BOND ELECTION"
+     ],
+     "precincts": 858,
+     "hasRegistered": false
+    },
+    "san-juan-county-ut": {
+     "name": "San Juan County",
+     "races": [
+      "Town of Bluff Council Seats Council Seats",
+      "Monticello City Council",
+      "Blanding City Council"
+     ],
+     "precincts": 3,
+     "hasRegistered": false
+    },
+    "sanpete-county-ut": {
+     "name": "Sanpete County",
+     "races": [
+      "Sterling Town Council",
+      "Gunnison City Council",
+      "Fairview City Council",
+      "Fayette Mayor",
+      "Fayette Town Council",
+      "Moroni City Council",
+      "Mt. Pleasant City Council",
+      "Ephraim City Council",
+      "Mayfield Town Council - 4yr",
+      "Manti City Council",
+      "Centerfield City Council",
+      "Mayfield Town Council- 2yr"
+     ],
+     "precincts": 15,
+     "hasRegistered": false
+    },
+    "sevier-county-ut": {
+     "name": "Sevier County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Annabella Councilmember",
+      "Central Valley Councilmember",
+      "Elsinore Councilmember",
+      "Joseph Councilmember",
+      "Salina Councilmember",
+      "Sigurd Councilmember",
+      "Sigurd Councilmember"
+     ],
+     "precincts": 32,
+     "hasRegistered": false
+    },
+    "summit-county-ut": {
+     "name": "Summit County",
+     "races": [
+      "Park City Council Member",
+      "Kamas City Council Member",
+      "Oakley City Council Member",
+      "Coalville City Council Member",
+      "Snyderville Basin Water Reclamation District Trustee",
+      "South Summit Fire District Commissioner",
+      "Park City Recreational Facilities Bond Question"
+     ],
+     "precincts": 52,
+     "hasRegistered": false
+    },
+    "tooele-county-ut": {
+     "name": "Tooele County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Erda City Council - District 1",
+      "Erda City Council - District 3",
+      "Erda City Council - District 5",
+      "Grantsville City Council",
+      "Lake Point City Council",
+      "Stansbury Greenbelt Service Area Trustee",
+      "Stansbury Recreation Service Area Trustee",
+      "Tooele City Council",
+      "PROPOSITION #8 - Tooele City Question 1",
+      "Wendover City Council"
+     ],
+     "precincts": 83,
+     "hasRegistered": false
+    },
+    "uintah-county-ut": {
+     "name": "Uintah County",
+     "races": [
+      "NAPLES CITY COUNCIL",
+      "BALLARD CITY COUNCIL",
+      "NAPLES CITY COUNCIL Two Year Term",
+      "VERNAL CITY COUNCIL",
+      "ASHLEY VALLEY WATER & SEWER IMPROVEMENT DISTRICT Board Member"
+     ],
+     "precincts": 20,
+     "hasRegistered": false
+    },
+    "utah-county-ut": {
+     "name": "Utah County",
+     "races": [
+      "Alpine City Council",
+      "American Fork City Council",
+      "Cedar Fort City Council Seat C",
+      "Cedar Fort City Council Seat D",
+      "Cedar Hills City Council",
+      "Eagle Mountain City Council",
+      "Fairfield Mayor",
+      "Fairfield City Council Seat A",
+      "Fairfield City Council Seat B",
+      "Fairfield City Council Seat D",
+      "Genola City Council 1st Choice 1st Choice",
+      "Genola City Council 2nd Choice 2nd Choice",
+      "Genola City Council 3rd Choice 3rd Choice",
+      "Genola City Council 4th Choice 4th Choice",
+      "Genola City Council 5th Choice 5th Choice",
+      "Goshen City Council",
+      "Highland City Council",
+      "Lehi City Council 1st Choice 1st Choice",
+      "Lehi City Council 2nd Choice 2nd Choice",
+      "Lehi City Council 3rd Choice 3rd Choice",
+      "Lehi City Council 4th Choice 4th Choice",
+      "Lehi City Council 5th Choice 5th Choice",
+      "Lehi City Council 6th Choice 6th Choice",
+      "Lindon City Council",
+      "Mapleton City Council",
+      "Orem City Council",
+      "Payson City Council 1st Choice 1st Choice",
+      "Payson City Council 2nd Choice 2nd Choice",
+      "Payson City Council 3rd Choice 3rd Choice",
+      "Payson City Council 4th Choice 4th Choice",
+      "Payson City Council 5th Choice 5th Choice",
+      "Payson City Council 6th Choice 6th Choice",
+      "Payson City Council 7th Choice 7th Choice",
+      "Payson City Council 8th Choice 8th Choice",
+      "Payson City Council 9th Choice 9th Choice",
+      "Pleasant Grove City Council",
+      "City Wide 2 - Provo City Council",
+      "Provo City Council District 1",
+      "Provo City Council District 3",
+      "Provo City Council District 4",
+      "Salem City Council",
+      "Santaquin City Council",
+      "Saratoga Springs City Council",
+      "Spanish Fork City Council",
+      "Springville City Council",
+      "Vineyard City Council 1st Choice 1st Choice",
+      "Vineyard City Council 2nd Choice 2nd Choice",
+      "Vineyard City Council 3rd Choice 3rd Choice",
+      "Vineyard City Council 4th Choice 4th Choice",
+      "Vineyard City Council 5th Choice 5th Choice",
+      "Vineyard City Council 6th Choice 6th Choice",
+      "Vineyard City Council 7th Choice 7th Choice",
+      "Woodland Hills City Council 1st Choice 1st Choice",
+      "Woodland Hills City Council 2nd Choice 2nd Choice",
+      "Woodland Hills City Council 3rd Choice 3rd Choice",
+      "Woodland Hills City Council 4th Choice 4th Choice",
+      "Proposition #14\nFiscal Year 2024 Property Tax Rate",
+      "Orem Proposition #6",
+      "Lindon City Sales and Use Tax for the Purpose of Financing Cultural and Recreational Facilities and Cultural Organizations (Known as Parks, Arts, Recreation and Culture Tax or \"PARC\" Tax). \n\nShall Lindon City, Utah, be authorized to impose a 0.1% (one tenth of one percent, or one cent of every ten dollars spent in Lindon) sales and use tax (PARC Tax) for the purpose of financing cultural and recreational facilities and ongoing operations, and to finance ongoing operations of cultural organizations within Lindon City, and which tax would remain in place for a period of ten years?\n\n Proposition #4\nParks, Arts, Recreation and Culture Tax or \"PARC\" Tax",
+      "Alpine Proposition #2 Proposition #2"
+     ],
+     "precincts": 362,
+     "hasRegistered": false
+    },
+    "wasatch-county-ut": {
+     "name": "Wasatch County",
+     "races": [
+      "Hideout Town Council",
+      "Midway City Council",
+      "Wallsburg Town Council",
+      "Park City Council Member",
+      "Park City Recreational Facilities Bond Question",
+      "Proposition #9 - EMS Sales Tax",
+      "Heber City Council 1st Preference 1st Preference",
+      "Heber City Council 2nd Preference 2nd Preference",
+      "Heber City Council 3rd Preference 3rd Preference",
+      "Heber City Council 4th Preference 4th Preference",
+      "Heber City Council 5th Preference 5th Preference",
+      "Heber City Council 6th Preference 6th Preference",
+      "Heber City Council 7th Preference 7th Preference",
+      "Heber City Council 8th Preference 8th Preference",
+      "Heber City Council 9th Preference 9th Preference",
+      "Heber City Council 10th Preference 10th Preference",
+      "Heber City Council 11th Preference 11th Preference"
+     ],
+     "precincts": 53,
+     "hasRegistered": false
+    },
+    "washington-county-ut": {
+     "name": "Washington County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Apple Valley Town Mayor",
+      "Apple Valley Town Council",
+      "Enterprise City Council",
+      "Hildale City Council",
+      "Hurricane City Council",
+      "Ivins City Council",
+      "La Verkin City Council",
+      "Rockville Town Council",
+      "Santa Clara City Council",
+      "Springdale Town Council",
+      "St George City Council",
+      "Virgin Town Council",
+      "Washington City Council",
+      "St George City Special Bond Election"
+     ],
+     "precincts": 130,
+     "hasRegistered": false
+    },
+    "wayne-county-ut": {
+     "name": "Wayne County",
+     "races": [
+      "U.S. HOUSE OF REPRESENTATIVES DISTRICT 2",
+      "Hanksville Council"
+     ],
+     "precincts": 8,
+     "hasRegistered": false
+    },
+    "weber-county-ut": {
+     "name": "Weber County",
+     "races": [
+      "HARRISVILLE CITY COUNCIL AT-LARGE",
+      "HOOPER CITY MAYOR",
+      "HOOPER CITY COUNCIL AT-LARGE",
+      "HUNTSVILLE TOWN COUNCIL",
+      "MARRIOTT-SLATERVILLE CITY COUNCIL DISTRICT WEST",
+      "NORTH OGDEN CITY COUNCIL AT-LARGE",
+      "OGDEN CITY MAYOR",
+      "OGDEN CITY COUNCIL AT-LARGE SEAT C",
+      "OGDEN CITY COUNCIL DISTRICT 4",
+      "OGDEN CITY COUNCIL DISTRICT 2",
+      "PLAIN CITY COUNCIL AT-LARGE",
+      "PLEASANT VIEW CITY COUNCIL AT-LARGE",
+      "RIVERDALE CITY COUNCIL AT-LARGE",
+      "ROY CITY COUNCIL AT-LARGE",
+      "SOUTH OGDEN CITY COUNCIL AT-LARGE",
+      "UINTAH CITY COUNCIL AT-LARGE",
+      "WASHINGTON TERRACE CITY COUNCIL AT-LARGE",
+      "WEST HAVEN CITY COUNCIL AT-LARGE",
+      "HOOPER WATER IMPROVEMENT DISTRICT DIVISION 2",
+      "NORTH VIEW FIRE DISTRICT 1",
+      "UINTAH HIGHLANDS IMPROVEMENT DISTRICT AT-LARGE",
+      "WEBER COUNTY JUSTICE CENTER BOND"
+     ],
+     "precincts": 194,
+     "hasRegistered": false
+    }
+   },
+   "complete": false
   }
  ]
 }
