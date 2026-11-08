@@ -36,6 +36,7 @@ jobs:
         working-directory: campaign-in-a-box
         run: python3 tools/collect_utah_results.py ${{ inputs.all && '--all' || '' }}
       - name: Commit if anything changed
+        if: ${{ !cancelled() }}   # keep whatever was collected, even if a later step stopped
         run: |
           git config user.name "campaign-kit-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

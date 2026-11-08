@@ -52,26 +52,38 @@ NON_CANDIDATE = {"over votes", "under votes", "ballots cast", "total votes", "ti
 
 
 # --------------------------------------------------------------------------- fetching
-def get_json(path, retries=3):
+class FetchError(Exception):
+    """A page that couldn't be read after retries. The collector skips it and keeps going."""
+
+
+def get_json(path, retries=4):
+    """JSON from the results site, or None if it doesn't exist. Empty or non-JSON replies
+    (the site sometimes answers with a blank page or an error page) are retried with a
+    growing pause, then raise FetchError so the caller can skip just that piece."""
     url = path if path.startswith("http") else BASE + urllib.parse.quote(path, safe="/:?=&-_.")
+    last = ""
     for attempt in range(retries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
             with urllib.request.urlopen(req, timeout=60) as r:
-                data = json.loads(r.read().decode("utf-8-sig"))
+                body = r.read().decode("utf-8-sig", errors="replace")
             time.sleep(PAUSE)
-            return data
+            if body.strip():
+                try:
+                    return json.loads(body)
+                except json.JSONDecodeError:
+                    last = f"not JSON ({body.strip()[:60]!r})"
+            else:
+                last = "empty reply"
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 time.sleep(PAUSE)
                 return None
-            if attempt == retries - 1:
-                raise
-        except (urllib.error.URLError, TimeoutError):
-            if attempt == retries - 1:
-                raise
+            last = f"HTTP {e.code}"
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
+            last = f"{type(e).__name__}: {e}"
         time.sleep(PAUSE * 5 * (attempt + 1))
-    return None
+    raise FetchError(f"{path}: {last}")
 
 
 def text(v):
@@ -187,7 +199,10 @@ def collect(only=None, county_only=None, force=False):
             index = json.load(f)
     known = {e["id"]: e for e in index.get("elections", [])}
 
-    state = get_json("/results/public/api/jurisdictions/Utah")
+    try:
+        state = get_json("/results/public/api/jurisdictions/Utah")
+    except FetchError as err:
+        sys.exit(f"Couldn't read the list of Utah elections: {err}")
     if not state:
         sys.exit("Couldn't read the list of Utah elections.")
     counties = [{"slug": c["shortName"], "name": text(c.get("name"))} for c in state.get("childLocalities") or []]
@@ -198,10 +213,16 @@ def collect(only=None, county_only=None, force=False):
         elections = [e for e in elections if e["publicElectionId"] in only]
     print(f"{len(elections)} elections, {len(counties)} counties")
 
+    problems = []
     for e in elections:
         eid = e["publicElectionId"]
         election = {"id": eid, "name": text(e.get("name")) or eid, "date": str(e.get("electionDate") or "")[:10]}
-        export = get_json(f"/cdn/results/Utah/export-{eid}.json")
+        try:
+            export = get_json(f"/cdn/results/Utah/export-{eid}.json")
+        except FetchError as err:
+            problems.append(str(err))
+            print(f"{eid}: couldn't read the statewide export, using each contest instead ({err})")
+            export = None
         as_of = export.get("createdAt") if export else None
         prev = known.get(eid)
         if prev and prev.get("complete") and not force and as_of and prev.get("asOf") == as_of and not county_only:
@@ -209,35 +230,63 @@ def collect(only=None, county_only=None, force=False):
             continue
         blocks = {(b.get("name") or "").strip().lower(): b for b in (export or {}).get("localResults") or []}
         entry = {**election, "asOf": as_of, "source": "export" if export else "api", "counties": {}}
+        failed = 0
         for c in counties:
-            data = get_json(f"/results/public/api/elections/{c['slug']}/{eid}/data")
-            if not data:
+            try:
+                data = get_json(f"/results/public/api/elections/{c['slug']}/{eid}/data")
+                if not data:
+                    continue
+                turnout = parse_turnout(data)
+                block = blocks.get(c["name"].lower())
+                if block is not None:
+                    races = parse_export_county(block)
+                else:
+                    races = []
+                    for item in data.get("ballotItems") or []:
+                        try:
+                            bd = get_json(f"/results/public/api/elections/{c['slug']}/{eid}/data/ballot-item/{item['id']}")
+                        except FetchError as err:
+                            problems.append(str(err))
+                            continue
+                        if bd:
+                            races.append(parse_breakdown(item, bd))
+            except FetchError as err:
+                failed += 1
+                problems.append(str(err))
+                print(f"  {eid} {c['slug']}: skipped — {err}")
+                if prev and c["slug"] in prev.get("counties", {}):  # keep what an earlier run saved
+                    entry["counties"][c["slug"]] = prev["counties"][c["slug"]]
                 continue
-            turnout = parse_turnout(data)
-            block = blocks.get(c["name"].lower())
-            if block is not None:
-                races = parse_export_county(block)
-            else:
-                races = []
-                for item in data.get("ballotItems") or []:
-                    bd = get_json(f"/results/public/api/elections/{c['slug']}/{eid}/data/ballot-item/{item['id']}")
-                    if bd:
-                        races.append(parse_breakdown(item, bd))
             stamp = as_of or ((data.get("election") or {}).get("asOf"))
             doc = county_file(election, c, turnout, races, stamp)
+            entry["asOf"] = entry["asOf"] or stamp
+            if not doc["races"]:  # e.g. an election whose precinct results aren't posted yet
+                print(f"  {eid} {c['slug']}: no precinct results yet")
+                continue
             folder = os.path.join(OUT, eid)
             os.makedirs(folder, exist_ok=True)
             with open(os.path.join(folder, f"{c['slug']}.json"), "w", encoding="utf-8") as f:
                 json.dump(doc, f, separators=(",", ":"), ensure_ascii=False)
             entry["counties"][c["slug"]] = {"name": c["name"], "races": [r["name"] for r in doc["races"]],
                                            "precincts": len(turnout), "hasRegistered": any(v[1] for v in turnout.values())}
-            entry["asOf"] = entry["asOf"] or stamp
             print(f"  {eid} {c['slug']}: {len(doc['races'])} races, {len(turnout)} precincts")
         if county_only and prev:  # keep the other counties from the earlier run
             entry["counties"] = {**prev.get("counties", {}), **entry["counties"]}
-        entry["complete"] = not county_only and bool(as_of)  # elections with an export can be skipped next time if unchanged
-        known[eid] = entry
+        # Skip next time only if every county was read and there were results to save.
+        entry["complete"] = not county_only and bool(as_of) and failed == 0 and bool(entry["counties"])
+        if entry["counties"]:
+            known[eid] = entry
+        write_index(idx_path, state, known)  # save progress after each election
 
+    write_index(idx_path, state, known)
+    if problems:
+        print(f"\n{len(problems)} piece(s) couldn't be read this time and will be tried again next run:")
+        for p in problems[:30]:
+            print("  -", p)
+    print("Wrote", os.path.relpath(idx_path, KIT))
+
+
+def write_index(idx_path, state, known):
     index = {
         "collected": dt.date.today().isoformat(),
         "source": "Utah election results (electionresults.utah.gov), Lieutenant Governor's Office",
@@ -246,7 +295,6 @@ def collect(only=None, county_only=None, force=False):
     }
     with open(idx_path, "w", encoding="utf-8") as f:
         json.dump(index, f, indent=1, ensure_ascii=False)
-    print("Wrote", os.path.relpath(idx_path, KIT))
 
 
 # ------------------------------------------------------------------------- self-test
