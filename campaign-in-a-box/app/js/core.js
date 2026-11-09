@@ -415,19 +415,6 @@
     if (n < 25) return { n, ok: true, text: `${n} words — good` };
     return { n, ok: false, text: `${n} words — aim for under 25` };
   };
-  // Fills the message-box formula: [Name] will [action on a local issue], because [proof] — [contrast].
-  M.suggestCore = (cfg) => {
-    const c = cfg.candidate, mb = cfg.message_box;
-    const lower = (t) => t.charAt(0).toLowerCase() + t.slice(1);
-    const issue = (mb.issues[0] && mb.issues[0].title) || "[take on the local issue you care about most]";
-    const proof = ((mb.q1 || []).filter(Boolean)[1] || (mb.q1 || []).filter(Boolean)[0] || "[proof from your record]").replace(/\.$/, "");
-    const q2 = (mb.q2 || []).find((q) => q.text);
-    const name = c.full_name || c.first_name || "[Your name]";
-    const pron = c.pronoun_subject || "they";
-    const verbFirst = /^(got|led|built|cleared|ran|started|fixed|served|organized|raised|helped|founded|won|saved|delivered|taught|coached|\w+ed)\b/i.test(proof);
-    const why = verbFirst ? `${pron} ${lower(proof)}` : lower(proof);
-    return `${name} will ${lower(issue)} — ${why}.${q2 ? ` Meanwhile, ${lower(q2.text.replace(/\.$/, ""))}.` : ""}`.replace(/\s+/g, " ");
-  };
   // Builder rules from Step 2, in plain words.
   M.sloganProblems = (cfg) => {
     const out = [];
@@ -465,7 +452,7 @@
       place: { state: "", county: "", town: "" },
       candidate: { first_name: "", last_name: "", full_name: "", initials: "", pronoun_subject: "they", pronoun_possessive: "their",
         office: "", district: "", jurisdiction: "", bio_short: "", bio_points: ["", "", ""] },
-      message_box: { core_message: "", q1: [""], q2: [], q3_responses: [], q4: [], issues: [{ title: "", short: "", detail: "" }, { title: "", short: "", detail: "" }, { title: "", short: "", detail: "" }] },
+      message_box: { core_message: "", builder: {}, q1: [""], q2: [], q3_responses: [], q4: [], issues: [{ title: "", short: "", detail: "" }, { title: "", short: "", detail: "" }, { title: "", short: "", detail: "" }] },
       slogans: [],
       brand: { palette: "river", type_pairing: "civic", custom: { main: "#2E5E4E", accent: "#F2B705" } },
       election: { election_day: "", offsets: { ...DEFAULT_OFFSETS }, polls_close: "8:00 p.m.", voter_info_url: "", election_office: "", election_office_phone: "",

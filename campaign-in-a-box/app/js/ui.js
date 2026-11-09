@@ -512,11 +512,51 @@
         <div class="card"><label class="lbl" for="core" style="margin-top:0">Your one sentence</label>
           <textarea class="field" id="core" rows="3" data-bind="cfg.message_box.core_message" placeholder="[Name] will [do this local thing], because [proof from your record] — [unlike / while] [the contrast].">${esc(mb.core_message)}</textarea>
           <div data-live="corecheck"></div>
-          <div class="linkrow"><button type="button" class="linkbtn" data-act="suggest">Suggest one from my answers</button></div></div>
+          ${sentenceBuilder()}</div>
         ${help("What makes a good sentence?", "<p>Your strongest “why you” point plus your strongest contrast, tied to a local issue.</p><p>• Under 25 words.<br>• A neighbor could repeat it after hearing it once.<br>• It's true and you can prove it.<br>• It doesn't require knowing anything about politics.</p><p>The four lists are the Tully message box, used by campaigns of every party.</p>")}`,
-      live: { corecheck: () => { const c = M.coreCheck(st.cfg.message_box.core_message); return `<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px"><span class="tag ${c.ok ? "ok" : "warn"}">${c.text}</span><span class="tag">Combine: why you + contrast</span></div>`; } },
+      live: { corecheck: () => { const mb = st.cfg.message_box, c = M.coreCheck(mb.core_message); return `<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px"><span class="tag ${c.ok ? "ok" : "warn"}">${c.text}</span><span class="tag">Combine: why you + contrast</span></div>${mb.prev_core ? `<p class="tiny muted" style="margin:8px 0 0">Your previous sentence: “${esc(mb.prev_core)}” <button type="button" class="linkbtn" style="min-height:0;padding:0" data-act="sb-restore">Put it back</button></p>` : ""}`; },
+        sbpreview: () => {
+          const t = builtSentence();
+          if (!t) return "";
+          const c = M.coreCheck(t);
+          return `<div class="card" style="background:var(--chip);box-shadow:none;margin-top:14px"><div class="tiny muted" style="font-weight:600">Joined together</div><p style="margin:6px 0 8px;font-weight:600">${esc(t)}</p>
+            <div class="row" style="flex-wrap:wrap;gap:8px"><span class="tag ${c.ok ? "ok" : "warn"}">${c.text}</span><button type="button" class="btn small" data-act="sb-use">Use this as my sentence</button></div>
+            <p class="tiny muted" style="margin:8px 0 0">Then edit it in the box above until it sounds like you saying it out loud.</p></div>`;
+        } },
       actions: `<a class="btn" href="#/slogans">Next: slogans</a>`
     };
+  };
+
+  // Three-part helper for the one sentence. The candidate writes each part (tapping their own
+  // message-box points to start from); the app only joins them, so the words stay theirs.
+  const sentenceBuilder = () => {
+    const mb = st.cfg.message_box, b = mb.builder || {};
+    const chips = (part, items) => items.length ? `<div class="chips" style="margin-top:8px" role="group" aria-label="Start from your own words">${items.slice(0, 4).map((t) => `<button type="button" class="chip" data-act="sb-chip" data-arg="${part}" data-text="${esc(t)}">${esc(t.length > 48 ? t.slice(0, 46) + "…" : t)}</button>`).join("")}</div>` : "";
+    const issues = (mb.issues || []).map((i) => i.title).filter(Boolean);
+    const q1 = (mb.q1 || []).filter(Boolean).concat((st.cfg.candidate.bio_points || []).filter(Boolean));
+    const q2 = (mb.q2 || []).map((q) => q.text).filter(Boolean);
+    return `<details class="help" style="box-shadow:none;padding:0;margin-top:14px"${b.open ? " open" : ""} data-act="sb-toggle"><summary>${I.plus({ c: "var(--blue)" })}Build it in three parts</summary><div style="padding:0">
+      <p class="small" style="margin:0 0 4px">Write each part in your own words, or tap one of your points to start from it. We join them; you polish.</p>
+      <label class="lbl" for="sb-do">1 · What you'll do <span class="opt">(starts “${esc(firstName() === "you" ? "[Your name]" : st.cfg.candidate.full_name)} will…”)</span></label>
+      <input class="field sm" id="sb-do" data-bind="cfg.message_box.builder.do" value="${esc(b.do || "")}" placeholder="finally fix east-side flooding">${chips("do", issues)}
+      <label class="lbl" for="sb-why">2 · Why you can do it</label>
+      <input class="field sm" id="sb-why" data-bind="cfg.message_box.builder.why" value="${esc(b.why || "")}" placeholder="He's an engineer who already cleared Mill Creek">${chips("why", q1)}
+      <label class="lbl" for="sb-con">3 · The contrast <span class="opt">(optional)</span></label>
+      <input class="field sm" id="sb-con" data-bind="cfg.message_box.builder.contrast" value="${esc(b.contrast || "")}" placeholder="City Hall left it “pending” six years">${chips("contrast", q2)}
+      <div data-live="sbpreview"></div></div></details>`;
+  };
+  const builtSentence = () => {
+    const b = st.cfg.message_box.builder || {}, nm = st.cfg.candidate.full_name || "[Your name]";
+    const clean = (t) => String(t || "").trim().replace(/[.;,\s]+$/, "");
+    const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+    let d = clean(b.do), w = clean(b.why), c = clean(b.contrast);
+    if (!d && !w) return "";
+    d = d.replace(/^(i|he|she|they|we)\s+will\s+/i, "").replace(/^will\s+/i, "");
+    if (d && /^[A-Z][a-z]/.test(d) && !/^[A-Z][a-z]+\s[A-Z]/.test(d)) d = d.charAt(0).toLowerCase() + d.slice(1);
+    let out = d ? `${nm} will ${d}.` : `${nm}.`;
+    if (w) out += ` ${cap(w)}.`;
+    if (c) out += /^[a-z]/.test(c) || /^(while|unlike|but|and)\b/i.test(c) ? ` ${cap(c)}.` : ` ${c}.`;
+    return out.replace(/\s+/g, " ");
   };
 
   SCREENS.box = (q) => {
@@ -990,6 +1030,22 @@
   const GROUP = { oe: "plan", plan: "plan", how: "plan", message: "message", box: "message", slogans: "message", materials: "materials", piece: "materials", colors: "materials", website: "materials", social: "materials", emails: "materials", spanish: "materials", checklist: "launch" };
   let live = {}, after = null, lastRoute = "";
 
+  // Going from a review screen (checklist, a material, the plan) to fix something remembers where you were,
+  // so the fix screen can offer a button straight back.
+  const HUBS = ["checklist", "materials", "piece", "plan", "website", "social", "emails", "spanish", "how"];
+  const EDITS = ["q", "box", "message", "slogans", "colors", "oe"];
+  let returnTo = "";
+  const trackReturn = () => {
+    const from = lastRoute.split("/")[0], to = route().name || "";
+    if (HUBS.includes(to) || !to || to === "home" || to === "welcome") returnTo = "";
+    else if (EDITS.includes(to) && HUBS.includes(from)) returnTo = lastRoute.replace(/\/$/, "");
+  };
+  const returnLabel = () => {
+    const [nm, ...rest] = returnTo.split("/"), arg = rest.join("/");
+    if (nm === "piece") { const p = st.cfg.pieces.find((x) => x.id === arg); return p ? R.pieceName(p).replace("{first}", st.cfg.candidate.first_name || "you") : "your materials"; }
+    return { checklist: "Before you print", materials: "Your materials", plan: "Your plan", how: "How we worked this out", website: "Your website", social: "Social & ads", emails: "Emails", spanish: "Spanish text" }[nm] || "where you were";
+  };
+
   const render = (keepScroll) => {
     let { name: nm, arg } = route();
     if (!st) { if (nm && nm !== "q") nm = ""; }
@@ -998,6 +1054,11 @@
     const fn = SCREENS[nm] || SCREENS.home;
     const scr = fn(arg);
     const routeKey = nm + "/" + arg;
+    if (returnTo && EDITS.includes(nm)) {
+      const lbl = returnLabel();
+      scr.back = [returnTo, lbl.length > 18 ? "Back" : lbl];
+      scr.actions = `<a class="btn" href="#/${returnTo}">${I.back({ s: 20 })} Done — back to ${esc(lbl)}</a>` + (scr.actions ? scr.actions.replace(/class="btn"/, 'class="btn secondary"') : "");
+    }
     const y = window.scrollY;
     const focusId = keepScroll && document.activeElement ? document.activeElement.id : null;
     const bar = document.getElementById("bar"), main = document.getElementById("main");
@@ -1075,7 +1136,8 @@
     if (["sitepage", "email"].includes(el.dataset.act)) e.preventDefault();
     act(el.dataset.act, el.dataset.arg, el, e);
   });
-  window.addEventListener("hashchange", () => render(false));
+  document.addEventListener("toggle", (e) => { const el = e.target; if (el.dataset && el.dataset.act === "sb-toggle") act("sb-toggle", "", el, e); }, true);
+  window.addEventListener("hashchange", () => { trackReturn(); render(false); });
   window.addEventListener("scroll", () => { const b = document.getElementById("bar"); if (b) b.classList.toggle("scrolled", window.scrollY > 4); }, { passive: true });
 
   const busy = async (label, fn) => {
@@ -1231,11 +1293,22 @@
       save(); render(true); toast(`Added ${parsed.rows.length} precinct${parsed.rows.length > 1 ? "s" : ""}`);
     },
     template: () => O.download(new Blob(["precinct,registered_now,e1_label,e1_registered,e1_ballots_cast,e1_baseline_votes,e1_race_total_votes,e2_label,e2_registered,e2_ballots_cast,e2_baseline_votes,e2_race_total_votes,e3_label,e3_registered,e3_ballots_cast,e3_baseline_votes,e3_race_total_votes,notes\n"], { type: "text/csv" }), "precinct-results-template.csv"),
-    suggest: () => {
-      const s = M.suggestCore(st.cfg), old = st.cfg.message_box.core_message;
-      st.cfg.message_box.core_message = s; save(); render(true);
-      toast("Suggested from your answers — edit it to sound like you");
-      if (old) st._undoCore = old;
+    "sb-chip": (part, el) => {
+      st.cfg.message_box.builder = st.cfg.message_box.builder || {};
+      st.cfg.message_box.builder[part] = el.dataset.text;
+      st.cfg.message_box.builder.open = true;
+      save(); render(true);
+      const f = document.getElementById({ do: "sb-do", why: "sb-why", contrast: "sb-con" }[part]); if (f) f.focus();
+    },
+    "sb-toggle": (a, el) => { st.cfg.message_box.builder = { ...(st.cfg.message_box.builder || {}), open: el.open }; save(); },
+    "sb-restore": () => { const mb = st.cfg.message_box; mb.core_message = mb.prev_core; mb.prev_core = ""; save(); render(true); },
+    "sb-use": () => {
+      const t = builtSentence(); if (!t) return;
+      const old = st.cfg.message_box.core_message;
+      st.cfg.message_box.prev_core = old && old !== t ? old : "";
+      st.cfg.message_box.core_message = t; save(true); render(true);
+      const core = document.getElementById("core"); if (core) { core.focus(); core.setSelectionRange(t.length, t.length); }
+      toast("Added — now make it sound like you", 3000);
     },
     "box-add": (k) => { const mb = st.cfg.message_box; mb[k] = mb[k] || []; mb[k].push(k === "q2" ? { text: "", source: "" } : k === "q3_responses" ? { attack: "", response: "" } : ""); save(); render(true); },
     "box-del": (a) => { const [k, i] = a.split("."); st.cfg.message_box[k].splice(Number(i), 1); save(); render(true); },
