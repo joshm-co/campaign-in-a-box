@@ -29,7 +29,7 @@ You don't need campaign experience to use this kit. You need a few hours, a phon
 
 ## Then
 
-Take everything into **Step 3 (Validation)**: test your slogans with real voters before you print in volume.
+Then **run it** (the app's Run tab, or [`validation/README.md`](validation/README.md)): test your slogans with real voters before you print in volume, take the rules checklist to your election office, check your website and email, and enter your numbers every week to see if you're on pace for the win number.
 
 ## Three rules that matter more than anything in this kit
 

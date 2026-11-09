@@ -391,6 +391,12 @@
   const localDay = (iso) => { const d = new Date(iso); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
   const lastBackupText = () => st.meta.lastBackup ? `Last backup ${U.fmtDate(localDay(st.meta.lastBackup), "en", "long")}.` : "No backup saved yet.";
 
+  const runSub = () => {
+    const status = CIB.run.status(st);
+    if (!status || status.last < 0) return "Test your message, check the rules, track each week";
+    const behind = status.metrics.filter((m) => m.verdict.key === "warn" || m.verdict.key === "bad").length;
+    return behind ? `${behind} weekly number${behind > 1 ? "s" : ""} behind plan` : "Weekly numbers on track";
+  };
   SCREENS.home = () => {
     const p = progressOf(), r = result(), c = st.cfg.candidate;
     const card = (href, icon, bg, title, sub, status) => `<a class="item" href="#/${href}"><span class="ic" style="flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:${bg}">${icon}</span><span class="grow"><b>${title}</b><br><span class="small muted">${sub}</span></span>${status}${I.chev()}</a>`;
@@ -405,6 +411,7 @@
           ${card("message", I.chat({ c: "var(--amber)" }), "var(--amber-soft)", "Your message", st.cfg.message_box.core_message ? "Message box, one sentence, slogans" : "Why you're running, in one sentence", p.msgDone ? I.done() : I.todo())}
           ${card("materials", I.screen({ c: "var(--green)" }), "var(--green-soft)", "Your materials", `${p.ready} of ${p.total} print pieces ready`, p.ready === p.total ? I.done() : I.todo())}
           ${card("checklist", I.tick({ c: "var(--ink)" }), "var(--chip)", "Before you print", p.need.length ? `${p.need.length} thing${p.need.length > 1 ? "s" : ""} to confirm` : "Ready for the printer", p.need.length ? I.todo() : I.done())}
+          ${card("run", I.target({ c: "var(--ink)" }), "var(--chip)", "Run your campaign", runSub(), "")}
         </div>
         <p class="section-label">Saving</p>
         <div class="card">${note("info", `Your campaign is saved <b>only in this browser on this device</b>. Your phone and laptop aren't connected — a backup file moves it between them. ${lastBackupText()}`)}
@@ -805,6 +812,7 @@
         </div>
         <p class="section-label">⚖️ Set by law — must be confirmed</p>
         <div class="card flush list">${law.map(([k, label, sub]) => `<label class="check manual"><input type="checkbox" data-act="check" data-arg="${k}" ${st.checks[k] ? "checked" : ""}><span class="grow">${label}<br><span class="tiny muted">${sub}</span></span></label>`).join("")}</div>
+        <p class="small" style="margin:8px 8px 0"><a href="#/law">See what we found for your state, and every other rule to confirm</a></p>
         ${help("What to ask your election office", "<p>• What exact “Paid for by” wording do I need? Committee name, treasurer, address?<br>• Minimum type size? Does it need a box? Is it needed on small items and online ads?<br>• Does a translated piece need a translated disclaimer?<br>• Confirm: registration deadline, when ballots go out, early voting dates, Election Day, polls closing time.<br>• When may yard signs go up, where are they allowed, and when must they come down?</p>")}
         ${st.strategy.precinctSource === "unofficial" ? `<p class="section-label">Recommended</p><div class="card flush"><label class="check manual"><input type="checkbox" data-act="official"><span class="grow">I've replaced the unofficial numbers with official ones<br><span class="tiny muted">Ask the county clerk to email the certified precinct results.</span></span></label></div>` : ""}
         ${prod.length ? `<div class="card"><p class="section-label" style="margin:0 0 6px">Order by</p>${prod.map((p) => `<div class="stat"><span>${esc(p.label)}</span><b>${U.fmtDate(p.startBy, "en", "short")}</b></div>`).join("")}</div>` : ""}`,
@@ -1054,18 +1062,289 @@
       <p class="tiny muted center" style="margin-top:24px">Campaign-in-a-Box is free and open source (MIT). Not legal advice.</p>`
   });
 
+  /* ------------------------------------------------------------ run (Step 3) */
+  const RN = CIB.run, LW = CIB.law;
+  const pill = (key, label) => `<span class="pill ${key}">${key === "ok" ? I.tick({ s: 14, w: 3 }) : key === "none" ? "" : I.warn({ s: 14 })}${esc(label)}</span>`;
+  const ext = (url, label) => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
+  const checkbox = (bind, label, sub) => `<label class="check manual"><input type="checkbox" data-bind="${bind}" ${getP(bind) ? "checked" : ""}><span class="grow">${label}${sub ? `<br><span class="tiny muted">${sub}</span>` : ""}</span></label>`;
+  const qrPieces = () => R.activePieces(st).filter((p) => p.qr_path);
+  const lawItems = () => LW.items(st);
+  const qualitySummary = () => {
+    const site = RN.siteChecks(O.website(st, R.context(st)));
+    const lh = RN.lhResult(st.run.quality.lh), em = RN.emailResult(st.run.quality.email), qr = qrPieces();
+    const qrDone = qr.filter((p) => st.run.quality.qr[p.id]).length;
+    const pass = site.filter((x) => x.ok).length + lh.filter((x) => x.ok).length + em.setup.filter((x) => x.ok).length + em.numbers.filter((x) => x.ok).length + qrDone;
+    return { site, lh, em, qr, qrDone, pass, total: site.length + lh.length + em.setup.length + em.numbers.length + qr.length };
+  };
+  // Keep "Before you print" in step with answers given here.
+  const syncChecks = () => {
+    const qr = qrPieces();
+    if (qr.length) st.checks.qr = qr.every((p) => st.run.quality.qr[p.id]);
+  };
+
+  SCREENS.run = () => {
+    const status = RN.status(st), law = LW.progress(lawItems()), q = qualitySummary();
+    const behind = status ? status.metrics.filter((m) => m.verdict.key === "warn" || m.verdict.key === "bad") : [];
+    const sl = (st.cfg.slogans || []).filter((s) => s.text);
+    const card = (href, icon, bg, title, sub, done) => `<a class="item" href="#/${href}"><span class="ic" style="flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:${bg}">${icon}</span><span class="grow"><b>${title}</b><br><span class="small muted">${sub}</span></span>${done == null ? "" : done ? I.done() : I.todo()}${I.chev()}</a>`;
+    return {
+      title: "Run your campaign", back: ["home", "Home"],
+      html: `${backupNudge()}<h1>Run your campaign</h1><p class="lede">Check your message with real voters, confirm the rules, test what you publish, and track every week against your win number.</p>
+        <div class="card flush list">
+          ${card("dash", I.target({ c: "var(--blue)" }), "var(--blue-soft)", "Weekly numbers", !status ? "Add Election Day first" : status.last < 0 ? "Add your first week's numbers" : behind.length ? `${behind.length} behind: ${behind.map((m) => m.short.toLowerCase()).join(", ")}` : "Everything on track", status && status.last >= 0 ? !behind.length : null)}
+          ${card("test", I.chat({ c: "var(--amber)" }), "var(--amber-soft)", "Test your message", sl.length ? `${sl.length} slogan${sl.length > 1 ? "s" : ""} to try on voters` : "Write slogans first", null)}
+          ${card("law", I.tick({ c: "var(--ink)" }), "var(--chip)", "Check the rules", `${law.done} of ${law.total} answered${law.diff ? ` · ${law.diff} different here` : ""}`, law.done === law.total)}
+          ${card("quality", I.screen({ c: "var(--green)" }), "var(--green-soft)", "Quality checks", `${q.pass} of ${q.total} passing — website, email, QR codes`, q.pass === q.total)}
+        </div>
+        ${note("info", "Everything here stays on this device like the rest of your campaign. To share weekly numbers with a team, keep them in a shared spreadsheet and bring them in as a file — see <a href=\"#/dash\">Weekly numbers</a>.")}`
+    };
+  };
+
+  /* weekly dashboard */
+  const chart = (status, m) => {
+    const { win, rows, last } = status;
+    const W = 320, H = 132, L = 6, Rr = 6, T = 10, B = 22;
+    const goal = m.goal || 1;
+    const tgt = win.weeks.map((_, i) => goal * RN.paceShare(win, m.key, i));
+    const act = last >= 0 ? rows.slice(0, last + 1).map((r) => r["cum_" + m.key]) : [];
+    const max = Math.max(goal, ...act, 1) * 1.05;
+    const x = (i) => L + (win.n === 1 ? (W - L - Rr) / 2 : (i * (W - L - Rr)) / (win.n - 1));
+    const y = (v) => T + (H - T - B) * (1 - v / max);
+    const path = (vals) => vals.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+    const lab = (i) => U.fmtDate(win.weeks[i], "en", "short");
+    const ticks = [0, Math.floor((win.n - 1) / 2), win.n - 1].filter((v, i, a) => a.indexOf(v) === i);
+    const label = `${m.label}: ${RN.fmt(m, m.actual)} so far, ${RN.fmt(m, m.target)} planned by now, goal ${RN.fmt(m, m.goal)}.`;
+    return `<svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">
+      <line x1="${L}" x2="${W - Rr}" y1="${y(0)}" y2="${y(0)}" class="axis"/>
+      <line x1="${L}" x2="${W - Rr}" y1="${y(goal)}" y2="${y(goal)}" class="grid"/>
+      <path d="${path(tgt)}" class="plan"/>
+      ${act.length ? `<path d="${path(act)}" class="act"/>${act.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="${i === act.length - 1 ? 4.5 : 3}" class="dot"><title>Week of ${lab(i)}: ${RN.fmt(m, v)} (plan ${RN.fmt(m, tgt[i])})</title></circle>`).join("")}` : ""}
+      ${ticks.map((i) => `<text x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === win.n - 1 ? "end" : "middle"}" class="tl">${lab(i)}</text>`).join("")}
+    </svg>`;
+  };
+  const dashView = { week: "" };
+  SCREENS.dash = () => {
+    const status = RN.status(st);
+    if (!status) return {
+      title: "Weekly numbers", back: ["run", "Run"],
+      html: `<h1>Weekly numbers</h1>${note("info", `Add your Election Day first — the weekly goals count back from it. <a href="#/q/eday">Add it</a>`)}`
+    };
+    const { win, rows, last, metrics, projection: pj } = status;
+    const entered = new Set((st.run.weeks || []).map((w) => w.week));
+    const weekNow = Math.max(0, Math.min(win.n - 1, status.nowIdx));
+    if (!dashView.week || !win.weeks.includes(dashView.week)) dashView.week = win.weeks[status.nowIdx >= 0 ? Math.max(0, weekNow - (status.nowIdx > 0 ? 1 : 0)) : Math.min(win.n - 1, last + 1)];
+    const cur = (st.run.weeks || []).find((w) => w.week === dashView.week) || {};
+    const val = (k) => (cur[k] != null ? cur[k] : "");
+    const goals = RN.goals(st);
+    const pjPct = pj && pj.total != null ? Math.min(100, (pj.total / pj.win) * 100) : 0;
+    return {
+      title: "Weekly numbers", back: ["run", "Run"], cls: "mid",
+      html: `<h1>Weekly numbers</h1>
+        <p class="lede">${status.nowIdx < 0 ? `Door-knocking starts ${U.fmtDate(win.start, "en", "long")}.` : status.nowIdx >= win.n ? "The campaign is over." : `Week ${status.nowIdx + 1} of ${win.n}.`} Goals come from your win number, your plan and your budget.</p>
+        ${st.meta.example ? note("info", "Six fictional weeks for the Rivertown example.") : ""}
+        ${status.before ? note("warn", `${status.before} saved week${status.before > 1 ? "s are" : " is"} before the campaign start (${U.fmtDate(win.start, "en", "short")}) and not counted. Change the start date under “Goals” if they should count.`) : ""}
+        ${pj ? `<div class="card"><h2>Against your win number</h2>
+          ${pj.total != null ? `<div class="row" style="justify-content:space-between;font-weight:600;font-size:15px"><span>On pace for about</span><span>${U.int(pj.total)} of ${U.int(pj.win)} votes</span></div>
+          <div class="bar2" role="img" aria-label="On pace for ${U.int(pj.total)} of ${U.int(pj.win)} votes"><div style="width:${pjPct}%;background:var(--blue)"></div><div style="width:${100 - pjPct}%;background:#F2A33A"></div></div>
+          ${note(pj.short <= 0 ? "ok" : "warn", pj.short <= 0 ? "At this pace your conversations cover the gap." : `About ${U.int(pj.short)} votes short at this pace. That's about ${U.int(pj.short * st.strategy.field.convPerVote)} more conversations — roughly ${U.int((pj.short * st.strategy.field.convPerVote) / Math.max(0.05, status.contact || st.strategy.field.contactRate) / Math.max(1, win.n - last - 1))} more doors a week than now.`)}
+          <p class="tiny muted" style="margin:8px 0 0">Votes a candidate like you usually gets here (~${U.int(pj.base)}) plus one vote per ${st.strategy.field.convPerVote} conversations, if the rest of the campaign keeps this pace. A planning guess — supporters you've actually found are below.</p>`
+          : `<p class="small">Conversations on pace: ${U.int(pj.conversations)} — about ${U.int(pj.added)} votes. Add a baseline on the <a href="#/how">plan settings</a> to compare with the win number (${U.int(pj.win)}).</p>`}</div>` : ""}
+        ${status.notes.map((n) => note("warn", esc(n))).join("")}
+        <div class="metrics">${metrics.map((m) => `<div class="card metric"><div class="row" style="justify-content:space-between;gap:8px;align-items:flex-start"><h2 style="margin:0">${m.label}</h2>${pill(m.verdict.key, m.verdict.label)}</div>
+          <p class="small" style="margin:6px 0 0"><b class="num">${RN.fmt(m, m.actual)}</b> <span class="muted">so far${last >= 0 ? ` · plan by now ${RN.fmt(m, m.target)}` : ""} · goal ${RN.fmt(m, m.goal)}</span></p>
+          ${chart(status, m)}</div>`).join("")}</div>
+        <p class="tiny muted" style="margin:4px 8px 0"><span class="key act"></span> Your numbers, added up &nbsp; <span class="key plan"></span> The plan &nbsp;·&nbsp; On track = at least ${U.pct(RN.THRESHOLDS.onTrack)} of plan; behind = ${U.pct(RN.THRESHOLDS.behind)}–${U.pct(RN.THRESHOLDS.onTrack)}; well behind = under ${U.pct(RN.THRESHOLDS.behind)}.</p>
+
+        <div class="card" style="margin-top:16px"><h2>Add a week's numbers</h2>
+          <label class="lbl" for="wk-pick">Week of</label>
+          <select id="wk-pick" class="field sm" data-act="wk-pick">${win.weeks.map((w, i) => `<option value="${w}"${w === dashView.week ? " selected" : ""}>${U.fmtDate(w, "en", "short")} – ${U.fmtDate(U.addDays(w, 6), "en", "short")} (week ${i + 1})${entered.has(w) ? " ✓" : ""}</option>`).join("")}</select>
+          <div class="two" style="margin-top:6px">${RN.METRICS.map((m) => `<div><label class="lbl" for="wk-${m.key}">${m.label}${m.key === "dollars" ? " ($)" : ""}</label><input class="field sm" id="wk-${m.key}" inputmode="${m.key === "dollars" ? "decimal" : "numeric"}" data-wk="${m.key}" value="${esc(val(m.key))}" autocomplete="off"></div>`).join("")}
+            <div><label class="lbl" for="wk-note">Note <span class="opt">(optional)</span></label><input class="field sm" id="wk-note" data-wk="note" value="${esc(val("note"))}" autocomplete="off"></div></div>
+          <p class="hint">Numbers for that week only, not running totals. <b>Supporters found</b> = people who said they'll vote for you. Saving a week that's already there replaces it.</p>
+          <button type="button" class="btn small" style="margin-top:10px" data-act="wk-save">${entered.has(dashView.week) ? "Update this week" : "Save this week"}</button></div>
+
+        ${(st.run.weeks || []).length ? `<div class="card"><h2>Weeks saved</h2><div class="scrollx" tabindex="0" role="region" aria-label="Weeks saved, scrollable table"><table class="data"><thead><tr><th>Week of</th>${RN.METRICS.map((m) => `<th>${m.short}</th>`).join("")}<th><span class="sr">Remove</span></th></tr></thead><tbody>
+          ${st.run.weeks.slice().sort((a, b) => a.week.localeCompare(b.week)).map((w) => `<tr><td>${U.fmtDate(w.week, "en", "short")}${w.note ? `<br><span class="tiny muted">${esc(w.note)}</span>` : ""}</td>${RN.METRICS.map((m) => `<td>${w[m.key] === "" || w[m.key] == null ? "—" : RN.fmt(m, U.num(w[m.key]))}</td>`).join("")}<td><button type="button" class="linkbtn" data-act="wk-del" data-arg="${w.week}" aria-label="Remove week of ${U.fmtDate(w.week, "en", "short")}">${I.trash({ s: 18 })}</button></td></tr>`).join("")}
+          </tbody></table></div></div>` : ""}
+
+        <p class="section-label">Working with a team</p>
+        <div class="card"><p class="small" style="margin:0 0 10px">One person can keep the numbers here. If several people report, keep a shared spreadsheet (Google Sheets, Excel online), then once a week download it as a CSV file and open it here. The app never connects to Google, so your numbers aren't sent anywhere.</p>
+          <div class="linkrow"><button type="button" class="linkbtn" data-act="wk-template">Download a blank sheet (CSV)</button><label class="linkbtn" for="wk-file">Open a sheet (CSV)</label><input type="file" id="wk-file" class="sr" accept=".csv,.tsv,.txt,text/csv" data-act="wk-import">${(st.run.weeks || []).length ? `<button type="button" class="linkbtn" data-act="wk-export">Download these weeks (CSV)</button>` : ""}</div>
+          ${help("How to make the shared sheet", "<p>1. Download the blank sheet and open it in Google Sheets (File → Import) or Excel.<br>2. Share it with whoever reports numbers. One row per week; the week is the Monday it started (or any day in it).<br>3. Each Sunday: File → Download → Comma-separated values (.csv), then <b>Open a sheet</b> here. Weeks already saved are replaced by the sheet's numbers.<br>Columns can be in any order; the app looks for headings that mention week, doors, conversations, supporters, dollars and signups.</p>")}</div>
+
+        <details class="card goals"><summary><b>Goals and start date</b> <span class="small muted">— change if you have better numbers</span></summary>
+          ${field({ bind: "run.start", label: "Campaign tracking starts", kind: "date", sm: true, hint: `Blank = when door-knocking starts (${U.fmtDate(win.start, "en", "short")}).` })}
+          <div class="two">${RN.METRICS.map((m) => `<div>${field({ bind: `run.goals.${m.key}`, label: `${m.label} goal`, im: "numeric", sm: true, ph: String(goals[m.key].auto), hint: esc(goals[m.key].why) })}</div>`).join("")}</div>
+          <p class="hint">Blank = worked out for you (shown in gray). Doors and conversations change with your <a href="#/how">plan settings</a>; money with your <a href="#/q/budget">budget</a>.</p></details>`,
+      actions: `<a class="btn" href="#/run">Back to Run</a>`
+    };
+  };
+
+  /* message testing */
+  SCREENS.test = () => {
+    const sl = (st.cfg.slogans || []).filter((s) => s.text);
+    const base = st.cfg.web.base_url;
+    const utm = (v) => R.utmUrl(base || "https://your-site.example", "/", { source: "facebook", medium: "paid", campaign: "message-test", content: v });
+    const io = (path, label, im) => field({ bind: path, label, im: im || "numeric", sm: true });
+    return {
+      title: "Test your message", back: ["run", "Run"], cls: "mid",
+      html: `<h1>Test your message</h1><p class="lede">Try your one sentence and slogans on real voters in the precincts you're targeting before you print 5,000 of them. Start with the cheapest test.</p>
+        ${!sl.length ? note("warn", `Write a few slogans first. <a href="#/slogans">Add slogans</a>`) : ""}
+        <div class="card"><h2>1 · Listening sessions <span class="small muted">free · 1–2 weeks</span></h2>
+          <p class="small">Sit down with 6–10 voters from your <b>Persuade</b> and <b>Turn out</b> precincts at a time — a living room, a library room, a coffee shop. Don't recruit friends or supporters; ask neighbors of volunteers, or knock and invite. Two or three sessions is enough.</p>
+          ${help("The script (45 minutes)", `<p>1. “What's the biggest problem in this part of town?” Let them talk. Write down their words — they're better than ours.<br>2. Read your one sentence: “${esc(st.cfg.message_box.core_message || "your one sentence")}”. Ask: what stuck? What didn't you believe?<br>3. Show the slogans on cards, one at a time, in a different order each session. Ask which they'd remember tomorrow and which they like.<br>4. At the end, without looking, ask: “Which one do you remember?” That count matters most.<br>5. Ask what would make them vote — and what would make them skip this race.</p><p>Don't argue or explain. Don't say whose campaign it is until the end if you can help it.</p>`)}
+          ${sl.length ? `<p class="section-label" style="margin:14px 0 6px">Tally — after each session, add the counts</p>
+          ${io("run.tests.listen.people", "People who came, all sessions")}
+          <div class="scrollx" tabindex="0" role="region" aria-label="Slogan tally"><table class="data tally"><thead><tr><th>Slogan</th><th>Remembered</th><th>Liked</th></tr></thead><tbody>
+            ${sl.map((s, i) => `<tr><td>${esc(s.text)}</td><td><input class="field sm num" aria-label="Remembered: ${esc(s.text)}" inputmode="numeric" data-bind="run.tests.listen.scores.${i}.remembered" data-kind="int" value="${esc(valueFor(`run.tests.listen.scores.${i}.remembered`))}"></td><td><input class="field sm num" aria-label="Liked: ${esc(s.text)}" inputmode="numeric" data-bind="run.tests.listen.scores.${i}.liked" data-kind="int" value="${esc(valueFor(`run.tests.listen.scores.${i}.liked`))}"></td></tr>`).join("")}
+          </tbody></table></div>
+          <div data-live="listen">${listenLive()}</div>` : ""}</div>
+
+        <div class="card"><h2>2 · A/B ads <span class="small muted">$100–300 · 1–2 weeks</span></h2>
+          <p class="small">Run two ads that are the same in every way — picture, audience, budget, days — except the slogan. The one more people click wins. Aim the ads at your target precincts' ZIP codes.</p>
+          ${help("Set it up", `<p>1. Make two copies of the same ad in <a href="#/social">Social & ads</a>, changing only the slogan.<br>2. In the ad tool, give each ad its own link so your website stats can tell them apart:<br><code class="wrap">A: ${esc(utm("a"))}</code><br><code class="wrap">B: ${esc(utm("b"))}</code><br>3. Same budget, same audience, same dates. Let the tool split them evenly (Meta: “A/B test”; Google: “Experiments”).<br>4. Political ads need identity checks and a “Paid for by” label first — that can take weeks. ⚖️ <a href="#/law">Check the rules</a>.</p>${base ? "" : `<p>Add your <a href="#/q/web">website address</a> to fill in the real links.</p>`}`)}
+          <div class="two" style="margin-top:10px"><div>${field({ bind: "run.tests.ab.a.label", label: "Ad A slogan", sm: true, ph: sl[0] ? sl[0].text : "" })}</div><div>${field({ bind: "run.tests.ab.b.label", label: "Ad B slogan", sm: true, ph: sl[1] ? sl[1].text : "" })}</div>
+            <div>${io("run.tests.ab.a.shown", "A: times shown")}</div><div>${io("run.tests.ab.b.shown", "B: times shown")}</div>
+            <div>${io("run.tests.ab.a.clicks", "A: clicks")}</div><div>${io("run.tests.ab.b.clicks", "B: clicks")}</div></div>
+          <div data-live="ab">${abLive()}</div></div>
+
+        <div class="card"><h2>3 · A quick poll <span class="small muted">volunteer calls or texts · 2–3 weeks</span></h2>
+          <p class="small">Volunteers call or text voters in your target precincts. Half hear message A, half hear message B (alternate down the list), then everyone gets the same question: “Does that make you more likely to vote for ${esc(name() || "this candidate")}?”</p>
+          <div class="stat"><span>100 people answering</span><b>±${U.pct(RN.moe(100), 1)}</b></div>
+          <div class="stat"><span>200 people</span><b>±${U.pct(RN.moe(200), 1)}</b></div>
+          <div class="stat"><span>400 people</span><b>±${U.pct(RN.moe(400), 1)}</b></div>
+          <p class="tiny muted">The margin of error for each number, 95% of the time. Comparing two halves of a poll needs a bigger difference than this — the app works it out below. A small poll finds big differences only.</p>
+          ${help("Poll script", `<p>“Hi, I'm a volunteer with ${esc(name() || "[candidate]")}'s campaign for ${esc(st.cfg.candidate.office || "[office]")}. Do you have one minute for three questions?”<br>1. “How likely are you to vote in the ${esc(st.cfg.candidate.office || "local")} election this ${U.fmtDate(st.cfg.election.election_day, "en", "long").split(" ")[0] || "fall"} — certain, probably, or not likely?”<br>2. Read message A or B (one sentence).<br>3. “Does that make you more likely or less likely to vote for ${esc(st.cfg.candidate.first_name || "them")}, or no difference?”<br>Write down: which message, and “more likely” yes/no. Thank them.</p><p>⚖️ Texting people who didn't give you their number can be limited by federal and state rules — use a texting tool built for campaigns and <a href="#/law">check the rules</a>.</p>`)}
+          <div class="two" style="margin-top:10px"><div>${field({ bind: "run.tests.poll.a.label", label: "Message A", sm: true, ph: sl[0] ? sl[0].text : "" })}</div><div>${field({ bind: "run.tests.poll.b.label", label: "Message B", sm: true, ph: sl[1] ? sl[1].text : "" })}</div>
+            <div>${io("run.tests.poll.a.n", "A: people asked")}</div><div>${io("run.tests.poll.b.n", "B: people asked")}</div>
+            <div>${io("run.tests.poll.a.yes", "A: “more likely”")}</div><div>${io("run.tests.poll.b.yes", "B: “more likely”")}</div></div>
+          <div data-live="poll">${pollLive()}</div></div>
+
+        <div class="card"><h2>How to decide</h2><p class="small" style="margin:0">Pick a winner only when the difference is bigger than chance (the app tells you). When tests disagree, trust the poll over the ads, and the ads over the listening sessions — but use the sessions' words in your copy. If nothing wins clearly, keep the slogan people remembered most. Never pick by what you, your family or your volunteers like best: they already support you.</p>
+          <div class="linkrow" style="margin-top:10px"><a class="linkbtn" href="#/slogans">Change my main slogan</a><button type="button" class="linkbtn" data-act="test-guide">Download the testing guide</button></div></div>`,
+      live: { listen: listenLive, ab: abLive, poll: pollLive },
+      actions: `<a class="btn" href="#/run">Back to Run</a>`
+    };
+  };
+  const abLive = () => {
+    const sl = (st.cfg.slogans || []).filter((s) => s.text), T = st.run.tests, ab = RN.abCompare(T.ab.a, T.ab.b);
+    const labA = (o, i) => o.label || (sl[i] ? sl[i].text : i ? "Message B" : "Message A");
+    return !ab ? "" : ab.verdict === "winner" ? note("ok", `<b>${esc(labA(T.ab[ab.winner], ab.winner === "a" ? 0 : 1))}</b> wins: ${U.pct(ab.winner === "a" ? ab.ra : ab.rb, 2)} of people clicked, against ${U.pct(ab.winner === "a" ? ab.rb : ab.ra, 2)}. A difference this big is unlikely to be chance.`)
+      : ab.verdict === "wait" ? note("info", `Keep it running — ${ab.clicks} clicks so far. Wait for at least ${RN.AB_MIN_CLICKS} clicks on each ad before deciding.`)
+      : ab.verdict === "tie" ? note("info", "No real difference after plenty of clicks. Either works — pick the one voters remembered at your listening sessions.")
+      : note("info", `Too close to call (${U.pct(ab.ra, 2)} vs ${U.pct(ab.rb, 2)}). Run another week, or treat it as a tie.`);
+  };
+  const pollLive = () => {
+    const sl = (st.cfg.slogans || []).filter((s) => s.text), T = st.run.tests, poll = RN.pollCompare(T.poll.a, T.poll.b);
+    const labA = (o, i) => o.label || (sl[i] ? sl[i].text : i ? "Message B" : "Message A");
+    return !poll ? "" : poll.winner ? note("ok", `<b>${esc(labA(T.poll[poll.winner], poll.winner === "a" ? 0 : 1))}</b> did better: ${U.pct(poll.winner === "a" ? poll.pa : poll.pb)} vs ${U.pct(poll.winner === "a" ? poll.pb : poll.pa)}, more than the ±${U.pct(poll.moe, 1)} margin of error.`)
+      : note("info", `No clear winner: ${U.pct(poll.pa)} vs ${U.pct(poll.pb)} is within the ±${U.pct(poll.moe, 1)} margin of error. Use your listening sessions to decide.`);
+  };
+  const listenLive = () => {
+    const sl = (st.cfg.slogans || []).filter((s) => s.text), T = st.run.tests.listen;
+    const rank = RN.listenRank(sl, T.scores || {}), top = rank[0], people = U.num(T.people) || 0;
+    if (!top || !top.remembered) return `<p class="tiny muted" style="margin:8px 0 0">Add counts to see which slogan sticks.</p>`;
+    const share = people ? ` (${U.pct(top.remembered / people)} of people)` : "";
+    const primary = (st.cfg.slogans || []).find((s) => s.role === "primary");
+    const isMain = primary && primary.text === top.text;
+    return note(isMain ? "ok" : "info", `Most remembered: <b>“${esc(top.text)}”</b> — ${top.remembered}${share}.${isMain ? " It's already your main slogan." : ` <button type="button" class="linkbtn" data-act="test-primary" data-arg="${esc(top.text)}">Make it my main slogan</button>`}${people && people < 15 ? " Fewer than 15 people — treat this as a hint, not a result." : ""}`);
+  };
+
+  /* legal checklist */
+  SCREENS.law = () => {
+    const items = lawItems(), P = LW.progress(items), S = LW.state(st);
+    const office = [st.cfg.place.town, st.cfg.place.county && st.cfg.place.county + " County"].filter(Boolean).join(", ");
+    const opts = [["", "Not asked"], ["ok", "Confirmed"], ["diff", "Different here"]];
+    return {
+      title: "Check the rules", back: ["run", "Run"], cls: "mid",
+      html: `<h1>Check the rules</h1><p class="lede">${P.done} of ${P.total} answered. Election rules change by state, county and city. Ask your election office (it's free) or an election lawyer, and mark each one.</p>
+        <div class="progress green" role="progressbar" aria-valuenow="${P.done}" aria-valuemin="0" aria-valuemax="${P.total}" aria-label="Rules answered"><div style="width:${(P.done / P.total) * 100}%"></div></div>
+        ${S ? note("info", `<b>What we found for ${esc(S.name)}</b> is under each question, with where it comes from (read ${U.fmtDate(S.checked, "en", "long")}). It's a head start, not legal advice — laws change, and ${esc(office || "your city or county")} may add its own rules.`)
+          : note("warn", `We haven't collected ${esc(st.cfg.place.state || "your state")}'s rules yet, so each question is for your election office. <a href="#/q/where">Set your state</a>`)}
+        ${st.cfg.election.election_office ? `<p class="small" style="margin:12px 8px 0">Your election office: <b>${esc(st.cfg.election.election_office)}</b>${st.cfg.election.election_office_phone ? ` · <a href="tel:${esc(st.cfg.election.election_office_phone)}">${esc(st.cfg.election.election_office_phone)}</a>` : ""}</p>` : ""}
+        ${Object.entries(LW.GROUPS).map(([g, label]) => {
+          const rows = items.filter((i) => i.group === g);
+          if (!rows.length) return "";
+          return `<p class="section-label">${esc(label)}</p>` + rows.map((i) => `<div class="card lawq${i.status === "diff" ? " diff" : ""}">
+            <p style="margin:0"><b>${esc(i.q)}</b></p><p class="tiny muted" style="margin:2px 0 0">${esc(i.why)}${i.check ? " · Also unlocks printing." : ""}</p>
+            ${i.answer ? `<div class="found"><p class="small" style="margin:0"><b>${esc(S.name)}${i.answer.local ? " (state rules — ask locally too)" : ""}:</b> ${esc(i.answer.text)}</p>
+              <p class="tiny" style="margin:6px 0 0">${i.sources.map((s) => ext(s.url, s.title)).join(" · ")}</p>
+              ${i.answer.dates ? `<button type="button" class="linkbtn small" style="margin-top:6px" data-act="law-dates">Use these dates on my calendar</button>` : ""}</div>` : ""}
+            <div class="seg3" role="radiogroup" aria-label="Status: ${esc(i.q)}">${opts.map(([v, l]) => `<label><input type="radio" name="law-${i.key}" value="${v}" ${i.status === v ? "checked" : ""} data-act="law-status" data-arg="${i.key}|${v}"><span>${l}</span></label>`).join("")}</div>
+            ${i.status === "diff" || i.note ? field({ bind: `run.law.${i.key}.note`, label: "What's different here", sm: true, rows: 2 }) : ""}
+          </div>`).join("");
+        }).join("")}`,
+      actions: `<button type="button" class="btn" data-act="law-doc">${I.download()} Download for your election office or lawyer</button>`
+    };
+  };
+
+  /* quality checks */
+  SCREENS.quality = () => {
+    const q = qualitySummary(), base = st.cfg.web.base_url;
+    const row = (ok, label, detail) => `<div class="item" style="cursor:default">${ok === true ? I.done() : ok === false ? I.fix() : I.todo()}<span class="grow">${label}${detail ? `<br><span class="tiny muted">${detail}</span>` : ""}</span></div>`;
+    return {
+      title: "Quality checks", back: ["run", "Run"], cls: "mid",
+      html: `<h1>Quality checks</h1><p class="lede">${q.pass} of ${q.total} passing. Each check has a pass mark, so you know when it's good enough.</p>
+        <p class="section-label">Your website — checked here, before you publish</p>
+        <div class="card flush list">${q.site.map((c) => row(c.ok, esc(c.label) + (c.detail ? ` <span class="muted">· ${esc(c.detail)}</span>` : ""), c.ok ? "" : `Fix needed: ${esc(c.bad.slice(0, 4).join(", "))}${c.bad.length > 4 ? "…" : ""}`)).join("")}</div>
+        <p class="tiny muted" style="margin:6px 8px 0">Run on the pages this app builds for you. Colors were already checked for readability on the <a href="#/colors">colors</a> screen.</p>
+
+        <p class="section-label">Your website — after it's published</p>
+        <div class="card"><p class="small" style="margin:0 0 8px">Google's free Lighthouse test scores speed, accessibility and search on a phone. ${base ? `${ext("https://pagespeed.web.dev/analysis?url=" + encodeURIComponent(base) + "&form_factor=mobile", "Test " + base.replace(/^https?:\/\//, ""))} (opens Google's site, which sees your public web address)` : `Publish your site, then <a href="#/q/web">add its address</a>.`} and type the four scores:</p>
+          <div class="two">${q.lh.map((x) => `<div>${field({ bind: `run.quality.lh.${x.key}`, label: `${x.label} <span class="opt">pass ${x.min}+</span>`, im: "numeric", sm: true })}</div>`).join("")}</div>
+          <div data-live="lh">${lhLive()}</div>
+          <p class="section-label" style="margin:16px 0 4px">Try it yourself</p>
+          ${checkbox("run.quality.manual.keyboard", "Every page works with the keyboard only", "Tab through each page on a laptop: you can see where you are and reach every link and button.")}
+          ${checkbox("run.quality.manual.zoom", "Readable at 200% zoom on a phone", "Pinch to zoom: no text cut off, no sideways scrolling.")}
+          ${checkbox("run.quality.manual.wave", "0 errors in the WAVE checker", `${ext("https://wave.webaim.org/", "wave.webaim.org")} — paste your address.`)}</div>
+
+        <p class="section-label">Email — set up once, before your first send</p>
+        <div class="card flush list">${q.em.setup.map((x) => checkbox(`run.quality.email.${x.key}`, esc(x.label), esc(x.how))).join("")}</div>
+        <div class="card"><h2>Email — after each send</h2>
+          ${q.em.numbers.map((x) => `${field({ bind: `run.quality.email.${x.key}`, label: `${esc(x.label)} <span class="opt">pass: ${esc(x.rule)}</span>`, im: "decimal", sm: true, hint: esc(x.how) })}`).join("")}
+          <div data-live="em">${emLive()}</div></div>
+
+        ${q.qr.length ? `<p class="section-label">QR codes — scanned from a printed proof</p>
+        <div class="card flush list">${q.qr.map((p) => checkbox(`run.quality.qr.${p.id}`, esc(R.pieceName(p).replace("{first}", st.cfg.candidate.first_name || "you")), `Opens ${esc(R.utmUrl(base || "", p.qr_path, p.utm).replace(/^https?:\/\//, "") || p.qr_path)}`)).join("")}</div>
+        <p class="tiny muted" style="margin:6px 8px 0">Print a PROOF copy at actual size and scan each code with two different phones from arm's length. All checked = “QR codes scanned” is done on <a href="#/checklist">Before you print</a>.</p>` : ""}`,
+      live: { lh: lhLive, em: emLive },
+      actions: `<a class="btn" href="#/run">Back to Run</a>`
+    };
+  };
+  const lhLive = () => {
+    const r = RN.lhResult(st.run.quality.lh).filter((x) => x.value != null);
+    if (!r.length) return "";
+    const bad = r.filter((x) => !x.ok);
+    return bad.length ? note("warn", `Below the pass mark: ${bad.map((x) => `${esc(x.label)} ${x.value} (needs ${x.min})`).join(", ")}. Lighthouse lists what to fix under each score — the biggest wins are usually a smaller photo and image descriptions.`)
+      : note("ok", r.length === 4 ? "All four scores pass." : "Scores so far pass.");
+  };
+  const emLive = () => {
+    const r = RN.emailResult(st.run.quality.email).numbers.filter((x) => x.value != null);
+    return r.map((x) => note(x.ok ? "ok" : x.warn ? "warn" : "bad", `${esc(x.label)}: ${x.value}${x.unit} — ${x.ok ? "passes" : x.warn ? `watch it (pass: ${esc(x.rule)})` : `too high/low (pass: ${esc(x.rule)}). Stop sending until it's fixed.`}`)).join("");
+  };
+  const testGuide = () => {
+    const sl = (st.cfg.slogans || []).filter((s) => s.text), c = st.cfg.candidate;
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Message testing guide — ${esc(c.full_name || "campaign")}</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:760px;margin:32px auto;padding:0 20px;color:#111}h1{font-size:24px}h2{font-size:18px;margin-top:28px;border-bottom:2px solid #111}.card{border:1px solid #888;border-radius:10px;padding:18px;margin:10px 0;font-size:22px;font-weight:700;break-inside:avoid;text-align:center}table{border-collapse:collapse;width:100%}td,th{border:1px solid #888;padding:6px;text-align:left}</style></head><body>
+<h1>Message testing guide</h1><p>${esc(c.full_name || "")} · ${esc(c.office || "")}</p>
+<h2>Listening session script</h2><ol><li>What's the biggest problem in this part of town? (Write down their words.)</li><li>Read the one sentence: “${esc(st.cfg.message_box.core_message)}”. What stuck? What didn't you believe?</li><li>Show each slogan card, in a different order each session. Which would you remember tomorrow? Which do you like?</li><li>At the end, without looking: which one do you remember?</li><li>What would make you vote — or skip this race?</li></ol>
+<h2>Tally</h2><table><tr><th>Slogan</th><th>Remembered</th><th>Liked</th></tr>${sl.map((s) => `<tr><td>${esc(s.text)}</td><td></td><td></td></tr>`).join("")}</table>
+<h2>Slogan cards (cut apart)</h2>${sl.map((s) => `<div class="card">${esc(s.text)}</div>`).join("")}
+<h2>Deciding</h2><p>Pick a winner only when the difference is bigger than chance. Small groups give hints, not results. Never decide by what supporters like — they already support you.</p></body></html>`;
+  };
+
   /* -------------------------------------------------------------- shell */
   const route = () => {
     const h = (location.hash || "").replace(/^#\/?/, "");
     const [nm, ...rest] = h.split("/");
     return { name: nm || "", arg: rest.join("/") };
   };
-  const GROUP = { oe: "plan", plan: "plan", how: "plan", message: "message", box: "message", slogans: "message", materials: "materials", piece: "materials", colors: "materials", website: "materials", social: "materials", emails: "materials", spanish: "materials", checklist: "launch" };
+  const GROUP = { oe: "plan", plan: "plan", how: "plan", message: "message", box: "message", slogans: "message", materials: "materials", piece: "materials", colors: "materials", website: "materials", social: "materials", emails: "materials", spanish: "materials", checklist: "launch", run: "run", dash: "run", test: "run", law: "run", quality: "run" };
   let live = {}, after = null, lastRoute = "";
 
   // Going from a review screen (checklist, a material, the plan) to fix something remembers where you were,
   // so the fix screen can offer a button straight back.
-  const HUBS = ["checklist", "materials", "piece", "plan", "website", "social", "emails", "spanish", "how"];
+  const HUBS = ["checklist", "materials", "piece", "plan", "website", "social", "emails", "spanish", "how", "run", "dash", "test", "law", "quality"];
   const EDITS = ["q", "box", "message", "slogans", "colors", "oe"];
   let returnTo = "";
   const trackReturn = () => {
@@ -1076,7 +1355,7 @@
   const returnLabel = () => {
     const [nm, ...rest] = returnTo.split("/"), arg = rest.join("/");
     if (nm === "piece") { const p = st.cfg.pieces.find((x) => x.id === arg); return p ? R.pieceName(p).replace("{first}", st.cfg.candidate.first_name || "you") : "your materials"; }
-    return { checklist: "Before you print", materials: "Your materials", plan: "Your plan", how: "How we worked this out", website: "Your website", social: "Social & ads", emails: "Emails", spanish: "Spanish text" }[nm] || "where you were";
+    return { run: "Run", dash: "Weekly numbers", test: "Test your message", law: "Check the rules", quality: "Quality checks", checklist: "Before you print", materials: "Your materials", plan: "Your plan", how: "How we worked this out", website: "Your website", social: "Social & ads", emails: "Emails", spanish: "Spanish text" }[nm] || "where you were";
   };
 
   const render = (keepScroll) => {
@@ -1098,7 +1377,7 @@
     const g = GROUP[nm] || (nm === "q" ? (["bio", "issues", "photo"].includes(arg) ? "message" : ["web", "signup", "disclaimer"].includes(arg) ? "materials" : "plan") : "");
     bar.innerHTML = scr.bare ? "" : `<div class="bar-inner"><div class="bar-left">${scr.back ? backLink(scr.back[0], scr.back[1]) : ""}<a class="brandmark" href="#/home"><span class="logo">${I.house({ s: 18, w: 2.2 })}</span><span>${esc(name() ? `${name()} for ${st.cfg.candidate.office || "office"}` : "Campaign-in-a-Box")}</span></a></div>
       <div class="bar-title">${esc(scr.title || "")}</div>
-      <nav class="segs" aria-label="Steps">${[["plan", "Plan"], ["message", "Message"], ["materials", "Materials"], ["checklist", "Launch"]].map(([h, l]) => `<a href="#/${h}"${g === (h === "checklist" ? "launch" : h) ? ' aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
+      <nav class="segs" aria-label="Steps">${[["plan", "Plan"], ["message", "Message"], ["materials", "Materials"], ["checklist", "Launch"], ["run", "Run"]].map(([h, l]) => `<a href="#/${h}"${g === (h === "checklist" ? "launch" : h) ? ' aria-current="page"' : ""}>${l}</a>`).join("")}</nav>
       <div class="bar-right"><span class="saved wide-only" data-saved>${savedText()}</span>${scr.right || ""}</div></div>`;
     main.innerHTML = `<div class="screen ${scr.cls || ""}">${scr.html}</div>${scr.actions ? `<div class="actions"><div class="inner">${scr.actions}</div></div>` : ""}`;
     document.title = (scr.title ? scr.title + " · " : "") + "Campaign-in-a-Box";
@@ -1151,6 +1430,7 @@
       document.querySelectorAll(`[data-bind="${el.dataset.bind}"]`).forEach((o) => { if (o !== el) o.value = v; });
     }
     setP(el.dataset.bind, v);
+    if (/^run\.quality\.qr\./.test(el.dataset.bind)) syncChecks();
     if (/^cfg\.place\.|^cfg\.candidate\.office$/.test(el.dataset.bind) && st.cfg.place.state) st.cfg.candidate.jurisdiction = PL.jurisdiction(st.cfg.place, st.cfg.candidate.office);
     if (st.meta.example && !/^cfg\.brand|^strategy\.(thresholds|margin|turnoutOverride)|^cfg\.pieces/.test(el.dataset.bind)) st.meta.exampleEdited = true;
     ST.normalize(st);
@@ -1187,6 +1467,53 @@
   const fileBase = () => U.slug(st.cfg.candidate.full_name || "campaign");
 
   const ACT = {
+    "wk-pick": (v) => { dashView.week = v || document.getElementById("wk-pick").value; render(true); },
+    "wk-save": () => {
+      const e = { week: dashView.week };
+      document.querySelectorAll("[data-wk]").forEach((el) => {
+        const k = el.dataset.wk;
+        if (k === "note") e.note = el.value.trim();
+        else { const n = U.num(String(el.value).replace(/[$,\s]/g, "")); e[k] = n == null ? "" : Math.max(0, n); }
+      });
+      if (RN.METRICS.every((m) => e[m.key] === "")) { toast("Type at least one number first"); return; }
+      st.run.weeks = RN.merge(st.run.weeks, [e]);
+      const win = RN.window(st), i = win ? win.weeks.indexOf(dashView.week) : -1;
+      if (win && i >= 0 && i < win.n - 1) dashView.week = win.weeks[i + 1];
+      save(true); render(true); toast(`Saved the week of ${U.fmtDate(e.week, "en", "short")}`);
+    },
+    "wk-del": (w) => { if (!confirm(`Remove the week of ${U.fmtDate(w, "en", "short")}?`)) return; st.run.weeks = st.run.weeks.filter((x) => x.week !== w); save(true); render(true); },
+    "wk-template": () => {
+      const win = RN.window(st);
+      const rows = win ? win.weeks.map((w) => w + ",,,,,,") : [];
+      O.download(new Blob([RN.CSV_COLS.join(",") + "\n" + rows.join("\n") + "\n"], { type: "text/csv" }), `${fileBase()}-weekly-numbers.csv`);
+    },
+    "wk-export": () => O.download(new Blob([RN.toCsv(st)], { type: "text/csv" }), `${fileBase()}-weekly-numbers-${U.today()}.csv`),
+    "wk-import": async (arg, el) => {
+      const f = el.files && el.files[0]; if (!f) return;
+      const r = RN.parseCsv(await f.text());
+      el.value = "";
+      const filled = r.weeks.filter((w) => RN.METRICS.some((m) => w[m.key] !== ""));
+      if (!filled.length) { toast(r.problems[0] || "No numbers found in that file", 6000); return; }
+      st.run.weeks = RN.merge(st.run.weeks, filled);
+      save(true); render(true);
+      toast(`Brought in ${filled.length} week${filled.length > 1 ? "s" : ""}${r.problems.length ? ` · skipped ${r.problems.length} row${r.problems.length > 1 ? "s" : ""}: ${r.problems[0]}` : ""}`, r.problems.length ? 7000 : 3000);
+    },
+    "test-primary": (text) => { st.cfg.slogans.forEach((s) => { if (s.text === text) s.role = "primary"; else if (s.role === "primary") s.role = "secondary"; }); save(true); render(true); toast("Main slogan changed — your yard sign uses it now"); },
+    "test-guide": () => O.download(new Blob([testGuide()], { type: "text/html" }), `${fileBase()}-message-testing-guide.html`),
+    "law-status": (arg) => {
+      const [key, v] = arg.split("|"), it = LW.ITEMS.find((x) => x.key === key);
+      st.run.law[key] = { ...(st.run.law[key] || {}), status: v };
+      if (it && it.check) st.checks[it.check] = v === "ok";
+      save(true); render(true);
+    },
+    "law-dates": () => {
+      const S = LW.state(st), d = S && S.answers.dates && S.answers.dates.dates;
+      if (!d) return;
+      Object.assign(st.cfg.election.offsets, d);
+      save(true); render(true);
+      toast("Calendar updated: ballots out " + (-d.ballots_out) + " days and registration deadline " + (-d.register_deadline) + " days before Election Day");
+    },
+    "law-doc": () => O.download(new Blob([LW.document(st)], { type: "text/html" }), `${fileBase()}-rules-to-confirm.html`),
     start: () => { if (!st) st = ST.blank(); st.meta.seenWelcome = true; save(true); KP.requestPersist(); },
     example: () => {
       if (st && !st.meta.example && st.cfg.candidate.first_name && !confirm("Load the fictional example? It replaces the campaign on this device. Download a backup first if you want to keep yours.")) return;
@@ -1365,7 +1692,11 @@
     "fix-colors": () => { const f = K.fix(st.cfg.brand.custom.main, st.cfg.brand.custom.accent); st.cfg.brand.custom = f; save(); render(true); toast("Adjusted lightness — your colors, now readable"); },
     side: (a) => { const [id, s] = a.split("."); view.side[id] = s; render(true); },
     "sign-slogan": (t) => { const i = st.cfg.pieces.findIndex((p) => p.type === "yard_sign" && p.lang === "en"); st.cfg.pieces[i].content.slogan = t; save(); render(true); },
-    check: (k, el) => { st.checks[k] = el.checked; save(true); if (lastRoute.startsWith("checklist")) render(true); },
+    check: (k, el) => {
+      st.checks[k] = el.checked;
+      const it = LW.ITEMS.find((x) => x.check === k);
+      if (it) st.run.law[it.key] = { ...(st.run.law[it.key] || {}), status: el.checked ? "ok" : "" };
+      save(true); if (lastRoute.startsWith("checklist")) render(true); },
     sitepage: (p) => { view.sitePage = p; render(true); },
     email: (i) => { view.email = Number(i); render(true); },
     "plan-dl": () => busy("Making your plan", async () => {

@@ -64,4 +64,6 @@ Not state law, but also varies and must be confirmed: **USPS mail rules** (postc
 
 ---
 
-**Help wanted:** if you've confirmed the rules for your state, contribute a `states/XX.md` file with sources so the next candidate doesn't have to start from scratch. To add your state's election offices to the app, copy the Utah block in `app/js/places.js`, cite the official source and the date you checked it.
+The app's **Run → Check the rules** screen turns this list into questions for your election office. [`states/UT.md`](states/UT.md) has Utah's answers with sources.
+
+**Help wanted:** if you've confirmed the rules for your state, contribute a `states/XX.md` file with sources (copy `states/UT.md`, and add the answers to `app/js/law.js`) so the next candidate doesn't have to start from scratch. To add your state's election offices to the app, copy the Utah block in `app/js/places.js`, cite the official source and the date you checked it.

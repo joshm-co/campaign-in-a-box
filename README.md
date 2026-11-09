@@ -10,7 +10,7 @@ An open-source, party-neutral kit that turns a candidate's raw inputs into a cam
 
 How it works and how to publish it: [`app/README.md`](campaign-in-a-box/app/README.md). The spreadsheet and command-line tools below do the same math for people who prefer them.
 
-## What's in this release (Steps 1 and 2)
+## What's in this release (Steps 1, 2 and 3)
 
 ### Step 1 — Strategy
 
@@ -52,9 +52,15 @@ Every slogan, sign, mailer, ad and email is built from your Step 1 message box, 
 | [`tools/contrast_check.py`](campaign-in-a-box/tools/contrast_check.py) | WCAG contrast checker for any palette |
 | [`examples/rivertown-creative/`](campaign-in-a-box/examples/rivertown-creative/) | Every Step 2 output for the fictional Rivertown campaign |
 
-## Coming next
+### Step 3 — Validation
 
-- **Step 3 — Validation:** message testing plan, compliance checklist, accessibility and deliverability checks, weekly dashboard against the win number.
+Check the plan and materials against the real world, each with a pass mark. In the app it's the **Run** tab.
+
+| File | What it does |
+|---|---|
+| [`validation/README.md`](campaign-in-a-box/validation/README.md) | Message and slogan tests (listening sessions, A/B ads, a quick poll) with decision rules; the rules checklist; website, accessibility and email pass marks; the weekly dashboard method |
+| [`validation/weekly-numbers-template.csv`](campaign-in-a-box/validation/weekly-numbers-template.csv) | Columns for a shared weekly-numbers spreadsheet the app can open |
+| [`states/UT.md`](campaign-in-a-box/states/UT.md) | Utah's rules with sources — the first state file |
 
 ## Using the tools
 

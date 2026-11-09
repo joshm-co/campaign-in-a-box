@@ -472,6 +472,7 @@
       field: { volunteers: 10, shiftsPerWeek: 1, doorsPerShift: 40, candidateDoors: 150, weeks: 10, contactRate: 0.3, votersPerHousehold: 1.7, convPerVote: 15 }
     },
     checks: { disclaimer: false, dates: false, translation: false, qr: false, officialNumbers: false },
+    run: { start: "", weeks: [], goals: {}, law: {}, tests: { ab: { a: {}, b: {} }, poll: { a: {}, b: {} }, listen: { people: "", scores: {} } }, quality: { lh: {}, email: {}, qr: {} } },
     photo: null
   });
 
@@ -505,6 +506,10 @@
     }));
     st.strategy.budget.low = 8000; st.strategy.budget.likely = 18000; st.strategy.budget.high = 30000;
     st.strategy.field.volunteers = 15;
+    // Six fictional weeks of door-knocking for the weekly dashboard (doors start 84 days out).
+    const wk0 = U.addDays(st.cfg.election.election_day, Number(st.cfg.election.offsets.persuasion_starts));
+    st.run.weeks = [[520, 140, 18, 1500, 15], [610, 165, 22, 2200, 22], [580, 150, 20, 1800, 18], [640, 170, 25, 2600, 20], [590, 160, 21, 1200, 14], [600, 165, 24, 1900, 19]]
+      .map(([doors, conversations, ids, dollars, list], i) => ({ week: U.addDays(wk0, 7 * i), doors, conversations, ids, dollars, list, note: i === 4 ? "Rain on Saturday" : "" }));
     return st;
   };
 

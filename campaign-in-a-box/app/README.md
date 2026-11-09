@@ -11,6 +11,7 @@ The no-code version of the kit. A candidate opens a link, answers plain question
 - The page's Content Security Policy only lets the app connect to its own files and, for the optional OpenElections import, to GitHub (`raw.githubusercontent.com`, plus `api.github.com` as a fallback for the file list). It can't send data anywhere else. Fonts, the QR encoder, the election-office directory and the OpenElections file index are bundled.
 - Utah's official precinct results are copied into the app (`data/utah/`) by a scheduled GitHub Action, so Utah candidates load them from the app's own address — no third party sees anything.
 - The OpenElections import is opt-in. When the candidate taps it, the device downloads one public results file from GitHub; GitHub sees the device's internet address and which file was asked for, nothing the candidate typed. The screen says so before anything downloads.
+- The weekly numbers never sync anywhere. A team shares them through its own spreadsheet: download it as CSV and open it in the app. The Lighthouse link opens Google's PageSpeed site with the campaign's public web address only when tapped.
 - Directory links and “Find my county's results” open in a new tab only when tapped — the search is the one time a county name leaves the app.
 - Keeping work safe without accounts: the app asks the browser to keep its data, offers to install itself (an installed app on iPhone isn't cleared by Safari's 7-day rule, and works offline via `sw.js`, which caches only the app's own files), warns in in-app browsers and private windows, and suggests a backup file after each milestone and weekly (`js/keep.js`).
 - Phone and laptop are not connected. The app says so, and a backup file (Saving → Download a backup) moves a campaign between devices.
@@ -30,6 +31,10 @@ The no-code version of the kit. A candidate opens a link, answers plain question
 | Print pieces with live warnings (35-mph legibility, overflow, missing sources) | `tools/build_creative.py` layouts and checks |
 | Website, social and ad images, emails with send dates | `creative/website/`, `creative/social/`, `creative/email/messages/` |
 | “Before you print” checklist; printer files locked until ⚖️ items are confirmed; PROOF copies always available | `STATE-LAW-FLAGS.md`, `creative/print/README.md` |
+| **Run:** weekly numbers against goals from the win number, field model, budget and calendar (on track / behind / well behind, projection to the win number, shared-sheet CSV in and out) | `validation/README.md`, `js/run.js` |
+| **Run:** message tests — listening-session tally, A/B ad z-test, split-sample poll against the margin of error | `validation/README.md`, `js/run.js` |
+| **Run:** rules checklist for the election office or a lawyer, with Utah's answers and sources; confirming here confirms “Before you print” | `STATE-LAW-FLAGS.md`, `states/UT.md`, `js/law.js` |
+| **Run:** quality checks — website checks on the built pages, Lighthouse and email pass marks, QR proof scans | `validation/README.md`, `js/run.js` |
 
 **Printer files:** each piece downloads as a PDF with bleed and trim boxes set, rendered at 300 dpi (150 dpi for the 24 × 18 in yard sign), plus an editable SVG with fonts embedded. PROOF copies show the trim, safe zone, die line and ⚖️ notes, and are stamped PROOF.
 
@@ -47,6 +52,8 @@ app/
   js/render.js          SVG print pieces, social cards and ads
   js/outputs.js         PDF, PNG, zip, website, emails, backups
   js/ui.js              screens and navigation
+  js/run.js             Step 3: weekly numbers, message-test math, website/Lighthouse/email checks
+  js/law.js             Step 3: rules checklist and each state's answers with sources (Utah first)
   js/keep.js            storage protection: install, persistent storage, risk warnings, backup reminders
   sw.js                 offline copy of the app's own files (never the candidate's answers)
   js/places.js          election-office directory (Utah first) and place helpers
@@ -102,6 +109,8 @@ The repo includes `.github/workflows/pages.yml`, which publishes this folder. In
 - The app can't read a county results website directly (browsers block that). Candidates copy or paste the numbers, or import from OpenElections, and the app flags unofficial numbers until they're replaced.
 - OpenElections covers mostly even-year state and federal races; city and school races are often missing, so candidates pick the race most like theirs. Many files don't list registered voters by precinct — those elections are skipped for turnout until the candidate types the numbers in, and missing ballots-cast counts are estimated from the race with the most votes (marked in the precinct notes). Maryland, North Carolina and Virginia had no precinct files when the index was built.
 - Utah results: precinct names sometimes change between years (Cache County's 2025 "3SMI1:I" was "SMI01:I"); the app matches them by name and notes each match. Some elections list zero registered voters for a county (for example Cache County's 2024 general); those are skipped for turnout until typed in. Results marked unofficial on the state site may still change.
+- The rules checklist has answers for Utah only (read 2026-11-08); other states get the questions without answers. Laws change — the screen says to confirm every one.
+- Weekly goals for supporters and email signups are planning guesses (see `validation/README.md`); edit them under Goals.
 - The election-office directory covers Utah. Other states get a web-search button until someone adds their listings to `js/places.js` (cite the official source and the date checked).
 - PDFs are high-resolution images, not vector files. Printers accept them; for vector output, use the editable SVGs or the command-line builder.
 - ⚖️ Nothing here is legal advice. Every place state law varies is flagged in the app and in `STATE-LAW-FLAGS.md`.
