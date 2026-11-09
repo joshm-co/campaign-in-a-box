@@ -5,7 +5,7 @@
 (function () {
   "use strict";
   const CIB = window.CIB;
-  const U = CIB.util, K = CIB.color, S = CIB.strategy, M = CIB.message, ST = CIB.state, R = CIB.render, O = CIB.out, PL = CIB.places, OE = CIB.oe;
+  const KP = CIB.keep, U = CIB.util, K = CIB.color, S = CIB.strategy, M = CIB.message, ST = CIB.state, R = CIB.render, O = CIB.out, PL = CIB.places, OE = CIB.oe;
   const esc = U.esc;
 
   let st = ST.load();
@@ -351,6 +351,7 @@
       <div class="feature"><span class="ic" style="background:var(--amber-soft)">${I.chat({ c: "var(--amber)" })}</span><div><b>Your message</b><span>One sentence that says why you're running.</span></div></div>
       <div class="feature"><span class="ic" style="background:var(--green-soft)">${I.screen({ c: "var(--green)" })}</span><div><b>Your materials</b><span>Yard signs, mailers, a website and emails — ready for the printer.</span></div></div>
       <p class="privacy">${I.lock()} Saved only on this device. Nothing you type leaves it. Free and open source.</p>
+      ${riskNote()}
     </div>`,
     actions: `<a class="btn" href="#/q/name" data-act="start">Get started</a><button type="button" class="btn quiet" data-act="example">See an example campaign</button>
       <label class="btn quiet" for="restore-w">Open a backup file</label><input type="file" id="restore-w" class="sr" accept=".json,application/json" data-act="restore">`
@@ -365,12 +366,37 @@
     return { planDone, msgDone, ready, total: pieces.length, need };
   };
 
+  // Warnings and offers that protect the work: in-app browsers, private windows, install, backups.
+  let privateGuess = false;
+  const riskNote = () => {
+    const app = KP.inAppBrowser();
+    if (app) return note("bad", `<b>Your work may not be saved here.</b> You opened this inside ${esc(app)}, whose browser can clear it when you close it. Open the link in ${KP.isIOS ? "Safari" : "Chrome or your usual browser"} instead (look for “Open in browser” in the ⋯ menu).`);
+    if (privateGuess) return note("warn", "<b>This looks like a private window.</b> Everything here is deleted when you close it. Use a normal window, or download a backup before you close.");
+    return "";
+  };
+  const installCard = (compact) => {
+    if (!KP.canInstall()) return "";
+    const ios = KP.isIOS && !KP.installEvent;
+    return `<div class="card"><div class="row top">${I.download({ c: "var(--blue)" })}<div class="grow"><b>Install the app</b>
+      <div class="small" style="color:var(--ink2);margin-top:2px">${ios ? "Tap the Share button, then <b>Add to Home Screen</b>. Installed, it opens like an app and Safari won't clear your work if you're away more than a week." : "It opens like an app, works without internet, and your browser is more likely to keep your work."}</div>
+      ${ios ? "" : `<button type="button" class="btn small" style="margin-top:10px" data-act="install">Install</button>`}</div></div></div>`;
+  };
+  const backupNudge = () => {
+    const reason = KP.backupReason(st, progressOf());
+    if (!reason) return "";
+    return `<div class="card" style="border:2px solid var(--blue)"><b>${esc(reason)} — save a backup?</b>
+      <p class="small" style="margin:4px 0 10px;color:var(--ink2)">One small file. Keep it in Files, Google Drive, or email it to yourself. If this device is lost or cleared, opening it brings everything back.</p>
+      <div class="row" style="flex-wrap:wrap;gap:10px"><button type="button" class="btn small" data-act="backup">${I.download({ s: 18 })} Save a backup</button><button type="button" class="linkbtn" data-act="nudge-later">Remind me later</button></div></div>`;
+  };
+  const localDay = (iso) => { const d = new Date(iso); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+  const lastBackupText = () => st.meta.lastBackup ? `Last backup ${U.fmtDate(localDay(st.meta.lastBackup), "en", "long")}.` : "No backup saved yet.";
+
   SCREENS.home = () => {
     const p = progressOf(), r = result(), c = st.cfg.candidate;
     const card = (href, icon, bg, title, sub, status) => `<a class="item" href="#/${href}"><span class="ic" style="flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:${bg}">${icon}</span><span class="grow"><b>${title}</b><br><span class="small muted">${sub}</span></span>${status}${I.chev()}</a>`;
     return {
       title: "Your campaign",
-      html: `${st.meta.example ? note("info", `You're looking at a <b>fictional example</b> (Chris Porter, Rivertown). Change anything to see how it works. <button type="button" class="linkbtn" data-act="new">Start your own campaign</button>`) : ""}
+      html: `${riskNote()}${backupNudge()}${st.meta.example ? note("info", `You're looking at a <b>fictional example</b> (Chris Porter, Rivertown). Change anything to see how it works. <button type="button" class="linkbtn" data-act="new">Start your own campaign</button>`) : ""}
         <h1>${esc(c.full_name || "Your campaign")}</h1>
         <p class="lede">${esc([c.office, c.district].filter(Boolean).join(" · ") || "Let's get the basics in.")}${st.cfg.election.election_day ? ` · Election Day ${U.fmtDate(st.cfg.election.election_day, "en", "long")}` : ""}</p>
         <div class="card flush list">
@@ -381,8 +407,9 @@
           ${card("checklist", I.tick({ c: "var(--ink)" }), "var(--chip)", "Before you print", p.need.length ? `${p.need.length} thing${p.need.length > 1 ? "s" : ""} to confirm` : "Ready for the printer", p.need.length ? I.todo() : I.done())}
         </div>
         <p class="section-label">Saving</p>
-        <div class="card">${note("info", "Your campaign is saved <b>only in this browser on this device</b>. Your phone and laptop aren't connected. To move between them, download a backup file and open it on the other device.")}
-          <div class="linkrow" style="margin-top:8px"><button type="button" class="linkbtn" data-act="backup">Download a backup</button><a class="linkbtn" href="#/save">More saving options</a></div></div>`,
+        <div class="card">${note("info", `Your campaign is saved <b>only in this browser on this device</b>. Your phone and laptop aren't connected — a backup file moves it between them. ${lastBackupText()}`)}
+          <div class="linkrow" style="margin-top:8px"><button type="button" class="linkbtn" data-act="backup">Save a backup</button><a class="linkbtn" href="#/save">More saving options</a></div></div>
+        ${installCard()}`,
       actions: `<a class="btn" href="#/${!c.office ? "q/name" : !p.planDone ? "plan" : !p.msgDone ? "message" : "materials"}">Continue</a>`
     };
   };
@@ -407,7 +434,7 @@
     const r = result(), s = r.summary, g = S.groups(r.rows), sg = st.strategy;
     if (!s) return {
       title: "Your plan", back: ["home", "Home"],
-      html: `<h1>Your plan</h1><p class="lede">We need a few numbers to work out how many votes you need.</p>
+      html: `${backupNudge()}<h1>Your plan</h1><p class="lede">We need a few numbers to work out how many votes you need.</p>
         ${r.problems && r.problems.length ? note("warn", "Some precinct rows need fixing before we can count them.") : ""}
         <div class="card flush list"><a class="item" href="#/q/source"><span class="grow"><b>Add your numbers</b><br><span class="small muted">Precinct results, or a quick district estimate</span></span>${I.chev()}</a></div>`,
       actions: `<a class="btn" href="#/q/source">Add my numbers</a>`
@@ -630,7 +657,7 @@
     };
     return {
       title: "Your materials", back: ["home", "Home"], right: `<a class="textbtn" href="#/checklist">Checklist</a>`, cls: "mid",
-      html: `<h1>Your materials</h1>
+      html: `${backupNudge()}<h1>Your materials</h1>
         <div class="card"><div class="row" style="flex-wrap:wrap"><b class="grow">Colors</b><div class="swatches" data-live="swatches">${paletteButtons()}</div></div><div data-live="party"></div>${typeSelect()}</div>
         <div data-live="tiles"></div>`,
       live: { tiles: materialTiles, swatches: paletteButtons, party: partyNote,
@@ -770,7 +797,7 @@
     const prod = S.production(st.cfg).filter((p) => p.startBy >= U.today()).slice(0, 4);
     return {
       title: "Before you print", back: ["materials", "Materials"], cls: "mid",
-      html: `<h1>Before you print</h1><p class="lede">${done} of ${total} done. The rest take a phone call or a friend.</p>
+      html: `${backupNudge()}<h1>Before you print</h1><p class="lede">${done} of ${total} done. The rest take a phone call or a friend.</p>
         <div class="progress green" role="progressbar" aria-valuenow="${done}" aria-valuemin="0" aria-valuemax="${total}" aria-label="Checklist progress"><div style="width:${(done / total) * 100}%"></div></div>
         <div class="card flush list" style="margin-top:16px">
           ${auto.map(([ok, label, href]) => `<a class="item" href="#/${href}">${ok ? I.done() : I.fix()}<span class="grow">${label}</span>${ok ? "" : I.chev()}</a>`).join("")}
@@ -1007,9 +1034,15 @@
   SCREENS.save = () => ({
     title: "Saving", back: ["home", "Home"],
     html: `<h1>Saving and moving your work</h1>
-      ${note("info", "Your campaign lives <b>only in this browser on this device</b>. Nothing you type is sent to us or anyone else. Your phone and laptop are not connected — use a backup file to move between them.")}
+      ${riskNote()}
+      ${note("info", `Your campaign lives <b>only in this browser on this device</b>. Nothing you type is sent to us or anyone else. Your phone and laptop are not connected — use a backup file to move between them. ${lastBackupText()}`)}
+      ${installCard()}
+      <div class="card"><h2>How safe is it here?</h2>
+        <div class="stat"><span>Installed as an app</span><b>${KP.installed() ? "Yes" : "No"}</b></div>
+        <div class="stat"><span>Browser agreed to keep your work</span><b>${KP.persisted === true ? "Yes" : KP.persisted === false ? "Not yet" : "Unknown"}</b></div>
+        <p class="tiny muted" style="margin:8px 0 0">${KP.isIOS ? "On iPhone and iPad, Safari deletes a site's saved work after 7 days of use without visiting it — unless the app is installed. " : ""}Clearing your browsing data deletes it, and so do private windows and some apps' built-in browsers. A backup file is the only copy that can't be cleared.</p></div>
       <div class="card flush list">
-        <button type="button" class="item" data-act="backup">${I.download({ c: "var(--blue)" })}<span class="grow"><b>Download a backup</b><br><span class="small muted">One small file with all your answers and your photo</span></span></button>
+        <button type="button" class="item" data-act="backup">${I.download({ c: "var(--blue)" })}<span class="grow"><b>Save a backup</b><br><span class="small muted">One small file with all your answers and your photo. On a phone you can save it to Files or Drive, or email it to yourself.</span></span></button>
         <label class="item" for="restore-s">${I.share({ c: "var(--blue)" })}<span class="grow"><b>Open a backup file</b><br><span class="small muted">From your other device. Replaces what's here.</span></span></label><input type="file" id="restore-s" class="sr" accept=".json,application/json" data-act="restore">
         <button type="button" class="item" data-act="cli">${I.download({ c: "var(--blue)" })}<span class="grow"><b>Export campaign.json</b><br><span class="small muted">For a tech volunteer using the kit's command-line tools</span></span></button>
       </div>
@@ -1154,7 +1187,7 @@
   const fileBase = () => U.slug(st.cfg.candidate.full_name || "campaign");
 
   const ACT = {
-    start: () => { if (!st) st = ST.blank(); st.meta.seenWelcome = true; save(true); },
+    start: () => { if (!st) st = ST.blank(); st.meta.seenWelcome = true; save(true); KP.requestPersist(); },
     example: () => {
       if (st && !st.meta.example && st.cfg.candidate.first_name && !confirm("Load the fictional example? It replaces the campaign on this device. Download a backup first if you want to keep yours.")) return;
       st = ST.example(); ST.normalize(st); save(true); location.hash = "#/home"; render();
@@ -1168,7 +1201,16 @@
       if (!confirm("Delete everything on this device? This can't be undone.")) return;
       ST.clear(); st = null; location.hash = ""; render(); toast("Deleted");
     },
-    backup: () => { O.share(O.backupBlob(st), O.backupName(st), "Campaign backup").then((r) => r !== "cancelled" && toast("Backup ready — keep it somewhere safe")); },
+    backup: () => {
+      const prog = progressOf();
+      O.share(O.backupBlob(st), O.backupName(st), "Campaign backup").then((r) => {
+        if (r === "cancelled") return;
+        KP.markBackedUp(st, prog); st.meta.nudgeSnoozed = 0; save(true); render(true);
+        toast("Backup saved — keep it somewhere safe, like Files, Drive or your email");
+      });
+    },
+    "nudge-later": () => { st.meta.nudgeSnoozed = Date.now() + 3 * 864e5; save(); render(true); },
+    install: async () => { const r = await KP.install(); if (r === "installed") toast("Installed — open it from your home screen or apps"); render(true); },
     restore: async (arg, el) => {
       const f = el.files && el.files[0]; if (!f) return;
       try {
@@ -1398,6 +1440,10 @@
 
   /* --------------------------------------------------------------- boot */
   R.loadFonts().then(() => { fontsReady = true; refreshLive(true); });
+  KP.onChange = () => { if (["", "home", "save", "welcome"].includes(route().name)) render(true); };
+  KP.registerWorker();
+  if (st && st.meta.seenWelcome) KP.requestPersist();
+  KP.maybePrivate().then((p) => { if (p) { privateGuess = true; render(true); } });
   if (st) ST.normalize(st);
   render();
   CIB.ui = { get state() { return st; }, render };

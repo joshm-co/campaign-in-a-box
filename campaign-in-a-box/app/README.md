@@ -12,6 +12,7 @@ The no-code version of the kit. A candidate opens a link, answers plain question
 - Utah's official precinct results are copied into the app (`data/utah/`) by a scheduled GitHub Action, so Utah candidates load them from the app's own address — no third party sees anything.
 - The OpenElections import is opt-in. When the candidate taps it, the device downloads one public results file from GitHub; GitHub sees the device's internet address and which file was asked for, nothing the candidate typed. The screen says so before anything downloads.
 - Directory links and “Find my county's results” open in a new tab only when tapped — the search is the one time a county name leaves the app.
+- Keeping work safe without accounts: the app asks the browser to keep its data, offers to install itself (an installed app on iPhone isn't cleared by Safari's 7-day rule, and works offline via `sw.js`, which caches only the app's own files), warns in in-app browsers and private windows, and suggests a backup file after each milestone and weekly (`js/keep.js`).
 - Phone and laptop are not connected. The app says so, and a backup file (Saving → Download a backup) moves a campaign between devices.
 - Downloads and the share sheet use the device's own features (`navigator.share`, file downloads).
 
@@ -46,6 +47,8 @@ app/
   js/render.js          SVG print pieces, social cards and ads
   js/outputs.js         PDF, PNG, zip, website, emails, backups
   js/ui.js              screens and navigation
+  js/keep.js            storage protection: install, persistent storage, risk warnings, backup reminders
+  sw.js                 offline copy of the app's own files (never the candidate's answers)
   js/places.js          election-office directory (Utah first) and place helpers
   js/openelections.js   optional precinct-results import from OpenElections
   js/utahresults.js     Utah's official precinct results, read from data/utah/

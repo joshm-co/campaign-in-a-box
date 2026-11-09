@@ -82,7 +82,7 @@ h2 { font-size: 20px; line-height: 1.25; margin: 0 0 6px; }
 .item:first-child { border-top: 0; }
 a.item:hover, button.item:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); color: var(--ink); }
 .item .chev { flex: none; color: var(--line2); }
-.item > svg:last-child { flex: none; }
+.item > svg { flex: none; }
 .dot { width: 12px; height: 12px; border-radius: 6px; flex: none; display: inline-block; }
 
 /* bottom action area */

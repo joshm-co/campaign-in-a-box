@@ -1,7 +1,8 @@
 {
   "name": "Campaign-in-a-Box",
   "short_name": "Campaign",
-  "description": "Free, open-source campaign kit. Runs on your device; nothing is sent anywhere.",
+  "description": "Free, open-source campaign kit. Runs on your device; nothing you type is sent anywhere.",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

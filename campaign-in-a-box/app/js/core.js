@@ -446,7 +446,7 @@
 
   ST.blank = () => ({
     v: ST.VERSION,
-    meta: { created: new Date().toISOString(), updated: null, example: false, seenWelcome: false },
+    meta: { created: new Date().toISOString(), updated: null, example: false, seenWelcome: false, lastBackup: null, backedUpAt: [], nudgeSnoozed: 0 },
     cfg: {
       slug: "",
       place: { state: "", county: "", town: "" },
