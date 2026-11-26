@@ -310,5 +310,16 @@ table.tally td { vertical-align: middle; white-space: normal; }
 table.tally input.num { width: 76px; text-align: right; margin: 0 0 0 auto; }
 code.wrap { display: block; word-break: break-all; font-size: 12px; background: var(--chip); padding: 6px 8px; border-radius: 6px; margin: 4px 0; }
 @media (min-width: 960px) { .metrics { grid-template-columns: 1fr 1fr; } }
+/* What could you run for? */
+.eyebrow { margin: 0 0 4px; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+ul.plain { margin: 0; padding-left: 20px; font-size: 15px; }
+ul.plain li { margin: 4px 0; }
+.fact { padding: 8px 0; border-top: 1px solid var(--line); }
+.fact:first-child { border-top: 0; padding-top: 0; }
+.fact span { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
+.fact p { margin: 2px 0 0; font-size: 15px; }
+.pair { display: grid; gap: 0 12px; }
+.card.example { box-shadow: inset 4px 0 0 var(--blue), var(--shadow); }
+@media (min-width: 700px) { .pair { grid-template-columns: 1fr 1fr; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 @media print { .bar, .actions, .toast { display: none !important; } body { background: #fff; } }

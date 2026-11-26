@@ -21,6 +21,7 @@ The no-code version of the kit. A candidate opens a link, answers plain question
 
 | Screen | Same method as |
 |---|---|
+| **What could you run for?** Every office from town council to U.S. Senate: the job, time, term, pay, what you can and can't change, real examples with sources (Utah first) and made-up first-term ideas. “Run for this office” fills in the office question | `inputs/which-office.md`, `js/offices.js` |
 | Questions, one per screen, each with “Where do I find this?” | `inputs/intake-checklist.md`, `inputs/candidate-interview.md` |
 | Where are you running? State, county, town — sets the city/county/state on materials and shows the county's election office, results pages and finance site | `js/places.js` (Utah's 29 counties so far, from vote.utah.gov) |
 | Precinct results: type, paste, the template CSV, **Utah's official results (built in)**, **OpenElections**, **a dropped-in results file (Excel or CSV)**, or a quick district estimate | `inputs/precinct-results-template.csv`, `js/utahresults.js`, `js/openelections.js`, `js/xlsx.js` |
@@ -56,6 +57,7 @@ app/
   js/law.js             Step 3: rules checklist and each state's answers with sources (Utah first)
   js/keep.js            storage protection: install, persistent storage, risk warnings, backup reminders
   sw.js                 offline copy of the app's own files (never the candidate's answers)
+  js/offices.js         “What could you run for?” — every office, with sourced examples
   js/places.js          election-office directory (Utah first) and place helpers
   js/openelections.js   optional precinct-results import from OpenElections
   js/utahresults.js     Utah's official precinct results, read from data/utah/
@@ -109,6 +111,7 @@ The repo includes `.github/workflows/pages.yml`, which publishes this folder. In
 - The app can't read a county results website directly (browsers block that). Candidates copy or paste the numbers, or import from OpenElections, and the app flags unofficial numbers until they're replaced.
 - OpenElections covers mostly even-year state and federal races; city and school races are often missing, so candidates pick the race most like theirs. Many files don't list registered voters by precinct — those elections are skipped for turnout until the candidate types the numbers in, and missing ballots-cast counts are estimated from the race with the most votes (marked in the precinct notes). Maryland, North Carolina and Virginia had no precinct files when the index was built.
 - Utah results: precinct names sometimes change between years (Cache County's 2025 "3SMI1:I" was "SMI01:I"); the app matches them by name and notes each match. Some elections list zero registered voters for a county (for example Cache County's 2024 general); those are skipped for turnout until typed in. Results marked unofficial on the state site may still change.
+- The office guide's real examples are mostly from Utah (checked 2026-11-25); duties and powers differ by state and city, so the guide marks those with ⚖️.
 - The rules checklist has answers for Utah only (read 2026-11-08); other states get the questions without answers. Laws change — the screen says to confirm every one.
 - Weekly goals for supporters and email signups are planning guesses (see `validation/README.md`); edit them under Goals.
 - The election-office directory covers Utah. Other states get a web-search button until someone adds their listings to `js/places.js` (cite the official source and the date checked).

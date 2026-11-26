@@ -18,6 +18,7 @@ Strategy comes before any creative work. Every slogan, mailer and ad built in la
 
 | Folder / file | What it does |
 |---|---|
+| [`inputs/which-office.md`](campaign-in-a-box/inputs/which-office.md) | What each office does — from town council to U.S. Senate — with real examples and sources, to help decide what to run for |
 | [`inputs/intake-checklist.md`](campaign-in-a-box/inputs/intake-checklist.md) | Every input the kit needs, and exactly where to get each one |
 | [`inputs/candidate-interview.md`](campaign-in-a-box/inputs/candidate-interview.md) | Structured interview: biography, record, motivation, three local issues |
 | [`inputs/precinct-results-template.csv`](campaign-in-a-box/inputs/precinct-results-template.csv) | Blank template for past election results by precinct |

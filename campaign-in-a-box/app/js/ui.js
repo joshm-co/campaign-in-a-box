@@ -116,6 +116,12 @@
     ["finance_report", "Last finance report before the election", true], ["gotv_starts", "Final get-out-the-vote push starts", false], ["sign_removal", "Take down yard signs by", true]
   ];
 
+  // On the office question: a link to what the office the candidate typed actually does.
+  const officeGuide = () => {
+    const o = CIB.offices.match(st.cfg.candidate.office);
+    return o ? `<p class="small" style="margin:12px 4px 0"><a href="#/office/${o.id}">What does a ${esc(o.name.split(" (")[0].toLowerCase())} do?</a> · <a href="#/offices">Compare all offices</a></p>`
+      : `<p class="small" style="margin:12px 4px 0"><a href="#/offices">Not sure? See what each office does</a></p>`;
+  };
   const QUESTIONS = [
     { id: "name", section: "race", title: "What's your name, as it'll appear on the ballot?", sub: "We'll put it on your sign, mailers and website.",
       body: () => `${field({ bind: "cfg.candidate.first_name", label: "First name", ac: "given-name" })}${field({ bind: "cfg.candidate.last_name", label: "Last name", ac: "family-name" })}
@@ -125,8 +131,9 @@
     { id: "office", section: "race", title: "What office are you running for?", sub: "Use the name on the ballot. You can change it later.",
       body: () => `${field({ bind: "cfg.candidate.office", label: "Office" })}
         <div class="chips">${OFFICE_CHIPS.map((o) => `<button type="button" class="chip" aria-pressed="${st.cfg.candidate.office === o}" data-act="office" data-arg="${esc(o)}">${o}</button>`).join("")}</div>
-        ${field({ bind: "cfg.candidate.district", label: "District or seat", opt: "if any", ph: "District 4" })}`,
-      help: ["Where do I find this?", "<p>Your county or state election office lists every office on the next ballot. They answer candidate questions for free.</p>"] },
+        ${field({ bind: "cfg.candidate.district", label: "District or seat", opt: "if any", ph: "District 4" })}
+        <div data-live="officeguide">${officeGuide()}</div>`,
+      help: ["Where do I find this?", "<p>Your county or state election office lists every office on the next ballot. They answer candidate questions for free.</p>"], live: { officeguide: () => officeGuide() } },
     { id: "where", section: "race", title: "Where are you running?", sub: () => ({ town: "For a city race, we need the town and its county.", county: "For a county or school race, we need the county.", state: "For a state race, the state is enough — add your county to find local results." })[PL.level(st.cfg.candidate.office)],
       body: () => {
         const pl = st.cfg.place, lvl = PL.level(st.cfg.candidate.office), dir = PL.dir(pl.state), counties = PL.counties(pl.state);
@@ -353,7 +360,7 @@
       <p class="privacy">${I.lock()} Saved only on this device. Nothing you type leaves it. Free and open source.</p>
       ${riskNote()}
     </div>`,
-    actions: `<a class="btn" href="#/q/name" data-act="start">Get started</a><button type="button" class="btn quiet" data-act="example">See an example campaign</button>
+    actions: `<a class="btn" href="#/q/name" data-act="start">Get started</a><button type="button" class="btn quiet" data-act="example">See an example campaign</button><a class="btn quiet" href="#/offices">Not sure what to run for?</a>
       <label class="btn quiet" for="restore-w">Open a backup file</label><input type="file" id="restore-w" class="sr" accept=".json,application/json" data-act="restore">`
   });
 
@@ -1062,6 +1069,63 @@
       <p class="tiny muted center" style="margin-top:24px">Campaign-in-a-Box is free and open source (MIT). Not legal advice.</p>`
   });
 
+  /* ------------------------------------------------- what could you run for? */
+  const OF = CIB.offices;
+  const officeView = { level: "", care: -1 };
+  const officeRow = (o) => `<a class="item" href="#/office/${o.id}"><span class="grow"><b>${esc(o.name)}</b><br><span class="small muted">${esc(o.summary)}</span><br><span class="tiny muted">${esc(o.time.split(/[—;,]/)[0].trim())} · ${esc(o.term)}</span></span>${I.chev()}</a>`;
+  SCREENS.offices = () => {
+    const care = OF.CARES[officeView.care];
+    const shown = care ? care[1].map(OF.byId) : OF.forLevel(officeView.level);
+    const groups = care ? [["", shown]] : OF.LEVELS.filter(([l]) => !officeView.level || l === officeView.level).map(([l, label]) => [label, shown.filter((o) => o.level === l)]).filter(([, list]) => list.length);
+    return {
+      title: "What could you run for?", back: st && st.meta.seenWelcome ? ["home", "Home"] : ["welcome", "Start"], cls: "mid",
+      html: `<h1>What could you run for?</h1>
+        <p class="lede">What each office does, what it takes, and what people in it have actually done. Most first-time candidates start with a city, school or special district seat.</p>
+        <p class="section-label" id="care-l">Start with what you care about</p>
+        <div class="chips" role="group" aria-labelledby="care-l">${OF.CARES.map(([label], i) => `<button type="button" class="chip" aria-pressed="${officeView.care === i}" data-act="of-care" data-arg="${i}">${esc(label)}</button>`).join("")}</div>
+        <p class="section-label" id="lvl-l">Or browse by level</p>
+        <div class="chips" role="group" aria-labelledby="lvl-l">${[["", "All"], ...OF.LEVELS].map(([l, label]) => `<button type="button" class="chip" aria-pressed="${officeView.care < 0 && officeView.level === l}" data-act="of-level" data-arg="${l}">${esc(label)}</button>`).join("")}</div>
+        ${care ? `<p class="small" style="margin:14px 8px 0">For <b>${esc(care[0].toLowerCase())}</b>, look at:</p>` : ""}
+        ${groups.map(([label, list]) => `${label ? `<p class="section-label">${esc(label)}</p>` : ""}<div class="card flush list">${list.map(officeRow).join("")}</div>`).join("")}
+        ${note("info", `Offices have different names, terms, pay and powers from place to place. ⚖️ marks things to check with your election office. Real examples are mostly from Utah, checked ${U.fmtDate(OF.CHECKED, "en", "long")}.`)}`,
+      actions: st && st.meta.seenWelcome && !st.meta.example ? `<a class="btn" href="#/q/office">Back to my office</a>` : `<a class="btn" href="#/q/name" data-act="start">Get started</a>`
+    };
+  };
+  SCREENS.office = (id) => {
+    const o = OF.byId(id);
+    if (!o) return SCREENS.offices();
+    const level = (OF.LEVELS.find(([l]) => l === o.level) || [])[1];
+    const flag = (t) => esc(t).replace(/⚖️/g, '<span title="Check locally" aria-label="check locally">⚖️</span>');
+    const mine = st && !st.meta.example && OF.match(st.cfg.candidate.office) === o;
+    return {
+      title: o.name, back: ["offices", "Offices"], cls: "mid",
+      html: `<p class="eyebrow">${esc(level)}</p><h1>${esc(o.name)}</h1>
+        ${o.also ? `<p class="small muted" style="margin:-4px 0 8px">Also called: ${esc(o.also)}</p>` : ""}
+        <p class="lede">${flag(o.summary)}</p>
+        <div class="card">
+          <div class="fact"><span>Time</span><p>${flag(o.time)}</p></div>
+          <div class="fact"><span>Term</span><p>${flag(o.term)}</p></div>
+          <div class="fact"><span>Pay</span><p>${flag(o.pay)}</p></div>
+          <p class="small" style="margin:10px 0 0">${flag(o.first)}</p>
+        </div>
+        <div class="card"><h2>What the job is</h2><ul class="plain">${o.does.map((d) => `<li>${flag(d)}</li>`).join("")}</ul></div>
+        <div class="pair">
+          <div class="card"><h2>What you could change</h2><p class="small" style="margin:0">${flag(o.can)}</p></div>
+          <div class="card"><h2>What you can't</h2><p class="small" style="margin:0">${flag(o.cant)}</p></div>
+        </div>
+        <p class="section-label">What people in this office have done</p>
+        ${o.real.map((r) => `<div class="card example"><p style="margin:0">${flag(r.what)}</p><p class="tiny muted" style="margin:6px 0 0">${esc(r.when)} · Source: <a href="${esc(r.source.url)}" target="_blank" rel="noopener noreferrer">${esc(r.source.title)}</a></p></div>`).join("")}
+        <p class="section-label">What a first term could look like <span class="opt">— made-up examples</span></p>
+        <div class="card"><ul class="plain">${o.ideas.map((d) => `<li>${flag(d)}</li>`).join("")}</ul>
+          <p class="tiny muted" style="margin:8px 0 0">Ideas to show what's possible in this office, not real events.</p></div>
+        <div class="card"><h2>A good fit if…</h2><p class="small" style="margin:0">${flag(o.fit)}</p></div>
+        <div class="card"><h2>Ask your election office before you file</h2><ul class="plain">${o.ask.map((d) => `<li>${flag(d)}</li>`).join("")}</ul></div>
+        <p class="tiny muted" style="margin:8px">Examples are chosen to show what the office can do, not to praise or criticize anyone. Checked ${U.fmtDate(OF.CHECKED, "en", "long")}.</p>`,
+      actions: mine ? `<a class="btn" href="#/q/office">You're running for this</a><a class="btn secondary" href="#/offices">All offices</a>`
+        : `<button type="button" class="btn" data-act="of-pick" data-arg="${o.id}">Run for this office</button><a class="btn secondary" href="#/offices">All offices</a>`
+    };
+  };
+
   /* ------------------------------------------------------------ run (Step 3) */
   const RN = CIB.run, LW = CIB.law;
   const pill = (key, label) => `<span class="pill ${key}">${key === "ok" ? I.tick({ s: 14, w: 3 }) : key === "none" ? "" : I.warn({ s: 14 })}${esc(label)}</span>`;
@@ -1339,7 +1403,7 @@
     const [nm, ...rest] = h.split("/");
     return { name: nm || "", arg: rest.join("/") };
   };
-  const GROUP = { oe: "plan", plan: "plan", how: "plan", message: "message", box: "message", slogans: "message", materials: "materials", piece: "materials", colors: "materials", website: "materials", social: "materials", emails: "materials", spanish: "materials", checklist: "launch", run: "run", dash: "run", test: "run", law: "run", quality: "run" };
+  const GROUP = { oe: "plan", plan: "plan", how: "plan", message: "message", box: "message", slogans: "message", materials: "materials", piece: "materials", colors: "materials", website: "materials", social: "materials", emails: "materials", spanish: "materials", checklist: "launch", run: "run", dash: "run", test: "run", law: "run", quality: "run", offices: "", office: "" };
   let live = {}, after = null, lastRoute = "";
 
   // Going from a review screen (checklist, a material, the plan) to fix something remembers where you were,
@@ -1360,7 +1424,7 @@
 
   const render = (keepScroll) => {
     let { name: nm, arg } = route();
-    if (!st) { if (nm && nm !== "q") nm = ""; }
+    if (!st) { if (nm && !["q", "offices", "office"].includes(nm)) nm = ""; }
     if (!nm) nm = st && st.meta.seenWelcome ? "home" : "welcome";
     if (!st && nm !== "welcome") { st = ST.blank(); }
     const fn = SCREENS[nm] || SCREENS.home;
@@ -1467,6 +1531,21 @@
   const fileBase = () => U.slug(st.cfg.candidate.full_name || "campaign");
 
   const ACT = {
+    "of-care": (i) => { i = Number(i); officeView.care = officeView.care === i ? -1 : i; officeView.level = ""; render(true); },
+    "of-level": (l) => { officeView.level = l || ""; officeView.care = -1; render(true); },
+    "of-pick": (id) => {
+      const o = CIB.offices.byId(id); if (!o) return;
+      if (!st || st.meta.example) {
+        if (st && st.meta.example && !confirm(`Start your own campaign for ${o.name.toLowerCase()}? This replaces the Rivertown example on this device.`)) return;
+        st = ST.blank();
+      }
+      st.meta.seenWelcome = true;
+      st.cfg.candidate.office = o.ballot;
+      if (st.cfg.place.state) st.cfg.candidate.jurisdiction = PL.jurisdiction(st.cfg.place, o.ballot);
+      save(true); KP.requestPersist();
+      location.hash = "#/q/office";
+      toast(`Office set to “${o.ballot}” — change it to the exact name on your ballot`, 5000);
+    },
     "wk-pick": (v) => { dashView.week = v || document.getElementById("wk-pick").value; render(true); },
     "wk-save": () => {
       const e = { week: dashView.week };

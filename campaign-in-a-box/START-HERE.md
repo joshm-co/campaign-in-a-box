@@ -4,6 +4,8 @@ You don't need campaign experience to use this kit. You need a few hours, a phon
 
 > **Easiest:** open the app at **https://joshm-co.github.io/campaign-in-a-box/** and follow it — it walks you through every step below, one question per screen, and makes your materials. Your answers stay on your device. The files listed below are the same method, for people who prefer a spreadsheet.
 
+**Not sure what to run for?** Read [`inputs/which-office.md`](inputs/which-office.md) (or tap “Not sure what to run for?” in the app): what each office does, what it takes, and what people in it have actually done.
+
 ## Week 1: Gather (about 4–6 hours)
 
 1. **Confirm you can run.** Call your county or state election office. Ask: filing deadline, filing fee or petition signatures, residency requirement, and who you file campaign finance reports with. ⚖️ STATE LAW VARIES

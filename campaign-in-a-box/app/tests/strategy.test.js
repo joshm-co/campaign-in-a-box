@@ -207,3 +207,28 @@ for (const f of ["js/utahresults.js", "js/xlsx.js"]) vm.runInContext(fs.readFile
   assert.ok(/Rules to confirm/.test(LW.document(ex)));
   console.log("Step 3 checks passed (weekly numbers, tests, quality, rules).");
 }
+
+// "What could you run for?": every office is complete and every real example has a date and a source.
+{
+  vm.runInContext(fs.readFileSync(path.join(kit, "app", "js/offices.js"), "utf8"), ctx, { filename: "js/offices.js" });
+  const OF = CIB.offices, ids = new Set();
+  const levels = new Set(OF.LEVELS.map(([l]) => l));
+  for (const o of OF.LIST) {
+    assert.ok(!ids.has(o.id), "unique id " + o.id); ids.add(o.id);
+    assert.ok(levels.has(o.level), o.id + " level");
+    for (const k of ["name", "ballot", "summary", "time", "term", "pay", "first", "can", "cant", "fit"]) assert.ok(o[k] && String(o[k]).trim(), `${o.id}.${k}`);
+    assert.ok(o.does.length >= 3 && o.ideas.length >= 1 && o.ask.length >= 1, o.id + " lists");
+    assert.ok(o.real.length >= 1, o.id + " has a real example");
+    for (const r of o.real) assert.ok(r.what && r.when && /^https:\/\//.test(r.source.url) && r.source.title, o.id + " example sourced");
+  }
+  for (const [, list] of OF.CARES) for (const id of list) assert.ok(OF.byId(id), "care → " + id);
+  for (const l of levels) assert.ok(OF.forLevel(l).length, "offices at level " + l);
+  const m = (s) => (OF.match(s) || {}).id;
+  assert.strictEqual(m("City Council"), "council"); assert.strictEqual(m("County Council"), "commission");
+  assert.strictEqual(m("County Clerk/Auditor"), "clerk"); assert.strictEqual(m("State Auditor"), "state-auditor");
+  assert.strictEqual(m("U.S. Senate"), "us-senate"); assert.strictEqual(m("State Senate"), "state-senate");
+  assert.strictEqual(m("Board of Education"), "school-board"); assert.strictEqual(m(""), undefined);
+  // The ballot name of each office leads back to the same entry.
+  for (const o of OF.LIST) assert.strictEqual(m(o.ballot), o.id, "ballot name matches " + o.id);
+  console.log(`Office guide checks passed (${OF.LIST.length} offices, ${OF.LIST.reduce((a, o) => a + o.real.length, 0)} sourced examples).`);
+}
