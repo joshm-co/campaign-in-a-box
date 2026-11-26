@@ -1,5 +1,5 @@
 {
- "collected": "2026-11-08",
+ "collected": "2026-11-18",
  "source": "Utah election results (electionresults.utah.gov), Lieutenant Governor's Office",
  "counties": {
   "beaver-county-ut": "Beaver County",
@@ -37,7 +37,7 @@
    "id": "Primary06232026",
    "name": "2026 Utah Primary Election",
    "date": "2026-06-23",
-   "asOf": "2026-10-30T16:11:01.3682556Z",
+   "asOf": "2026-11-16T22:10:33.9447567Z",
    "source": "export",
    "counties": {
     "beaver-county-ut": {
